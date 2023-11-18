@@ -15,7 +15,7 @@
 
         <div class="d-flex justify-content-center">
             <div class="col-4">
-                <div class="d-flex align-content-center gap-3 mb-5">
+                <div class="d-flex align-content-center gap-3 mb-5 mt-5">
                     <img src="{{url('img/CASPD.svg')}}" style="height: 2rem;" alt="">
                     <span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span>
                 </div>
@@ -52,9 +52,9 @@
                                         <i data-feather="lock"></i>
                                     </span>
                                 </div>
-                                <input id="password_usuario" class="form-control @error('password_usuario') is-invalid @enderror" type="password" name="password_usuario" placeholder="Digite a sua senha" required autocomplete="current-password" />
+                                <input id="password" class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Digite a sua senha" required autocomplete="current-password" />
                             </div>
-                            @error('password_usuario')
+                            @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
