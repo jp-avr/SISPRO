@@ -1,87 +1,65 @@
-<div class="collapse width hidden" id="collapseWidthExample" data-toggle="true">
-    <nav class="sidebar">
-        <div class="sidebar-content">
-            <ul class="sidebar-nav">
-
-                {{-- @foreach (auth()->user()->role->modules as $modulo)
-
-                    <li class="sidebar-header">
-                        {{$modulo->name}}
-                </li>
-
-                @foreach ($modulo->permissoes->where('is_menu',1) as $permissao)
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{route($permissao->resource)}}">
-                        <i class="align-middle" data-feather="chevron-right"></i> <span class="align-middle">{{$permissao->descricao}}</span>
-                    </a>
-                </li>
-                @endforeach
-                @endforeach --}}
-
-                <li class="sidebar-header">
-                    <a>
-                        <div class="d-flex align-content-center gap-3 mt-1">
-                            <img src="{{url('img/CASPD.svg')}}" style="height: 2rem;" alt="">
-                            <span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">CASPD</span>
-                        </div>
-                    </a>
-                </li>
-
-                <div>
-                    <li class="sidebar-header">
-                        SOLICITAÇÕES
-                    </li>
-                    
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
-                            <i class="align-middle" data-feather="chevron-right"></i> <span class="align-middle">Pedidos</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#">
-                            <i class="align-middle" data-feather="chevron-right"></i> <span class="align-middle">Laudo</span>
-                        </a>
-                    </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<title>Document</title>
+</head>
+<body>
+	<div class="wrapper">
+		<aside id="sidebar">
+			<div class="h-100">
+				<div class="sidebar-logo">
+					<span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span>
+				</div>
+				<!-- NAVEGAÇÃO DA SIDEBAR -->
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						PROCESSOS
+					</li>
+					<li class="sidebar-item">
+						<a href="#" class="sidebar-link">
+							<i data-feather="chevron-right"></i>
+							Administrativo
+							<a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
+								<i data-feather="log-out"></i>
+								{{ __('Sair') }}
+							</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+								@csrf
+							</form>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
+							<i data-feather="chevron-right"></i>
+							Judiciário
+						</a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<div class="main">
+			<nav class="navbar navbar-expand bg-primary border-bottom">
+				<button class="btn" type="button" data-bs-theme="dark">
+					<i data-feather="menu" class="text-white"></i>
+				</button>
+			</nav>
+			<main class="content px-3 py-2">
+                <div class="container-fluid">
+                    <div class="mb-3">
+                        <h3>Teste</h3>
+                    </div>
                 </div>
-
-            </ul>
-
-        </div>
-    </nav>
-</div>
-{{-- 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-<nav id="sidebar" class="active bg-white">
-    <h1><a href="index.html" class="logo">M.</a></h1>
-    <ul class="list-unstyled components mb-5">
-        <li class="active">
-            <a href="#"><span class="fa fa-home"></span> Home</a>
-        </li>
-        <li>
-            <a href="#"><span class="fa fa-user"></span> About</a>
-        </li>
-        <li>
-            <a href="#"><span class="fa fa-sticky-note"></span> Blog</a>
-        </li>
-        <li>
-            <a href="#"><span class="fa fa-cogs"></span> Services</a>
-        </li>
-        <li>
-            <a href="#"><span class="fa fa-paper-plane"></span> Contacts</a>
-        </li>
-    </ul>
-
-    <div class="footer">
-        <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-        </p>
-    </div>
-</nav>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/sidebar.js"></script> --}}
+            </main>
+		</div>
+		
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="{{ asset('js/script.js') }}"></script>
+</body>
+</html>
