@@ -1,36 +1,63 @@
-{{-- @php use App\Http\Middleware\LoginGlobalMiddleware\AuthCustom; @endphp --}}
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-{{-- @if (Auth::user() or AuthCustom::user()) --}}
-<nav class="navbar navbar-expand bg-primary">
-	<a style="border: 0; background: inherit;" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-		<i data-feather="menu" class="text-white"></i>
-	</a>
 
-	<div class="navbar-collapse collapse">
-			<span class="text-white col-2 justify-align-center">
-				{{-- @if(AuthCustom::authenticated())
-					{{ AuthCustom::role()->role_descricao }}
-				@endif --}}
-			</span>
-		
-		<ul class="navbar-nav navbar-align">
-			
-			<div class="dropleft">
-					
-				<a class="text-white" style="text-decoration: none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="align-middle me-1 text-light" data-feather="user"></i> 
-						{{-- {{ AuthCustom::pegarNomeLogado() }} --}}
-					<i class="align-middle me-1 text-light" data-feather="chevron-down"></i>
-				</a>
-				
-				<li class="nav-item dropdown">
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Conta</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Sair</a>
-					</div>
-				</li>
+<!-- SIDEBAR -->
+<div class="wrapper">
+	<aside id="sidebar">
+		<div class="h-100">
+			<div class="sidebar-logo">
+				<span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span>
 			</div>
-		</ul>
+			<!-- NAVEGAÇÃO DA SIDEBAR -->
+			<ul class="sidebar-nav">
+				<li class="sidebar-header">
+					FERRAMENTAS
+				</li>
+				<li class="sidebar-item">
+					<a href="#" class="sidebar-link">
+						<i data-feather="list"></i>
+						Profile
+						<a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
+							<i data-feather="log-out"></i>
+							{{ __('Sair') }}
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							@csrf
+						</form>
+					</a>
+				</li>
+				<li class="sidebar-item">
+					<a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
+						<i data-feather="file-text"></i>
+						Páginas
+					</a>
+					<ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+						<li class="sidebar-item">
+							<a href="#" class="sidebar-link">Processo 1</a>
+						</li>
+						<li class="sidebar-item">
+							<a href="#" class="sidebar-link">Processo 2</a>
+						</li>
+						<li class="sidebar-item">
+							<a href="#" class="sidebar-link">Processo 3</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</aside>
+	<div class="main">
+		<nav class="navbar navbar-expand bg-primary border-bottom">
+			<button class="btn" type="button" data-bs-theme="dark">
+				<i data-feather="menu" class="text-white"></i>
+		
+			</button>
+		</nav>
 	</div>
-</nav>
+	
+</div>
+
+<script src="{{ asset('js/script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
