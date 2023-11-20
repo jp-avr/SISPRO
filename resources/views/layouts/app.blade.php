@@ -32,105 +32,30 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 </head>
 <body>
-    <body>
+    @auth
+        @include('components.navbar.sidebar')
+    @endauth
+
+    <div class="main">
         @auth
-        <div class="wrapper">
-            <aside id="sidebar">
-                <div class="h-100">
-                    <div class="sidebar-logo">
-                        <span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span>
-                    </div>
-                    <!-- NAVEGAÇÃO DA SIDEBAR -->
-                    <ul class="sidebar-nav">
-                        <li class="sidebar-header">
-                            PROCESSOS
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#administrativo" aria-expanded="false" aria-controls="administrativo">
-                                <i data-feather="chevron-right"></i>
-                                Administrativo
-                            </a>
-                            <ul id="administrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Listar Processos</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Novo Processo</a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        {{-- JUDICIARIO --}}
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#judiciario" aria-expanded="false" aria-controls="judiciario">
-                                <i data-feather="chevron-right"></i>
-                                Judiciário
-                            </a>
-                            <ul id="judiciario" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Listar Processos</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Novo Processo</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+            @include('components.navbar.navbar')
+        @endauth
+        
+        <main class="content px-3 py-2">
+            <div class="container-fluid">
+                <div class="mb-3">
+                    @yield('content')
                 </div>
-            </aside>
-            @endauth
-            <div class="main">
-                @auth
-                <nav class="navbar navbar-expand bg-primary border-bottom">
-                    <a class="link" style="border: 0; background: inherit;" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                        <i data-feather="menu" class="text-white"></i>
-                    </a>
-                    
-
-                    <div class="navbar-collapse collapse">
-                        <span class="text-white col-2 justify-align-center">
-                            
-                        </span>
-                    
-                    <ul class="navbar-nav navbar-align">
-                        <div class="btn-group dropstart">
-                            <a class="dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="align-middle me-1 text-light" data-feather="user"></i> 
-                                {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Conta</a></li>
-                                <li><a class="dropdown-item" href="#">Informações</a></li>
-                                <a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
-                                    <i data-feather="log-out"></i>
-                                    {{ __('Sair') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-                </nav>
-                
-                @endauth
-                <main class="content px-3 py-2">
-                    <div class="container-fluid">
-                        <div class="mb-3">
-                            @yield('content')
-                        </div>
-                    </div>
-                </main>
-
-                @include('components.footers.nav')
             </div>
-            
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
-    </body>
+        </main>
+
+        @include('components.footers.nav')
+    </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 <script src="{{ asset('js/adminkit.js')}}"></script>
 </html>

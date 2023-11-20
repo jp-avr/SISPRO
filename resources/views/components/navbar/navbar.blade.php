@@ -1,36 +1,32 @@
-@php use App\Http\Middleware\LoginGlobalMiddleware\AuthCustom; @endphp
-
-{{-- @if (Auth::user() or AuthCustom::user()) --}}
-<nav class="navbar navbar-expand bg-primary">
-	<a style="border: 0; background: inherit;" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+<nav class="navbar navbar-expand bg-primary border-bottom">
+	<a class="link" style="border: 0; background: inherit;" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
 		<i data-feather="menu" class="text-white"></i>
 	</a>
+	
 
 	<div class="navbar-collapse collapse">
-			<span class="text-white col-2 justify-align-center">
-				@auth
-					{{ Auth::user()->name }}
-				@endauth
-			</span>
-		
-		<ul class="navbar-nav navbar-align">
+		<span class="text-white col-2 justify-align-center">
 			
-			<div class="dropleft">
-					
-				<a class="text-white" style="text-decoration: none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="align-middle me-1 text-light" data-feather="user"></i> 
-						{{ Auth::user()->name }}
-					<i class="align-middle me-1 text-light" data-feather="chevron-down"></i>
+		</span>
+	
+	<ul class="navbar-nav navbar-align">
+		<div class="btn-group dropstart">
+			<a class="dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="align-middle me-1 text-light" data-feather="user"></i> 
+				{{ Auth::user()->name }}
+			</a>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="#">Conta</a></li>
+				<li><a class="dropdown-item" href="#">Informações</a></li>
+				<a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
+					<i data-feather="log-out"></i>
+					{{ __('Sair') }}
 				</a>
-				
-				<li class="nav-item dropdown">
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Conta</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Sair</a>
-					</div>
-				</li>
-			</div>
-		</ul>
-	</div>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+					@csrf
+				</form>
+			</ul>
+		</div>
+	</ul>
+</div>
 </nav>
