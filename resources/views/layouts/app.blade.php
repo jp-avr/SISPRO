@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- CSRF Token -->
@@ -47,32 +46,32 @@
                             PROCESSOS
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                            <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#administrativo" aria-expanded="false" aria-controls="administrativo">
                                 <i data-feather="chevron-right"></i>
                                 Administrativo
-                                <a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
-                                    <i data-feather="log-out"></i>
-                                    {{ __('Sair') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
                             </a>
+                            <ul id="administrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Listar Processos</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Novo Processo</a>
+                                </li>
+                            </ul>
                         </li>
+                        
+                        {{-- JUDICIARIO --}}
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
+                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#judiciario" aria-expanded="false" aria-controls="judiciario">
                                 <i data-feather="chevron-right"></i>
                                 Judiciário
                             </a>
-                            <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <ul id="judiciario" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                                 <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Página 1</a>
+                                    <a href="#" class="sidebar-link">Listar Processos</a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Página 2</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Página 3</a>
+                                    <a href="#" class="sidebar-link">Novo Processo</a>
                                 </li>
                             </ul>
                         </li>
@@ -83,11 +82,38 @@
             <div class="main">
                 @auth
                 <nav class="navbar navbar-expand bg-primary border-bottom">
-                    <button class="btn" type="button" data-bs-theme="dark">
+                    <a class="link" style="border: 0; background: inherit;" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                         <i data-feather="menu" class="text-white"></i>
-                    </button>
-                    {{-- @include('components.navbar.navbar') --}}
+                    </a>
+                    
+
+                    <div class="navbar-collapse collapse">
+                        <span class="text-white col-2 justify-align-center">
+                            
+                        </span>
+                    
+                    <ul class="navbar-nav navbar-align">
+                        <div class="btn-group dropstart">
+                            <a class="dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="align-middle me-1 text-light" data-feather="user"></i> 
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Conta</a></li>
+                                <li><a class="dropdown-item" href="#">Informações</a></li>
+                                <a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault();	document.getElementById('logout-form').submit();">
+                                    <i data-feather="log-out"></i>
+                                    {{ __('Sair') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
                 </nav>
+                
                 @endauth
                 <main class="content px-3 py-2">
                     <div class="container-fluid">
