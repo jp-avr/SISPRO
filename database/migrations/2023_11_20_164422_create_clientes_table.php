@@ -22,7 +22,7 @@ class CreateClientesTable extends Migration
             $table->string('cliente_data_nascimento')->unique()->nullable();
             $table->string('cliente_telefone')->nullable();
             $table->string('cliente_email')->nullable();
-            $table->boolean('cliente_sexo');
+            $table->string('cliente_sexo');
             $table->string('cliente_estado_civil');
             $table->boolean('cliente_ativo')->default(1);
             $table->timestamps();

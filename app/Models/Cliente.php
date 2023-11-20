@@ -28,4 +28,9 @@ class Cliente extends Model
     ];
 
     protected $primaryKey = 'cliente_id';
+
+    public function processos_administrativos()
+    {
+        return $this->hasMany(ProcessoAdministrativo::class,'proc_adm_id','proc_adm_id');
+    }
 }

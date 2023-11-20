@@ -15,17 +15,17 @@ class CreateProcAdmTable extends Migration
     {
         Schema::create('proc_adm', function (Blueprint $table) {
             $table->id('proc_adm_id');
-            $table->foreignId('cliente_id')->constrained('clientes');
-            $table->foreignId('cid_id')->constrained('cids');
+            $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
             $table->string('proc_adm_numero_proc');
-            $table->string('proc_adm_numero_req');
-            $table->date('proc_adm_data_exame');
+            // $table->string('proc_adm_numero_req');
+            // $table->date('proc_adm_data_exame');
             $table->date('proc_adm_data_ini_doenca');
             $table->date('proc_adm_data_ini_incapacidade');
             $table->string('proc_adm_nome_perito');
+            $table->string('proc_adm_cid');
             $table->integer('proc_adm_cod_perito')->nullable();
             $table->string('proc_adm_resultado');
-            $table->string('proc_adm_historia');
+            $table->string('proc_adm_historia')->nullable();
             $table->string('proc_adm_exame_fisico');
             $table->string('proc_adm_consideracoes')->nullable();
             $table->boolean('proc_adm_ativo')->default(1);

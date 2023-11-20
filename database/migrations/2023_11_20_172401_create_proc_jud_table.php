@@ -23,6 +23,7 @@ class CreateProcJudTable extends Migration
             $table->date('proc_jud_data_ini_doenca');
             $table->date('proc_jud_data_ini_incapacidade');
             $table->string('proc_jud_nome_perito');
+            $table->string('proc_jud_cid');
             $table->integer('proc_jud_cod_perito')->nullable();
             $table->string('proc_jud_resultado');
             $table->string('proc_jud_historia');

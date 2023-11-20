@@ -14,10 +14,10 @@ class ProcessoAdministrativo extends Model
      */
     protected $fillable = [
         'cliente_id',
-        'cid_id',
+        'proc_adm_cid',
         'proc_adm_numero_proc',
-        'proc_adm_numero_req',
-        'proc_adm_data_exame',
+        // 'proc_adm_numero_req',
+        // 'proc_adm_data_exame',
         'proc_adm_data_ini_doenca',
         'proc_adm_data_ini_incapacidade',
         'proc_adm_nome_perito',
@@ -33,4 +33,9 @@ class ProcessoAdministrativo extends Model
     ];
 
     protected $primaryKey = 'proc_adm_id';
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class,'cliente_id','cliente_id');
+    }
 }

@@ -44,24 +44,24 @@
                             </thead>
 
                             <tbody>
-                                {{-- @forelse($solicitacoes as $solicitacao)
+                                @forelse($processos as $processo)
                                     <tr>
-                                        <td> <strong> {{ $solicitacao->usuario->name }} </strong> </td>
-                                        <td> {{ $solicitacao->usuario->cartao_sus }} </td>
-                                        <td> {{ $solicitacao->tipo_solicitacao->tipo_solicitacao_descricao }} </td>
+                                        <td> <strong> {{ $processo->cliente->cliente_nome }} </strong> </td>
+                                        {{-- @dd($processo->cliente) --}}
+                                        <td> {{ $processo->cliente->cliente_cpf }} </td>
+                                        <td> {{ $processo->proc_adm_numero_proc }} </td>
+                                        <td> {{date_format(date_create($processo->created_at), 'd/m/Y')}} </td>
 
-                                        <td> {{ date_format(date_create($solicitacao->created_at), 'd/m/Y') }} </td>
+                                        {{-- <td> {{ date_format(date_create($solicitacao->created_at), 'd/m/Y') }} </td> --}}
                                         <td> 
-                                            <button title="Visualizar mais informações" style="border: 0; background: inherit;" data-toggle="modal" data-target="#staticBackdrop-{{ $solicitacao->getKey() }}">
-                                                <i class="align-middle me-1 text-primary" data-feather="maximize-2"></i>
-                                            </button>
+                                            @include('processos.modal')  
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
                                         <td style="border: none;">Nenhuma solicitação encontrada</td>
                                     </tr>
-                                @endforelse --}}
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProcessoAdministrativo;
 use Illuminate\Http\Request;
 
 class ProcessoController extends Controller
 {
     public function index()
     {
-
-        return view('processos.index');
+        $processos = ProcessoAdministrativo::all();
+        return view('processos.index',compact('processos'));
     }
     // INSERINDO DADOS EM TABELA
     public function inserir(){
