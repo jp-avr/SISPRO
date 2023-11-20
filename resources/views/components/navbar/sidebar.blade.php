@@ -16,10 +16,16 @@
 					</a>
 					<ul id="administrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 						<li class="sidebar-item">
-							<a href="#" class="sidebar-link">Listar Processos</a>
+							<a href="{{ route('processos') }}" class="sidebar-link">
+								<i data-feather="file-text"></i>
+								Listar Processos
+							</a>
 						</li>
 						<li class="sidebar-item">
-							<a href="#" class="sidebar-link">Novo Processo</a>
+							<a href="#" class="sidebar-link">
+								<i data-feather="file-text"></i>
+								Novo Processo
+							</a>
 						</li>
 					</ul>
 				</li>

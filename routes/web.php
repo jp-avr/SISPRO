@@ -21,3 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/processos', 'ProcessoController@index')->name('processos')->middleware('auth');
