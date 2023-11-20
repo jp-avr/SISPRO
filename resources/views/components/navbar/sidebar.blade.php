@@ -9,12 +9,13 @@
 				<li class="sidebar-header">
 					PROCESSOS
 				</li>
+				{{-- LISTAGEM DE PROCESSOS --}}
 				<li class="sidebar-item">
-					<a href="{{ route('processos') }}" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#processos" aria-expanded="false" aria-controls="processos">
-						<i data-feather="chevron-right"></i>
-						Listar
+					<a class="sidebar-link" href="{{route('processos')}}">
+						<i class="align-middle" data-feather="chevron-right"></i> <span class="align-middle">Listar</span>
 					</a>
 				</li>
+				{{-- PROCESSOS ADMINISTRATIVOS--}}
 				<li class="sidebar-item">
 					<a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#administrativo" aria-expanded="false" aria-controls="administrativo">
 						<i data-feather="chevron-right"></i>
@@ -28,7 +29,7 @@
 							</a>
 						</li>
 						<li class="sidebar-item">
-							<a href="#" class="sidebar-link">
+							<a href="{{ route('processo.adm.inserir') }}" class="sidebar-link">
 								<i data-feather="file-plus"></i>
 								Novo Processo
 							</a>
@@ -36,7 +37,7 @@
 					</ul>
 				</li>
 				
-				{{-- JUDICIARIO --}}
+				{{-- PROCESSOS JUDICIARIOS--}}
 				<li class="sidebar-item">
 					<a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#judiciario" aria-expanded="false" aria-controls="judiciario">
 						<i data-feather="chevron-right"></i>
@@ -57,6 +58,7 @@
 						</li>
 					</ul>
 				</li>
+				{{-- CLIENTES--}}
 				<li class="sidebar-header">
 					CLIENTES
 				</li>
@@ -73,7 +75,7 @@
 							</a>
 						</li>
 						<li class="sidebar-item">
-							<a href="" class="sidebar-link">
+							<a href="#" class="sidebar-link">
 								<i data-feather="user-plus"></i>
 								Cadastrar Cliente
 							</a>

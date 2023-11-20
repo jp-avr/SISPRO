@@ -21,5 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
 Route::get('/processos', 'ProcessoController@index')->name('processos')->middleware('auth');
+Route::get('/processo/administrativo', 'ProcessoAdministrativoController@inserir')->name('processo.adm.inserir')->middleware('auth');
+Route::post('/processo/administrativo', 'ProcessoAdministrativoController@store')->name('processo.adm.store')->middleware('auth');
+
+
 Route::get('/clientes', 'ClienteController@index')->name('clientes')->middleware('auth');
