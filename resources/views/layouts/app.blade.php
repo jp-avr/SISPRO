@@ -64,6 +64,17 @@
                                 <i data-feather="chevron-right"></i>
                                 Judiciário
                             </a>
+                            <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Página 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Página 2</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Página 3</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -75,6 +86,7 @@
                     <button class="btn" type="button" data-bs-theme="dark">
                         <i data-feather="menu" class="text-white"></i>
                     </button>
+                    {{-- @include('components.navbar.navbar') --}}
                 </nav>
                 @endauth
                 <main class="content px-3 py-2">
