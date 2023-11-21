@@ -23,7 +23,7 @@
 					</a>
 					<ul id="administrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 						<li class="sidebar-item">
-							<a href="#" class="sidebar-link">
+							<a href="{{ route('processo.adm.index') }}" class="sidebar-link">
 								<i data-feather="file-text"></i>
 								Listar Processos
 							</a>

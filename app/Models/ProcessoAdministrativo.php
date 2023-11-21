@@ -38,4 +38,9 @@ class ProcessoAdministrativo extends Model
     {
         return $this->belongsTo(Cliente::class,'cliente_id','cliente_id');
     }
+
+    public function processo()
+    {
+        return $this->hasOne(Processo::class,'processo_id','processo_id')
+    }
 }

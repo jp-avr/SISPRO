@@ -13,7 +13,8 @@ class ProcessoAdministrativoController extends Controller
 {
     public function index()
     {
-        // return view('processos.index');
+        $processos = ProcessoAdministrativo::all();
+        return view('processos.administrativo.index',compact('processos'));
     }
     // INSERINDO DADOS EM TABELA
     public function inserir(){
