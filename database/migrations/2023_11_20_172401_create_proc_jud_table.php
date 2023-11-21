@@ -15,7 +15,7 @@ class CreateProcJudTable extends Migration
     {
         Schema::create('proc_jud', function (Blueprint $table) {
             $table->id('proc_jud_id');
-            $table->foreignId('cliente_id')->constrained('clientes');
+            // $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('cid_id')->constrained('cids');
             $table->string('proc_jud_numero_proc');
             $table->string('proc_jud_numero_req');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Processo;
 use App\Models\ProcessoAdministrativo;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class ProcessoController extends Controller
 {
     public function index()
     {
-        $processos = ProcessoAdministrativo::all();
+        $processos = Processo::all();
         return view('processos.index',compact('processos'));
     }
     // INSERINDO DADOS EM TABELA

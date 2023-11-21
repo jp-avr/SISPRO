@@ -45,16 +45,16 @@
 
                             <tbody>
                                 @forelse($processos as $processo)
+                                @include('processos.modal')
                                     <tr>
                                         <td> <strong> {{ $processo->cliente->cliente_nome }} </strong> </td>
-                                        {{-- @dd($processo->cliente) --}}
                                         <td> {{ $processo->cliente->cliente_cpf }} </td>
                                         <td> {{ $processo->proc_adm_numero_proc }} </td>
                                         <td> {{date_format(date_create($processo->created_at), 'd/m/Y')}} </td>
-
-                                        {{-- <td> {{ date_format(date_create($solicitacao->created_at), 'd/m/Y') }} </td> --}}
                                         <td> 
-                                            @include('processos.modal')  
+                                            <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $processo->getKey() }}">
+                                                <i class="align-middle me-1 text-primary" data-feather="maximize-2"></i>
+                                              </button>  
                                         </td>
                                     </tr>
                                 @empty
@@ -76,7 +76,5 @@
                 </div>
             </div>
         </div>
-
-        {{-- @include('retaguarda.modal') --}}
     </div>
 @endsection

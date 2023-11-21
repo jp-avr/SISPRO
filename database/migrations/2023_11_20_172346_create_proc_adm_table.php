@@ -15,7 +15,7 @@ class CreateProcAdmTable extends Migration
     {
         Schema::create('proc_adm', function (Blueprint $table) {
             $table->id('proc_adm_id');
-            $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
+            // $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
             $table->string('proc_adm_numero_proc');
             // $table->string('proc_adm_numero_req');
             // $table->date('proc_adm_data_exame');

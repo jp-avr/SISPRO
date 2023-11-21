@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FibromialgiaInserirRequest;
 use App\Http\Requests\ProcessoAdministrativoInserirRequest;
 use App\Models\Cliente;
+use App\Models\Processo;
 use App\Models\ProcessoAdministrativo;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,7 @@ class ProcessoAdministrativoController extends Controller
             'cliente_estado_civil' => $request->cliente_estado_civil,
         ]);
 
-        ProcessoAdministrativo::create([
-            'cliente_id' => $cliente->cliente_id,
+        $adm = ProcessoAdministrativo::create([
             'proc_adm_cid' => $request->proc_adm_cid,
             'proc_adm_numero_proc' => $request->proc_adm_numero_proc,
             // 'proc_adm_numero_req' => 1,
@@ -49,6 +49,11 @@ class ProcessoAdministrativoController extends Controller
             'proc_adm_exame_fisico' => 1,
             'proc_adm_consideracoes' => $request->proc_adm_consideracoes,
             'proc_adm_parte_atingida' => $request->proc_adm_parte_atingida,
+        ]);
+
+        Processo::create([
+            'cliente_id' => $cliente->cliente_id,
+            'proc_adm_id' => $adm->proc_adm_id
         ]);
 
         // dd($request->all());
