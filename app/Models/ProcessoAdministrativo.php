@@ -41,6 +41,6 @@ class ProcessoAdministrativo extends Model
 
     public function processo()
     {
-        return $this->hasOne(Processo::class,'processo_id','processo_id')
+        return $this->hasOne(Processo::class,'processo_id','processo_id');
     }
 }
