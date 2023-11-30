@@ -24,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $migrationsPath = database_path('migrations');
+        $directories = glob($migrationsPath.'/*', GLOB_ONLYDIR);
+        $paths = array_merge([$migrationsPath], $directories);
+
+        $this->loadMigrationsFrom($paths);
+        
         Schema::defaultStringLength(193);
     }
 }
