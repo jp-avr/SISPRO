@@ -13,7 +13,7 @@ class ProcessoAdministrativoController extends Controller
 {
     public function index()
     {
-        $processos = ProcessoAdministrativo::all();
+        $processos = Processo::all();
         return view('processos.administrativo.index',compact('processos'));
     }
     // INSERINDO DADOS EM TABELA
@@ -37,24 +37,20 @@ class ProcessoAdministrativoController extends Controller
             'cliente_estado_civil' => $request->cliente_estado_civil,
         ]);
 
-        $adm = ProcessoAdministrativo::create([
-            'proc_adm_cid' => $request->proc_adm_cid,
-            'proc_adm_numero_proc' => $request->proc_adm_numero_proc,
-            // 'proc_adm_numero_req' => 1,
-            // 'proc_adm_data_exame' => date('Y-m-d'),
-            'proc_adm_data_ini_doenca' => $request->proc_adm_data_ini_doenca,
-            'proc_adm_data_ini_incapacidade' => $request->proc_adm_data_ini_incapacidade,
-            'proc_adm_nome_perito' => $request->proc_adm_nome_perito,
-            'proc_adm_resultado' => 1,
-            'proc_adm_historia' => $request->proc_adm_historia,
-            'proc_adm_exame_fisico' => 1,
-            'proc_adm_consideracoes' => $request->proc_adm_consideracoes,
-            'proc_adm_parte_atingida' => $request->proc_adm_parte_atingida,
-        ]);
-
-        Processo::create([
-            'cliente_id' => $cliente->cliente_id,
-            'proc_adm_id' => $adm->proc_adm_id
+        $adm = Processo::create([
+            'cliente_id' => $cliente->id,
+            'proc_cid' => $request->proc_cid,
+            'proc_numero_proc' => $request->proc_numero_proc,
+            // 'proc_numero_req' => 1,
+            // 'proc_data_exame' => date('Y-m-d'),
+            'proc_data_ini_doenca' => $request->proc_data_ini_doenca,
+            'proc_data_ini_incapacidade' => $request->proc_data_ini_incapacidade,
+            'proc_nome_perito' => $request->proc_nome_perito,
+            'proc_resultado' => 1,
+            'proc_historia' => $request->proc_historia,
+            'proc_exame_fisico' => 1,
+            'proc_consideracoes' => $request->proc_consideracoes,
+            'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
 
         // dd($request->all());
