@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Processo extends Model
 {
-    protected $table = 'processos';
+    protected $table = 'proc_adm';
     /**
      * The attributes that are mass assignable.
      *
@@ -14,26 +14,37 @@ class Processo extends Model
      */
     protected $fillable = [
         'cliente_id',
-        'proc_jud_id',
-        'proc_adm_id',
+        'tipo_processo_id',
+        'cid_id',
+        'proc_numero_proc',
+        // 'proc_numero_req',
+        // 'proc_data_exame',
+        'proc_data_ini_doenca',
+        'proc_data_ini_incapacidade',
+        'proc_nome_perito',
+        'proc_resultado',
+        'proc_historia',
+        'proc_exame_fisico',
+        'proc_parte_atingida',
+        'proc_consideracoes',
+        'proc_data_cadastro',
+        'proc_ativo',
         'created_at',
         'updated_at'
     ];
 
     protected $primaryKey = 'processo_id';
 
-    public function administrativo()
-    {
-        return $this->belongsTo(ProcessoAdministrativo::class,'proc_adm_id','proc_adm_id');
-    }
-
     public function cliente()
     {
         return $this->belongsTo(Cliente::class,'cliente_id','cliente_id');
     }
 
-    // public function judiciario()
-    // {
-    //     return $this->belongsTo(ProcessoAdministrativo::class,'proc_adm_id','proc_adm_id');
-    // }
+    public function tipo_processo(){
+        return $this->belongsTo(TipoProcesso::class,'tipo_processo_id','tipo_processo_id');
+    }
+
+    public function cid(){
+        return $this->hasOne(Cid::class,'cid_id','cid_id');
+    }
 }
