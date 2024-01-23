@@ -35,6 +35,26 @@ class Processo extends Model
 
     protected $primaryKey = 'processo_id';
 
+    public static function criar($request,$cliente_id)
+    {
+        return self::create([
+            'cliente_id' => $cliente_id,
+            'tipo_processo_id' => 2,
+            'proc_cid' => $request->proc_cid,
+            'proc_numero_proc' => $request->proc_numero_proc,
+            // 'proc_numero_req' => 1,
+            // 'proc_data_exame' => date('Y-m-d'),
+            'proc_data_ini_doenca' => $request->proc_data_ini_doenca,
+            'proc_data_ini_incapacidade' => $request->proc_data_ini_incapacidade,
+            'proc_nome_perito' => $request->proc_nome_perito,
+            'proc_resultado' => 1,
+            'proc_historia' => $request->proc_historia,
+            'proc_exame_fisico' => 1,
+            'proc_consideracoes' => $request->proc_consideracoes,
+            'proc_parte_atingida' => $request->proc_parte_atingida,
+        ]);
+    }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class,'cliente_id','cliente_id');

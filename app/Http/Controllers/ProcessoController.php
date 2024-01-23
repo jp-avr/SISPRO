@@ -19,43 +19,36 @@ class ProcessoController extends Controller
         return view('processos.index',compact('processos', 'clientes', 'estados_civis'));
     }
     // INSERINDO DADOS EM TABELA
-    public function inserir()
+    public function inserir_administrativo()
     {
         $cids = Cid::all();
         $estados_civis = EstadoCivil::all();
-        return view('processos.inserir', compact('estados_civis','cids'));
+        return view('processos.administrativo.inserir', compact('estados_civis','cids'));
     }
 
-    public function store(ProcessoAdministrativoInserirRequest $request)
-    {  
-        $cliente = Cliente::create([
-            'ocupacao_id' => 1,
-            'cliente_nome' => $request->cliente_nome,
-            'cliente_cpf' => $request->cliente_cpf,
-            'cliente_rg' => $request->cliente_rg,
-            'cliente_data_nascimento' => $request->cliente_data_nascimento,
-            'cliente_telefone' => $request->cliente_telefone,
-            'cliente_email' => $request->cliente_email,
-            'cliente_sexo' => $request->cliente_sexo,
-            'cliente_ativo' => 1,
-            'cliente_estado_civil' => $request->cliente_estado_civil,
-        ]);
+    public function inserir_judiciario()
+    {
+        $cids = Cid::all();
+        $estados_civis = EstadoCivil::all();
+        return view('processos.judiciario.inserir', compact('estados_civis','cids'));
+    }
 
-        $adm = Processo::create([
-            'cliente_id' => $cliente->id,
-            'proc_cid' => $request->proc_cid,
-            'proc_numero_proc' => $request->proc_numero_proc,
-            // 'proc_numero_req' => 1,
-            // 'proc_data_exame' => date('Y-m-d'),
-            'proc_data_ini_doenca' => $request->proc_data_ini_doenca,
-            'proc_data_ini_incapacidade' => $request->proc_data_ini_incapacidade,
-            'proc_nome_perito' => $request->proc_nome_perito,
-            'proc_resultado' => 1,
-            'proc_historia' => $request->proc_historia,
-            'proc_exame_fisico' => 1,
-            'proc_consideracoes' => $request->proc_consideracoes,
-            'proc_parte_atingida' => $request->proc_parte_atingida,
-        ]);
+    public function store_administrativo(ProcessoAdministrativoInserirRequest $request)
+    {  
+        $cliente = Cliente::criar($request);
+
+        Processo::criar($request, $cliente);
+
+        // dd($request->all());
+
+        return redirect()->route('processos')->with('sucesso', 'solicitacao inserido com sucesso!');
+    }
+
+    public function store_judiciario(ProcessoAdministrativoInserirRequest $request)
+    {  
+        $cliente = Cliente::criar($request);
+
+        Processo::criar($request, $cliente);
 
         // dd($request->all());
 

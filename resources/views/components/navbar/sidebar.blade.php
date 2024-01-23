@@ -17,7 +17,7 @@
 				</li>
 				{{-- PROCESSOS ADMINISTRATIVOS--}}
 				<li class="sidebar-item">
-					<a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#administrativo" aria-expanded="false" aria-controls="administrativo">
+					<a href="{{ route('processo_administrativo.inserir') }}" class="sidebar-link">
 						<i data-feather="chevron-right"></i>
 						Administrativo
 					</a>
@@ -25,16 +25,16 @@
 				
 				{{-- PROCESSOS JUDICIARIOS--}}
 				<li class="sidebar-item">
-					<a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#judiciario" aria-expanded="false" aria-controls="judiciario">
+					<a href="{{ route('processo_judiciario.inserir') }}" class="sidebar-link">
 						<i data-feather="chevron-right"></i>
 						Judiciário
 					</a>
 				</li>
 
-				<a href="{{ route('processo.inserir') }}" class="sidebar-link">
+				{{-- <a href="{{ route('processo.inserir') }}" class="sidebar-link">
 					<i data-feather="chevron-right"></i>
 					Novo Processo
-				</a>
+				</a> --}}
 				{{-- CLIENTES--}}
 				<li class="sidebar-header">
 					CLIENTES
