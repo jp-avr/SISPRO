@@ -45,6 +45,22 @@ class Cliente extends Model
         ]);
     }
 
+    public static function atualizar($request)
+    {
+        return self::update([
+            'ocupacao_id' => 1,
+            'estado_civil_id' => $request->estado_civil_id,
+            'cliente_nome' => $request->cliente_nome,
+            'cliente_cpf' => $request->cliente_cpf,
+            'cliente_rg' => $request->cliente_rg,
+            'cliente_data_nascimento' => $request->cliente_data_nascimento,
+            'cliente_telefone' => $request->cliente_telefone,
+            'cliente_email' => $request->cliente_email,
+            'cliente_sexo' => $request->cliente_sexo,
+            'cliente_ativo' => 1,
+        ]);
+    }
+
     public function processos()
     {
         return $this->hasMany(Processo::class,'processo_id','processo_id');

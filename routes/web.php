@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProcessoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,14 +22,33 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-
-Route::get('/processos', [ProcessoController::class, 'index'])->name('processos.index')->middleware('auth');
-Route::get('/processo/administrativo/inserir', [ProcessoController::class, 'inserir_administrativo'])->name('processo_administrativo.inserir')->middleware('auth');
-Route::get('/processo/judiciario/inserir', [ProcessoController::class, 'inserir_judiciario'])->name('processo_judiciario.inserir')->middleware('auth');
-Route::post('/processo/administrativo/store', [ProcessoController::class, 'store_administrativo'])->name('processo_administrativo.store')->middleware('auth');
-Route::post('/processo/judiciario/store', [ProcessoController::class, 'store_judiciario'])->name('processo_judiciario.store')->middleware('auth');
+// Route::get('/processos', [ProcessoController::class, 'index'])->name('processos.index')->middleware('auth');
+// Route::get('/processo/administrativo/inserir', [ProcessoController::class, 'inserir_administrativo'])->name('processo_administrativo.inserir')->middleware('auth');
+// Route::get('/processo/judiciario/inserir', [ProcessoController::class, 'inserir_judiciario'])->name('processo_judiciario.inserir')->middleware('auth');
+// Route::post('/processo/administrativo/store', [ProcessoController::class, 'store_administrativo'])->name('processo_administrativo.store')->middleware('auth');
+// Route::post('/processo/judiciario/store', [ProcessoController::class, 'store_judiciario'])->name('processo_judiciario.store')->middleware('auth');
 
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/clientes', 'ClienteController@index')->name('clientes')->middleware('auth');
+    Route::prefix('processos')->group(function (){
+        Route::get('/index', 'ProcessoController@index')->name('processos.index');
+        Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
+        Route::get('/inserir', 'ProcessoController@inserir')->name('processo.inserir');
+        Route::post('/store', 'ProcessoController@store')->name('processo.store');
+        Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
+        Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
+        Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
+    });
+
+    Route::prefix('clientes')->group(function (){
+        Route::get('/index', 'ClienteController@index')->name('clientes.index');
+        Route::get('/show/{cliente}', 'ClienteController@show')->name('cliente.show');
+        Route::get('/inserir', 'ClienteController@inserir')->name('cliente.inserir');
+        Route::post('/store', 'ClienteController@store')->name('cliente.store');
+        Route::get('/edit/{cliente}', 'ClienteController@edit')->name('cliente.edit');
+        Route::get('/update/{cliente}', 'ClienteController@update')->name('cliente.update');
+        Route::get('/destroy/{cliente}', 'ClienteController@destroy')->name('cliente.destroy');
+    });
+});
