@@ -46,6 +46,10 @@
                                             <i class="align-middle me-1" data-feather="layers"></i>
                                         </button>
                                     </td>
+                                    <td class="table-action">
+                                        <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="edit"></i></a>
+                                        <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="trash"></i></a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>

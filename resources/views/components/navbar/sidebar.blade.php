@@ -46,7 +46,7 @@
 					</a>
 					<ul id="cliente" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 						<li class="sidebar-item">
-							<a href="{{ route('clientes') }}" class="sidebar-link">
+							<a href="{{ route('clientes.index') }}" class="sidebar-link">
 								<i data-feather="user-check"></i>
 								Listar Clientes
 							</a>

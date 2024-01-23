@@ -45,7 +45,7 @@ class Cliente extends Model
         ]);
     }
 
-    public static function atualizar($request)
+    public function atualizar($request)
     {
         return self::update([
             'ocupacao_id' => 1,

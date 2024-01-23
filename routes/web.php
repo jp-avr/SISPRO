@@ -35,8 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('processos')->group(function (){
         Route::get('/index', 'ProcessoController@index')->name('processos.index');
         Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
-        Route::get('/inserir', 'ProcessoController@inserir')->name('processo.inserir');
-        Route::post('/store', 'ProcessoController@store')->name('processo.store');
+        Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
+        Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
+        Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
+        Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
         Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
         Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
         Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
@@ -48,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/inserir', 'ClienteController@inserir')->name('cliente.inserir');
         Route::post('/store', 'ClienteController@store')->name('cliente.store');
         Route::get('/edit/{cliente}', 'ClienteController@edit')->name('cliente.edit');
-        Route::get('/update/{cliente}', 'ClienteController@update')->name('cliente.update');
+        Route::post('/update/{cliente}', 'ClienteController@update')->name('cliente.update');
         Route::get('/destroy/{cliente}', 'ClienteController@destroy')->name('cliente.destroy');
     });
 });

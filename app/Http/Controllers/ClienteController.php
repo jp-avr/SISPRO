@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\EstadoCivil;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -34,7 +35,9 @@ class ClienteController extends Controller
     public function edit($cliente_id)
     {
         $cliente = Cliente::findOrFail($cliente_id);
-        return view('clientes.edit', compact('cliente'));
+        $estados_civis = EstadoCivil::all();
+        // @dd($cliente);
+        return view('clientes.edit', compact('cliente','estados_civis'));
     }
 
 
@@ -42,7 +45,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::findOrFail($cliente_id);
         $cliente->atualizar($request);
-        return view('clientes.show', compact('cliente'));
+        return redirect()->route('clientes.index');
     }
 
     public function destroy($cliente_id)
