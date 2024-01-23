@@ -18,8 +18,8 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Número do Processo</label>
-                    <input type="text" class="form-control @error('proc_adm_numero_proc') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('proc_adm_numero_proc') }}" name="proc_adm_numero_proc">
-                    @error('proc_adm_numero_proc')
+                    <input type="text" class="form-control @error('proc_numero_proc') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('proc_numero_proc') }}" name="proc_numero_proc">
+                    @error('proc_numero_proc')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -28,8 +28,8 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Médico</label>
-                    <input type="text" class="form-control @error('proc_adm_nome_perito') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_adm_nome_perito') }}" name="proc_adm_nome_perito">
-                    @error('proc_adm_nome_perito')
+                    <input type="text" class="form-control @error('proc_nome_perito') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_nome_perito') }}" name="proc_nome_perito">
+                    @error('proc_nome_perito')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -40,8 +40,15 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">CID 10</label>
-                    <input type="text" class="form-control @error('proc_adm_cid') is-invalid @enderror" placeholder="Informe o CID" value="{{ old('proc_adm_cid') }}" name="proc_adm_cid">
-                    @error('proc_adm_cid')
+                    <select type="text" class="form-control @error('cid_id') is-invalid @enderror" value="{{ old('cid_id') }}" name="cid_id">
+                        <option value="">Selecione o CID</option>
+                        @foreach ($cids as $cid)
+                        <option value="{{ $cid->cid_id }}" @if (old('cid_id')==$cid->cid_id) {{ 'selected' }} @endif>
+                            {{ $cid->cid_descricao.' - '.$cid->cid_codigo }}
+                        </option>
+                        @endforeach
+                    </select>
+                    @error('cid_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -50,8 +57,8 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Data inicial dos sintomas</label>
-                    <input type="date" class="form-control @error('proc_adm_data_ini_doenca') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_adm_data_ini_doenca') }}" name="proc_adm_data_ini_doenca">
-                    @error('proc_adm_data_ini_doenca')
+                    <input type="date" class="form-control @error('proc_data_ini_doenca') is-invalid @enderror" value="{{ old('proc_data_ini_doenca') }}" name="proc_data_ini_doenca">
+                    @error('proc_data_ini_doenca')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -62,8 +69,8 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Data de início das incapacidades</label>
-                    <input type="date" class="form-control @error('proc_adm_data_ini_incapacidade') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_adm_data_ini_incapacidade') }}" name="proc_adm_data_ini_incapacidade">
-                    @error('proc_adm_data_ini_incapacidade')
+                    <input type="date" class="form-control @error('proc_data_ini_incapacidade') is-invalid @enderror" value="{{ old('proc_data_ini_incapacidade') }}" name="proc_data_ini_incapacidade">
+                    @error('proc_data_ini_incapacidade')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -72,8 +79,8 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Parte do corpo atingida</label>
-                    <input type="text" class="form-control @error('proc_adm_parte_atingida') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_adm_parte_atingida') }}" name="proc_adm_parte_atingida">
-                    @error('proc_adm_parte_atingida')
+                    <input type="text" class="form-control @error('proc_parte_atingida') is-invalid @enderror" placeholder="Informe qual parte do corpo foi atingida" value="{{ old('proc_parte_atingida') }}" name="proc_parte_atingida">
+                    @error('proc_parte_atingida')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -84,8 +91,8 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">História</label>
-                    <textarea class="form-control @error('proc_adm_historia') is-invalid @enderror" placeholder="História do Cliente" name="proc_adm_historia" rows="3">{{ old('proc_adm_historia') }}</textarea>
-                    @error('proc_adm_historia')
+                    <textarea class="form-control @error('proc_historia') is-invalid @enderror" placeholder="História do Cliente" name="proc_historia" rows="3">{{ old('proc_historia') }}</textarea>
+                    @error('proc_historia')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -94,8 +101,8 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Considerações</label>
-                    <textarea class="form-control @error('proc_adm_consideracoes') is-invalid @enderror" placeholder="Digite suas considerações" name="proc_adm_consideracoes" rows="3">{{ old('proc_adm_consideracoes') }}</textarea>
-                    @error('proc_adm_consideracoes')
+                    <textarea class="form-control @error('proc_consideracoes') is-invalid @enderror" placeholder="Digite suas considerações" name="proc_consideracoes" rows="3">{{ old('proc_consideracoes') }}</textarea>
+                    @error('proc_consideracoes')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

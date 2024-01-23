@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Requerente</label>
-                    <input type="text" class="form-control @error('cliente_nome') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('cliente_nome') }}" name="cliente_nome">
+                    <input type="text" class="form-control @error('cliente_nome') is-invalid @enderror" placeholder="Nome do Requerente" value="{{ old('cliente_nome') }}" name="cliente_nome">
                     @error('cliente_nome')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -31,7 +31,13 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Gênero</label>
-                    <input type="text" class="form-control @error('cliente_sexo') is-invalid @enderror" placeholder="Informe o CID" value="{{ old('cliente_sexo') }}" name="cliente_sexo">
+                    <select class="form-control @error('cliente_sexo') is-invalid @enderror" placeholder="Gênero do Requerente" name="cliente_sexo">
+                        <option value="" selected disabled> Selecione o gênero adequado </option>
+                        <option value="1" @if (old('paciente_sexo')=='0') {{ 'selected' }} @endif> Masculino </option>
+                        <option value="2" @if (old('paciente_sexo')=='1') {{ 'selected' }} @endif> Feminino </option>
+                        <option value="0" @if (old('paciente_sexo')=='1') {{ 'selected' }} @endif> Ignorado </option>
+                    </select>
+
                     @error('cliente_sexo')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -75,8 +81,15 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Estado Civil</label>
-                    <input type="text" class="form-control @error('cliente_estado_civil') is-invalid @enderror" placeholder="Estado Civil" value="{{ old('cliente_estado_civil') }}" name="cliente_estado_civil">
-                    @error('cliente_estado_civil')
+                    <select type="text" class="form-control @error('estado_civil_id') is-invalid @enderror" name="estado_civil_id">
+                        <option value="" selected disabled>Selecione o seu Estado Civil</option>
+                        @foreach ($estados_civis as $estado_civil)
+                        <option value="{{ $estado_civil->estado_civil_id }}" @if (old('estado_civil_id')==$estado_civil->estado_civil_id) {{ 'selected' }} @endif>
+                            {{ $estado_civil->estado_civil_nome }}
+                        </option>
+                        @endforeach
+                    </select>
+                    @error('estado_civil_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

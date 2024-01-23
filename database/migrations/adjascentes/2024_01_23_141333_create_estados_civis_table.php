@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCidsTable extends Migration
+class CreateEstadosCivisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cids', function (Blueprint $table) {
-            $table->id('cid_id');
-            $table->text('cid_codigo');
-            $table->text('cid_descricao');
+        Schema::create('estados_civis', function (Blueprint $table) {
+            $table->id('estado_civil_id');
+            $table->string('estado_civil_nome');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cids');
+        Schema::dropIfExists('estados_civis');
     }
 }

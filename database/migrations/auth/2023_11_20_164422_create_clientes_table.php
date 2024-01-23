@@ -16,6 +16,7 @@ class CreateClientesTable extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id('cliente_id');
             $table->foreignId('ocupacao_id')->constrained('ocupacao');
+            $table->foreignId('estado_civil_id')->constrained('estados_civis');
             $table->string('cliente_nome');
             $table->string('cliente_cpf')->unique()->nullable();
             $table->string('cliente_rg')->unique()->nullable();
@@ -23,7 +24,6 @@ class CreateClientesTable extends Migration
             $table->string('cliente_telefone')->nullable();
             $table->string('cliente_email')->nullable();
             $table->string('cliente_sexo');
-            $table->string('cliente_estado_civil');
             $table->boolean('cliente_ativo')->default(1);
             $table->timestamps();
         });

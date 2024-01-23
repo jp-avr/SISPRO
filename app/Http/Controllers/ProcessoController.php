@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FibromialgiaInserirRequest;
 use App\Http\Requests\ProcessoAdministrativoInserirRequest;
+use App\Models\Cid;
 use App\Models\Cliente;
+use App\Models\EstadoCivil;
 use App\Models\Processo;
-use App\Models\ProcessoAdministrativo;
 use Illuminate\Http\Request;
 
-class ProcessoAdministrativoController extends Controller
+class ProcessoController extends Controller
 {
     public function index()
     {
         $processos = Processo::all();
-        return view('processos.administrativo.index',compact('processos'));
+        $clientes = Cliente::all();
+        $estados_civis = EstadoCivil::all();
+        return view('processos.index',compact('processos', 'clientes', 'estados_civis'));
     }
     // INSERINDO DADOS EM TABELA
-    public function inserir(){
-        
-        return view('processos.administrativo.inserir');
+    public function inserir()
+    {
+        $cids = Cid::all();
+        $estados_civis = EstadoCivil::all();
+        return view('processos.inserir', compact('estados_civis','cids'));
     }
 
     public function store(ProcessoAdministrativoInserirRequest $request)

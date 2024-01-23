@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Processo extends Model
 {
-    protected $table = 'proc_adm';
+    protected $table = 'processos';
     /**
      * The attributes that are mass assignable.
      *

@@ -14,11 +14,11 @@
                             <div class="d-flex gap-3 align-items-center">
                                 <select class="form-control" name="tipo_solicitacao_id">
                                     <option value="" selected disabled> Nome do Cliente </option>
-                                    {{-- @foreach ($dispositivos as $dispositivo)
-                                        <option value="{{ $dispositivo->tipo_solicitacao_id }}">
-                                            {{ $dispositivo->tipo_solicitacao_descricao }}
-                                        </option> --}}
-                                    {{-- @endforeach --}}
+                                    @foreach ($clientes as $cliente)
+                                        <option value="{{ $cliente->cliente_id }}">
+                                            {{ $cliente->cliente_nome }}
+                                        </option>
+                                    @endforeach
                                 </select>
 
                                 <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
@@ -38,6 +38,7 @@
                                     <th style="width: 10rem;">Cliente</th>
                                     <th style="width: 10rem;">CPF</th>
                                     <th style="width: 10rem;">Número do Processo</th>
+                                    <th style="width: 10rem;">Tipo de Processo</th>
                                     <th style="width: 10rem;"><i class="align-middle me-1" data-feather="calendar"></i> Data </th>
                                     <th style="width:7%"></th>
                                 </tr>
@@ -49,7 +50,8 @@
                                     <tr>
                                         <td> <strong> {{ $processo->cliente->cliente_nome }} </strong> </td>
                                         <td> {{ $processo->cliente->cliente_cpf }} </td>
-                                        <td> {{ $processo->proc_adm_numero_proc }} </td>
+                                        <td> {{ $processo->proc_numero_proc }} </td>
+                                        <td> {{ $processo->tipo_processo_id }} </td>
                                         <td> {{date_format(date_create($processo->created_at), 'd/m/Y')}} </td>
                                         <td> 
                                             <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $processo->getKey() }}">

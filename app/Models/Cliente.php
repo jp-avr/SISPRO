@@ -14,6 +14,7 @@ class Cliente extends Model
      */
     protected $fillable = [
         'ocupacao_id',
+        'estado_civil_id',
         'cliente_nome',
         'cliente_cpf',
         'cliente_rg',
@@ -22,15 +23,19 @@ class Cliente extends Model
         'cliente_email',
         'cliente_sexo',
         'cliente_ativo',
-        'cliente_estado_civil',
         'created_at',
         'updated_at'
     ];
 
     protected $primaryKey = 'cliente_id';
 
-    public function processos_administrativos()
+    public function processos()
     {
-        return $this->hasMany(ProcessoAdministrativo::class,'proc_adm_id','proc_adm_id');
+        return $this->hasMany(Processo::class,'processo_id','processo_id');
+    }
+
+    public function estadoCivil()
+    {
+        return $this->belongsTo(EstadoCivil::class, 'estado_civil_id', 'estado_civil_id');
     }
 }
