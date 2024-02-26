@@ -44,6 +44,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
     });
 
+    Route::prefix('questionarios')->group(function (){
+        Route::get('/{cliente}/index', 'QuestionarioController@index')->name('questionarios.index');
+        Route::get('/{cliente}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
+        Route::post('/store', 'QuestionarioController@store')->name('questionarios.store');
+    });
+
     Route::prefix('clientes')->group(function (){
         Route::get('/index', 'ClienteController@index')->name('clientes.index');
         Route::get('/show/{cliente}', 'ClienteController@show')->name('cliente.show');
