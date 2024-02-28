@@ -54,7 +54,7 @@
                                     </td>
                                     <td>
                                         <td>
-                                            <a href="{{ 'questionarios.inserir', $cliente->cliente_id }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
+                                            <a href="{{ route('questionarios.inserir', $cliente->cliente_id) }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
                                         </td>
                                     </td>
                                 </tr>

@@ -53,6 +53,8 @@ class Processo extends Model
             'proc_consideracoes' => $request->proc_consideracoes,
             'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
+
+        
     }
 
     public static function criarJudiciario($request,$cliente_id)
@@ -60,7 +62,6 @@ class Processo extends Model
         return self::create([
             'cliente_id' => $cliente_id,
             'tipo_processo_id' => 2,
-            'cid_id' => $request->cid_id,
             'proc_numero_proc' => $request->proc_numero_proc,
             // 'proc_numero_req' => 1,
             // 'proc_data_exame' => date('Y-m-d'),
@@ -84,7 +85,7 @@ class Processo extends Model
         return $this->belongsTo(TipoProcesso::class,'tipo_processo_id','tipo_processo_id');
     }
 
-    public function cid(){
-        return $this->hasOne(Cid::class,'cid_id','cid_id');
+    public function cids(){
+        return $this->belongsToMany(Cid::class,'processo_cids','processo_id', 'cid_id')->using(ProcessoCids::class);
     }
 }

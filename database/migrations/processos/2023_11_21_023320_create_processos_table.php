@@ -17,7 +17,7 @@ class CreateProcessosTable extends Migration
             $table->id('processo_id');
             $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
             $table->foreignId('tipo_processo_id')->references('tipo_processo_id')->on('tipo_processos');
-            $table->foreignId('cid_id')->constrained('cids');
+            // $table->foreignId('cid_id')->constrained('cids');  //Trocado por tabela pivot
             $table->string('proc_numero_proc');
             // $table->string('proc_numero_req');
             // $table->date('proc_data_exame');
