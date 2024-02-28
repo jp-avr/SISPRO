@@ -29,7 +29,9 @@
                                 <th>Perfil</th>
                                 <th>Cidade</th>
                                 <th>Ações</th>
-                                <th style="width:5%"></th>
+                                <th style="width:7%"></th>
+                                <th style="width:7%"></th>
+                                <th style="width:7%"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +51,11 @@
                                     <td class="table-action">
                                         <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="edit"></i></a>
                                         <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <td>
+                                            <a href="{{ 'questionarios.inserir', $cliente->cliente_id }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
+                                        </td>
                                     </td>
                                 </tr>
                                 @empty
