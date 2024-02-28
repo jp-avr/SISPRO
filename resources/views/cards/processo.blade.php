@@ -16,20 +16,10 @@
 
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-md-12">
                     <label class="form-label">Número do Processo</label>
                     <input type="text" class="form-control @error('proc_numero_proc') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('proc_numero_proc') }}" name="proc_numero_proc">
                     @error('proc_numero_proc')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3 col-md-6">
-                    <label class="form-label">Médico</label>
-                    <input type="text" class="form-control @error('proc_nome_perito') is-invalid @enderror" placeholder="Nome do Médico" value="{{ old('proc_nome_perito') }}" name="proc_nome_perito">
-                    @error('proc_nome_perito')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

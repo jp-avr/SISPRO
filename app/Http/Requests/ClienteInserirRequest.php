@@ -26,6 +26,7 @@ class ClienteInserirRequest extends MessagesRequest
     {
         return [
             'cliente_nome' => ['required','string'],
+            'profissao_id' => ['required', 'integer'],
             'cliente_data_nascimento' => ['required','date'],
             'cliente_sexo' => ['required','string'],
             'cliente_rg' => ['required','string'],

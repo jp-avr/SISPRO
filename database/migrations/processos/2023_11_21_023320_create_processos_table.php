@@ -19,12 +19,12 @@ class CreateProcessosTable extends Migration
             $table->foreignId('tipo_processo_id')->references('tipo_processo_id')->on('tipo_processos');
             $table->foreignId('cid_id')->constrained('cids');
             $table->string('proc_numero_proc');
-            $table->string('proc_numero_req');
-            $table->date('proc_data_exame');
+            // $table->string('proc_numero_req');
+            // $table->date('proc_data_exame');
             $table->date('proc_data_ini_doenca');
             $table->date('proc_data_ini_incapacidade');
-            $table->string('proc_nome_perito');
-            $table->string('proc_cid');
+            // $table->string('proc_nome_perito');
+            // $table->string('proc_cid');
             $table->integer('proc_cod_perito')->nullable();
             $table->string('proc_resultado');
             $table->string('proc_historia');

@@ -10,5 +10,5 @@ use App\User;
     CPF: {{$processo->cliente->cliente_cpf}} <br>
     RG: {{$processo->cliente->cliente_rg}} <br>
     Email: {{$processo->cliente->cliente_email}} <br>
-    Estado Civil: {{$processo->cliente->cliente_estado_civil}} <br>
+    {{-- Estado Civil: {{$processo->cliente->cliente_estado_civil}} <br> --}}
     Telefone: {{$processo->cliente->cliente_telefone}} <br>

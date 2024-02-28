@@ -37,6 +37,9 @@ class MessagesRequest extends FormRequest
             'cliente_nome.string' => 'O campo Requerente é inválido',
             'cliente_nome.required' => 'O campo Requerente é obrigatório',
 
+            // 'profissao_id.required' => 'O campo Profissão é obrigatório',
+            // 'profissao_id.integer' => 'O campo Profissão é inválido',
+
             'cliente_data_nascimento.date' => 'O campo Nascimento é inválido',
             'cliente_data_nascimento.required' => 'O campo Nascimento é obrigatório',
 
@@ -64,8 +67,8 @@ class MessagesRequest extends FormRequest
             'proc_judiciarios_numero_req.integer' => 'O campo Nº Requerimento é inválido',   
             'proc_judiciarios_numero_req.required' => 'O campo Nº Requerimento é obrigatório',
 
-            'proc_judiciarios_nome_perito.string' => 'O campo Médico é inválido',
-            'proc_judiciarios_nome_perito.required' => 'O campo Médico é obrigatório',
+            // 'proc_judiciarios_nome_perito.string' => 'O campo Médico é inválido',
+            // 'proc_judiciarios_nome_perito.required' => 'O campo Médico é obrigatório',
 
             'proc_judiciarios_data_exame.date' => 'O campo Data do Exame é inválido',
             'proc_judiciarios_data_exame.required' => 'O campo Data do Exame é obrigatório',

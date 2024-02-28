@@ -13,24 +13,14 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <label class="form-label">Nº do Processo</label>
-                                <input id="numero_processo" type="text" maxlength="14" class="form-control  @error('proc_judiciarios_numero_proc') is-invalid @enderror" placeholder="Digite o nome do Requerente" value="{{old('proc_judiciarios_numero_proc')}}" name="proc_judiciarios_numero_proc">
-                                @error('proc_judiciarios_numero_proc')
+                                <input id="numero_processo" type="text" maxlength="14" class="form-control  @error('proc_numero_proc') is-invalid @enderror" placeholder="Digite o nome do Requerente" value="{{old('proc_numero_proc')}}" name="proc_numero_proc">
+                                @error('proc_numero_proc')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
 
-
-                            <div class="col-md-5">
-                                <label class="form-label">Médico</label>
-                                <input id="proc_judiciarios_nome_perito" type="text" maxlength="150" class="form-control  @error('proc_judiciarios_nome_perito') is-invalid @enderror" placeholder="Nome do médico" value="{{old('proc_judiciarios_nome_perito')}}" name="proc_judiciarios_nome_perito">
-                                @error('proc_judiciarios_nome_perito')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
 
                             <div class="col-md-5">
                                 <label class="form-label">CID10</label>

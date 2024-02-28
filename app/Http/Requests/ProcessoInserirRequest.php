@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProcessoAdministrativoInserirRequest extends FormRequest
+class ProcessoInserirRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +25,17 @@ class ProcessoAdministrativoInserirRequest extends FormRequest
     {
         return [
             'cid_id' => ['required','integer'],
-            'estado_civil_id' => ['required','integer'],
+            // 'estado_civil_id' => ['required','integer'],
             'cliente_nome' => ['required','string'],
+            'profissao_id' => ['required', 'integer'],
             'cliente_data_nascimento' => ['required','date'],
             'cliente_sexo' => ['required','string'],
-            'cliente_rg' => ['required','string'],
-            'cliente_cpf' => ['required','string'],
+            'cliente_rg' => ['required','string', 'unique:clientes,cliente_rg'],
+            'cliente_cpf' => ['required','string', 'unique:clientes,cliente_cpf'],
             'cliente_email' => ['required','email'],
             'cliente_telefone' => ['required','string'],
             'proc_numero_proc' => ['required','string'],
-            'proc_nome_perito' => ['required','string'],
+            // 'proc_nome_perito' => ['required','string'],
 
             'proc_data_ini_doenca' => ['required','date'],
             'proc_data_ini_incapacidade' => [ 'required','date'],
@@ -51,6 +52,9 @@ class ProcessoAdministrativoInserirRequest extends FormRequest
             'cliente_nome.string' => 'O campo Requerente é inválido',
             'cliente_nome.required' => 'O campo Requerente é obrigatório',
 
+            'profissao_id.required' => 'O campo Profissão é obrigatório',
+            'profissao_id.integer' => 'O campo Profissão é inválido',
+
             'cliente_data_nascimento.date' => 'O campo Nascimento é inválido',
             'cliente_data_nascimento.required' => 'O campo Nascimento é obrigatório',
 
@@ -59,9 +63,11 @@ class ProcessoAdministrativoInserirRequest extends FormRequest
 
             'cliente_rg.string' => 'O campo RG é inválido',
             'cliente_rg.required' => 'O campo RG é obrigatório',
+            'cliente_rg.unique' => 'O RG já está cadastrado no sistema',
 
             'cliente_cpf.string' => 'O campo CPF é inválido',
             'cliente_cpf.required' => 'O campo CPF é obrigatório',
+            'cliente_cpf.unique' => 'O CPF já está cadastrado no sistema',
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
@@ -76,8 +82,8 @@ class ProcessoAdministrativoInserirRequest extends FormRequest
             'proc_numero_proc.string' => 'O campo Nº do Processo é inválido',
             'proc_numero_proc.required' => 'O campo Nº do Processo é obrigatório',
 
-            'proc_nome_perito.string' => 'O campo Médico é inválido',
-            'proc_nome_perito.required' => 'O campo Médico é obrigatório',
+            // 'proc_nome_perito.string' => 'O campo Médico é inválido',
+            // 'proc_nome_perito.required' => 'O campo Médico é obrigatório',
 
             // 'proc_data_exame.date' => 'O campo Data do Exame é inválido',
             // 'proc_data_exame.required' => 'O campo Data do Exame é obrigatório',

@@ -14,7 +14,9 @@ class Cliente extends Model
      */
     protected $fillable = [
         'ocupacao_id',
-        'estado_civil_id',
+        // 'estado_civil_id',
+        'profissao_id',
+        'cbo',
         'cliente_nome',
         'cliente_cpf',
         'cliente_rg',
@@ -33,7 +35,9 @@ class Cliente extends Model
     {
         return self::create([
             'ocupacao_id' => 1,
-            'estado_civil_id' => $request->estado_civil_id,
+            // 'estado_civil_id' => $request->estado_civil_id,
+            'profissao_id' => $request->profissao_id,
+            'cbo' => $request->cbo,
             'cliente_nome' => $request->cliente_nome,
             'cliente_cpf' => $request->cliente_cpf,
             'cliente_rg' => $request->cliente_rg,
@@ -49,7 +53,8 @@ class Cliente extends Model
     {
         return self::update([
             'ocupacao_id' => 1,
-            'estado_civil_id' => $request->estado_civil_id,
+            'profissao_id' => $request->profissao_id,
+            // 'estado_civil_id' => $request->estado_civil_id,
             'cliente_nome' => $request->cliente_nome,
             'cliente_cpf' => $request->cliente_cpf,
             'cliente_rg' => $request->cliente_rg,
@@ -69,5 +74,10 @@ class Cliente extends Model
     public function estadoCivil()
     {
         return $this->belongsTo(EstadoCivil::class, 'estado_civil_id', 'estado_civil_id');
+    }
+
+    public function profissao()
+    {
+        return $this->belongsTo(Profissao::class, 'profissao_id', 'profissao_id');
     }
 }

@@ -14,7 +14,9 @@ class ClienteSeeder extends Seeder
     {
         Cliente::create([
             'ocupacao_id' => 1,
-            'estado_civil_id' => 1,
+            // 'estado_civil_id' => 1,
+            'profissao_id' => 1,
+            'cbo' => '123456...',
             'cliente_nome' => 'João Pedro',
             'cliente_cpf' => '61007944382',
             'cliente_rg' => '2121321321',
