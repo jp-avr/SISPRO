@@ -15,7 +15,7 @@ class Processo extends Model
     protected $fillable = [
         'cliente_id',
         'tipo_processo_id',
-        'cid_id',
+        // 'cid_id',
         'proc_numero_proc',
         // 'proc_numero_req',
         // 'proc_data_exame',
@@ -37,7 +37,7 @@ class Processo extends Model
 
     public static function criarAdministrativo($request,$cliente_id)
     {
-        return self::create([
+        $processo = self::create([
             'cliente_id' => $cliente_id,
             'tipo_processo_id' => 1,
             'cid_id' => $request->cid_id,
@@ -53,13 +53,14 @@ class Processo extends Model
             'proc_consideracoes' => $request->proc_consideracoes,
             'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
+        $processo->cids()->sync($request->cid_id);
 
-        
+        return 1;
     }
 
     public static function criarJudiciario($request,$cliente_id)
     {
-        return self::create([
+        $processo = self::create([
             'cliente_id' => $cliente_id,
             'tipo_processo_id' => 2,
             'proc_numero_proc' => $request->proc_numero_proc,
@@ -74,6 +75,10 @@ class Processo extends Model
             'proc_consideracoes' => $request->proc_consideracoes,
             'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
+
+        $processo->cids()->sync($request->cid_id);
+
+        return 1;
     }
 
     public function cliente()

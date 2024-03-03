@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProcessoCids extends Model
+class ProcessoCids extends Pivot
 {
     protected $table = "processo_cids";
 
@@ -12,6 +13,6 @@ class ProcessoCids extends Model
 
     protected $fillable = [
         "processo_id",
-        "processo_id",
+        "cid_id",
     ];
 }
