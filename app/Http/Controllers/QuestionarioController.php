@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormularioRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
 use App\Models\Questionario;
@@ -21,7 +22,7 @@ class QuestionarioController extends Controller
         return view('clientes.formulario', compact('cids', 'cliente'));
     }
 
-    public function store(Request $request,$cliente_id){
+    public function store(FormularioRequest $request,$cliente_id){
         Questionario::criar($request, $cliente_id);
 
         return redirect()->route("processos.index")->with($cliente_id);

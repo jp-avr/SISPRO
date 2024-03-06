@@ -32,14 +32,14 @@ class Questionario extends Model
             "questionario_id" => $questionario->questionario_id,
             'secao_1' => $request->secao_1,
             'secao_2' => $request->secao_2,
-            'secao_3' => '$request->secao_3',
-            'secao_4' => '$request->secao_4',
-            'secao_5' => '$request->secao_5',
-            'secao_6' => '$request->secao_6',
-            'secao_7' => '$request->secao_7',
-            'secao_8' => '$request->secao_8',
-            'secao_9' => '$request->secao_9',
-            'secao_10' => '$request->secao_10',
+            'secao_3' => $request->secao_3,
+            'secao_4' => $request->secao_4,
+            'secao_5' => $request->secao_5,
+            'secao_6' => $request->secao_6,
+            'secao_7' => $request->secao_7,
+            'secao_8' => $request->secao_8,
+            'secao_9' => $request->secao_9,
+            'secao_10' => $request->secao_10,
         ]);
     }
 

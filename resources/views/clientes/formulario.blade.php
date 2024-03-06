@@ -5,13 +5,11 @@
         <div class="container-fluid p-5">
             <form name="inserir" id="inserir" method="post" action="{{ route('questionarios.store', $cliente->cliente_id) }}" autocomplete="off">
                 @csrf
+                
+                @include('cards.formulario')   
 
-                    @include('cards.formulario')   
-                           
-
-                    
                 <div>
-                    <button type="submit" class="btn btn-success mt-4">{{ __('Salvar') }}</button>
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Salvar') }}</button>
                 </div>
             </form>
         </div>
