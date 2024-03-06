@@ -3,7 +3,7 @@
 @section('content')
     <main class="content">
         <div class="container-fluid p-5">
-            <form name="inserir" id="inserir" method="post" action="{{ route('questionarios.inserir', $cliente->cliente_id) }}" autocomplete="off">
+            <form name="inserir" id="inserir" method="post" action="{{ route('questionarios.store', $cliente->cliente_id) }}" autocomplete="off">
                 @csrf
 
                     @include('cards.formulario')   
