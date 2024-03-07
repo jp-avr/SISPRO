@@ -13,7 +13,7 @@ class ClienteSeeder extends Seeder
     public function run()
     {
         Cliente::create([
-            'ocupacao_id' => 1,
+            // 'ocupacao_id' => 1,
             // 'estado_civil_id' => 1,
             'profissao_id' => 1,
             'cbo' => '123456...',

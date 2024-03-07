@@ -34,7 +34,7 @@ class Cliente extends Model
     public static function criar($request)
     {
         return self::create([
-            'ocupacao_id' => 1,
+            // 'ocupacao_id' => 1,
             // 'estado_civil_id' => $request->estado_civil_id,
             'profissao_id' => $request->profissao_id,
             'cbo' => $request->cbo,
@@ -80,4 +80,9 @@ class Cliente extends Model
     {
         return $this->belongsTo(Profissao::class, 'profissao_id', 'profissao_id');
     }
+
+    // public function ocupacao()
+    // {
+    //     return $this->belongsTo(Ocupacao::class, 'ocupacao_id', 'ocupacao_id');
+    // }
 }

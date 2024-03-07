@@ -29,33 +29,30 @@
                                 <th>Perfil</th>
                                 <th>Cidade</th>
                                 <th>Ações</th>
-                                <th style="width:7%"></th>
-                                <th style="width:7%"></th>
-                                <th style="width:7%"></th>
+                                <th style="width:7%">Questionário</th>
+                                <th style="width:7%">Informações</th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             @forelse($clientes as $cliente)                               
-
+                            @include('processos.modal_cliente')
                                 <tr>
                                     <td><strong> {{ $cliente->cliente_nome }} </strong></td>
                                     <td>aa</td>
                                     <td>aa</td>
                                     <td>aa</td>
-                                    <td>
-                                        <button style="border: 0; background: inherit;" data-toggle="modal" data-target="#staticBackdrop-{{$cliente->cliente_consulta_id}}">
-                                            <i class="align-middle me-1" data-feather="layers"></i>
-                                        </button>
-                                    </td>
                                     <td class="table-action">
                                         <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="edit"></i></a>
                                         <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="trash"></i></a>
                                     </td>
                                     <td>
-                                        <td>
-                                            <a href="{{ route('questionarios.inserir', $cliente->cliente_id) }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
-                                        </td>
+                                        <a href="{{ route('questionarios.inserir', $cliente->cliente_id) }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
+                                    </td>
+                                    <td>
+                                        <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $cliente->getKey() }}">
+                                            <i class="align-middle me-1 text-primary" data-feather="maximize-2"></i>
+                                        </button>     
                                     </td>
                                 </tr>
                                 @empty

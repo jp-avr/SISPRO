@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\EstadoCivil;
+use App\Models\Ocupacao;
+use App\Models\Processo;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -11,7 +13,8 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::all();
-        return view('clientes.index',compact('clientes'));
+        $processos = Processo::all();
+        return view('clientes.index',compact('clientes','processos'));
     }
 
     public function create()
