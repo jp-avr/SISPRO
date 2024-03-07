@@ -5,7 +5,7 @@
         <div class="container-fluid p-5">
             <form name="inserir" id="inserir" method="post" action="{{ route('questionarios.store', $cliente->cliente_id) }}" autocomplete="off">
                 @csrf
-                
+                {{-- @dd($pos_operatorio) --}}
                 @include('cards.formulario')   
 
                 <div>

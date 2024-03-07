@@ -37,6 +37,7 @@
                             
                             @forelse($clientes as $cliente)                               
                             @include('processos.modal_cliente')
+                            @include('processos.modal_resposta')
                                 <tr>
                                     <td><strong> {{ $cliente->cliente_nome }} </strong></td>
                                     <td>aa</td>
@@ -47,7 +48,9 @@
                                         <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" ><i class="align-middle me-1" data-feather="trash"></i></a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('questionarios.inserir', $cliente->cliente_id) }}"><i class="align-middle me-1" data-feather="clipboard"></i></a>
+                                        <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $cliente->getKey() }}">
+                                            <i class="align-middle me-1 text-primary" data-feather="clipboard"></i>
+                                        </button>
                                     </td>
                                     <td>
                                         <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $cliente->getKey() }}">

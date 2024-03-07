@@ -15,11 +15,12 @@ class QuestionarioController extends Controller
         
     }
 
-    public function inserir($cliente_id)
+    public function inserir($cliente_id, Request $request)
     {
         $cliente = Cliente::findOrFail($cliente_id);
         $cids = Cid::all();
-        return view('clientes.formulario', compact('cids', 'cliente'));
+        $pos_operatorio = $request->input('pos_operatorio');
+        return view('clientes.formulario', compact('cids', 'cliente','pos_operatorio'));
     }
 
     public function store(FormularioRequest $request,$cliente_id){
