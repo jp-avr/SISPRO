@@ -19,7 +19,7 @@ class Questionario extends Model
         "questionario_porcentagem",
     ];
 
-    public static function criar($request, $cliente_id){
+    public static function criar($request, $cliente_id, $pos_operatorio){
 
         $soma = $request->secao_1 + $request->secao_2 + $request->secao_3 + $request->secao_4 + $request->secao_5 + $request->secao_6 + $request->secao_7 + $request->secao_8 + $request->secao_9 + $request->secao_10; /// Soma das seleções
         
@@ -29,19 +29,40 @@ class Questionario extends Model
 
         /// resultados baseados na porcentagem
 
-        if($porcentagem <= 20){
-            $resultado = "Pouca ou nenhuma incapacidade funcional.";
-        }else if($porcentagem > 20 && $porcentagem <= 40){
-            $resultado = "Limitação moderada nas atividades diárias";
-        }else if($porcentagem > 40 && $porcentagem <= 60){
-            $resultado = "Limitação substancial nas atividades diárias";
-        }else if($porcentagem > 60 && $porcentagem <= 80){
-            $resultado = "Incapacidade marcante nas atividades diárias";
-        }else if($porcentagem > 80){
-            $resultado = "Incapacidade total nas atividades diárias";
-        }else{
-            throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
+        switch ($pos_operatorio) {
+            case 0:
+                if($porcentagem <= 20){
+                    $resultado = "Pouca ou nenhuma incapacidade funcional.";
+                }else if($porcentagem > 20 && $porcentagem <= 40){
+                    $resultado = "Limitação moderada nas atividades diárias";
+                }else if($porcentagem > 40 && $porcentagem <= 60){
+                    $resultado = "Limitação substancial nas atividades diárias";
+                }else if($porcentagem > 60 && $porcentagem <= 80){
+                    $resultado = "Incapacidade marcante nas atividades diárias";
+                }else if($porcentagem > 80){
+                    $resultado = "Incapacidade total nas atividades diárias";
+                }else{
+                    throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
+                }
+                break;
+            case 1:
+                if($porcentagem <= 20){
+                    $resultado = "Incrível melhora após o procedimento médico";
+                }else if($porcentagem > 20 && $porcentagem <= 40){
+                    $resultado = "Boa melhora após o procedimento médico";
+                }else if($porcentagem > 40 && $porcentagem <= 60){
+                    $resultado = "Não houve melhora após o procedimento médico";
+                }else if($porcentagem > 60){
+                    $resultado = "Situação do cliente piorou após o procedimento médico";
+                }else{
+                    throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
+                }
+                break;
+            default:
+                throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
         }
+
+        
         
 
         $questionario = self::create([
