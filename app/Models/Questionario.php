@@ -19,7 +19,7 @@ class Questionario extends Model
         "questionario_porcentagem",
     ];
 
-    public static function criar($request, $cliente_id, $pos_operatorio){
+    public static function criar($request, $processo_id, $pos_operatorio){
 
         $soma = $request->secao_1 + $request->secao_2 + $request->secao_3 + $request->secao_4 + $request->secao_5 + $request->secao_6 + $request->secao_7 + $request->secao_8 + $request->secao_9 + $request->secao_10; /// Soma das seleções
         
@@ -61,12 +61,10 @@ class Questionario extends Model
             default:
                 throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
         }
-
         
-        
-
+        // dd($resultado);
         $questionario = self::create([
-            "cliente_id" => $cliente_id,
+            "cliente_id" => $processo_id,
             "questionario_data" => now(),
             "questionario_resultado" => $resultado,
             "questionario_porcentagem" => $porcentagem,
@@ -87,7 +85,7 @@ class Questionario extends Model
         ]);
     }
 
-    public function cliente(){
-        return $this->belongsTo(Cliente::class, "cliente_id", "cliente_id");
+    public function processo(){
+        return $this->belongsTo(Processo::class, "processo_id", "processo_id");
     }
 }

@@ -15,7 +15,7 @@ class CreateQuestionariosTable extends Migration
     {
         Schema::create('questionarios', function (Blueprint $table) {
             $table->id("questionario_id");
-            $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
+            $table->foreignId('processo_id')->references('processo_id')->on('processos');
             $table->date('questionario_data');
             $table->string('questionario_resultado');
             $table->integer('questionario_porcentagem');

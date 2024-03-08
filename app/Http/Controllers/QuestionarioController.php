@@ -23,8 +23,8 @@ class QuestionarioController extends Controller
         return view('clientes.formulario', compact('cids', 'cliente','pos_operatorio'));
     }
 
-    public function store(FormularioRequest $request,$cliente_id,$pos_operatorio){
-        Questionario::criar($request, $cliente_id, $pos_operatorio);
+    public function store(FormularioRequest $request,$processo_id,$pos_operatorio){
+        Questionario::criar($request, $processo_id, $pos_operatorio);
 
         return redirect()->route("processos.index")->with($cliente_id);
     }

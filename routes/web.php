@@ -45,9 +45,9 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::prefix('questionarios')->group(function (){
-        Route::get('/{cliente}/index', 'QuestionarioController@index')->name('questionarios.index');
-        Route::get('/{cliente}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
-        Route::post('/{cliente}/store', 'QuestionarioController@store')->name('questionarios.store');
+        Route::get('/{processo}/index', 'QuestionarioController@index')->name('questionarios.index');
+        Route::get('/{processo}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
+        Route::post('/{processo}/{pos}/store', 'QuestionarioController@store')->name('questionarios.store');
     });
 
     Route::prefix('clientes')->group(function (){
