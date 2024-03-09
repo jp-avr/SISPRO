@@ -6,6 +6,9 @@
     box-sizing: border-box;
 }
 
+.white-background-table {
+    background-color: #ffffff; /* Define a cor de fundo como branco */
+}
 
 
 body{

@@ -24,10 +24,9 @@ class Processo extends Model
         // 'proc_nome_perito',
         'proc_resultado',
         'proc_historia',
-        'proc_exame_fisico',
+        // 'proc_exame_fisico',
         'proc_parte_atingida',
         'proc_consideracoes',
-        'proc_data_cadastro',
         'proc_ativo',
         'created_at',
         'updated_at'

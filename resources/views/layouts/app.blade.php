@@ -21,10 +21,8 @@
 
     <!-- Styles -->
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    
-
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminkit.css')}}" rel="stylesheet">
 
     
@@ -41,7 +39,7 @@
             @include('components.navbar.navbar')
         @endauth
         
-        <main class="content px-3 py-2">
+        <main class="content px-3 py-2" style="background-color: #c4d3f6">
             <div class="container-fluid">
                 <div class="mb-3">
                     @yield('content')

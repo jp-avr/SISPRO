@@ -26,9 +26,9 @@ class CreateProcessosTable extends Migration
             // $table->string('proc_nome_perito');
             // $table->string('proc_cid');
             $table->integer('proc_cod_perito')->nullable();
-            $table->string('proc_resultado');
+            $table->string('proc_resultado')->nullable();
             $table->string('proc_historia');
-            $table->string('proc_exame_fisico');
+            // $table->string('proc_exame_fisico'); //Cliente pediu a remoção, não irá salvar laudos no sistema
             $table->string('proc_consideracoes')->nullable();
             $table->boolean('proc_ativo')->default(1);
             $table->string('proc_parte_atingida');            
