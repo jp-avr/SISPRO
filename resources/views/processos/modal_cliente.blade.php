@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <i data-feather="user"></i>
+          
           <h3 class="modal-title" id="staticBackdropLabel">Informações Cliente</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
