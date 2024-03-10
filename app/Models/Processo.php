@@ -15,6 +15,7 @@ class Processo extends Model
     protected $fillable = [
         'cliente_id',
         'tipo_processo_id',
+        'parte_atingida_id',
         // 'cid_id',
         'proc_numero_proc',
         // 'proc_numero_req',
@@ -25,7 +26,7 @@ class Processo extends Model
         'proc_resultado',
         'proc_historia',
         // 'proc_exame_fisico',
-        'proc_parte_atingida',
+        // 'proc_parte_atingida',
         'proc_consideracoes',
         'proc_ativo',
         'created_at',
@@ -39,6 +40,7 @@ class Processo extends Model
         $processo = self::create([
             'cliente_id' => $cliente_id,
             'tipo_processo_id' => 1,
+            'parte_atingida_id' => $request->parte_atingida_id,
             'cid_id' => $request->cid_id,
             'proc_numero_proc' => $request->proc_numero_proc,
             // 'proc_numero_req' => 1,
@@ -50,7 +52,7 @@ class Processo extends Model
             'proc_historia' => $request->proc_historia,
             'proc_exame_fisico' => 1,
             'proc_consideracoes' => $request->proc_consideracoes,
-            'proc_parte_atingida' => $request->proc_parte_atingida,
+            // 'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
         $processo->cids()->sync($request->cid_id);
 
@@ -62,6 +64,7 @@ class Processo extends Model
         $processo = self::create([
             'cliente_id' => $cliente_id,
             'tipo_processo_id' => 2,
+            'parte_atingida_id' => $request->parte_atingida_id,
             'proc_numero_proc' => $request->proc_numero_proc,
             // 'proc_numero_req' => 1,
             // 'proc_data_exame' => date('Y-m-d'),
@@ -72,7 +75,7 @@ class Processo extends Model
             'proc_historia' => $request->proc_historia,
             'proc_exame_fisico' => 1,
             'proc_consideracoes' => $request->proc_consideracoes,
-            'proc_parte_atingida' => $request->proc_parte_atingida,
+            // 'proc_parte_atingida' => $request->proc_parte_atingida,
         ]);
 
         $processo->cids()->sync($request->cid_id);

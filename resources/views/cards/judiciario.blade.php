@@ -54,8 +54,15 @@
 
                             <div class="col-md-5">
                                 <label class="form-label">Parte do corpo atingida</label>
-                                <input id="proc_judiciarios_parte_atingida" type="text" maxlength="100" class="form-control  @error('proc_judiciarios_parte_atingida') is-invalid @enderror" placeholder="Digite a parte atingida" value="{{old('proc_judiciarios_parte_atingida')}}" name="proc_judiciarios_parte_atingida">
-                                @error('proc_judiciarios_parte_atingida')
+                                <select class="form-control @error('parte_atingida_id') is-invalid @enderror" name="parte_atingida_id">
+                                    <option value="" selected disabled>Selecione a parte atingida</option>
+                                    @foreach ($partes_atingidas as $parte_atingida)
+                                    <option value="{{ $parte_atingida->parte_atingida_id }}">
+                                        {{ $parte_atingida->parte_atingida_descricao }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @error('parte_atingida_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

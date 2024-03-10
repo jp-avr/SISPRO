@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CidSeeder::class);
         $this->call(TipoProcessoSeeder::class);
         $this->call(ProfissaoSeeder::class);
+        $this->call(ParteAtingidaSeeder::class);
         $this->call(ProcessoSeeder::class);
     }
 }

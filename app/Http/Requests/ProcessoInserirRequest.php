@@ -39,7 +39,7 @@ class ProcessoInserirRequest extends FormRequest
 
             'proc_data_ini_doenca' => ['required','date'],
             'proc_data_ini_incapacidade' => [ 'required','date'],
-            'proc_parte_atingida' => ['required','string'],
+            'parte_atingida_id' => ['required','string'],
             'proc_historia' => [ 'required','string'],     
             'proc_consideracoes' => ['string', 'nullable']      
         ];
@@ -97,8 +97,8 @@ class ProcessoInserirRequest extends FormRequest
             'proc_data_ini_incapacidade.date' => 'O campo Data Inicial dos Sintomas é inválido',
             'proc_data_ini_incapacidade.required' => 'O campo Data Inicial dos Sintomas é obrigatório',
 
-            'proc_parte_atingida.string' => 'O campo Parte do corpo atingida é inválido',   
-            'proc_parte_atingida.required' => 'O campo Parte do corpo atingida é obrigatório',
+            'parte_atingida_id.string' => 'O campo Parte do corpo atingida é inválido',   
+            'parte_atingida_id.required' => 'O campo Parte do corpo atingida é obrigatório',
 
             'proc_historia.string' => 'O campo História é inválido',
             'proc_historia.required' => 'O campo História é obrigatório',

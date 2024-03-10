@@ -6,6 +6,7 @@ use App\Http\Requests\ProcessoInserirRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
 use App\Models\EstadoCivil;
+use App\Models\ParteAtingida;
 use App\Models\Processo;
 use App\Models\Profissao;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class ProcessoController extends Controller
         $cids = Cid::all();
         $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
-        return view('processos.judiciario.inserir', compact('estados_civis','cids','profissoes'));
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.judiciario.inserir', compact('estados_civis','cids','profissoes','partes_atingidas'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)

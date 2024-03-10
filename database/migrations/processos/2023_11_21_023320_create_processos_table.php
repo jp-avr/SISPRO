@@ -17,6 +17,7 @@ class CreateProcessosTable extends Migration
             $table->id('processo_id');
             $table->foreignId('cliente_id')->references('cliente_id')->on('clientes');
             $table->foreignId('tipo_processo_id')->references('tipo_processo_id')->on('tipo_processos');
+            $table->foreignId('parte_atingida_id')->references('parte_atingida_id')->on('partes_atingidas');
             // $table->foreignId('cid_id')->constrained('cids');  //Trocado por tabela pivot
             $table->string('proc_numero_proc');
             // $table->string('proc_numero_req');
@@ -31,7 +32,7 @@ class CreateProcessosTable extends Migration
             // $table->string('proc_exame_fisico'); //Cliente pediu a remoção, não irá salvar laudos no sistema
             $table->string('proc_consideracoes')->nullable();
             $table->boolean('proc_ativo')->default(1);
-            $table->string('proc_parte_atingida');            
+            // $table->string('proc_parte_atingida'); //Virou chave estrangeira        
             $table->timestamps();
         });
     }
