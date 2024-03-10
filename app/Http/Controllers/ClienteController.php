@@ -17,6 +17,14 @@ class ClienteController extends Controller
         return view('clientes.index',compact('clientes','processos'));
     }
 
+    public function processos($cliente_id)
+    {   
+        $clientes = Cliente::all();
+        $processos = Processo::paginate(10);
+        $cliente = Cliente::findOrFail($cliente_id);
+        return view('clientes.info_processos', compact('cliente','processos','clientes'));
+    }
+
     public function create()
     {
         return view('clientes.insert');
