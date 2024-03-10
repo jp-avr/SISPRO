@@ -13,7 +13,7 @@ class Questionario extends Model
     protected $primaryKey = "questionario_id";
 
     protected $fillable = [
-        "cliente_id",
+        "processo_id",
         "questionario_data",
         "questionario_resultado",
         "questionario_porcentagem",
@@ -64,7 +64,7 @@ class Questionario extends Model
         
         // dd($resultado);
         $questionario = self::create([
-            "cliente_id" => $processo_id,
+            "processo_id" => $processo_id,
             "questionario_data" => now(),
             "questionario_resultado" => $resultado,
             "questionario_porcentagem" => $porcentagem,

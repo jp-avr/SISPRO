@@ -26,6 +26,6 @@ class QuestionarioController extends Controller
     public function store(FormularioRequest $request,$processo_id,$pos_operatorio){
         Questionario::criar($request, $processo_id, $pos_operatorio);
 
-        return redirect()->route("processos.index")->with($cliente_id);
+        return redirect()->route("processos.index")->with($processo_id);
     }
 }
