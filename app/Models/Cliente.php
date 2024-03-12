@@ -68,7 +68,7 @@ class Cliente extends Model
 
     public function processos()
     {
-        return $this->hasMany(Processo::class, 'processo_id', 'processo_id');
+        return $this->hasMany(Processo::class, 'processo_id');
     }
 
     public function estadoCivil()

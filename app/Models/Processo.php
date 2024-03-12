@@ -85,7 +85,7 @@ class Processo extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class,'cliente_id', 'cliente_id');
+        return $this->belongsTo(Cliente::class, 'cliente_id', 'cliente_id');
     }
 
     public function tipo_processo()

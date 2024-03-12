@@ -21,8 +21,7 @@ class ClienteController extends Controller
     {   
         $clientes = Cliente::all();
         $cliente = Cliente::findOrFail($cliente_id);
-        $processos = $cliente->processos()->get();
-        @dd($processos);
+        $processos = Processo::where('cliente_id','=',$cliente_id)->get();
         return view('clientes.info_processos', compact('cliente','processos','clientes'));
     }
 

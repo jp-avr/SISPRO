@@ -76,10 +76,12 @@
                                         {{ $questionario->questionario_id }}
                                     </td>
                                     <td>
-                                        {{ $questionario->created_at }}
+                                        {{ date_format(date_create($questionario->created_at),'d/m/Y') }}
                                     </td>
-                                    <td>
-
+                                    <td style="vertical-align: top;">
+                                        <a href="#">
+                                            <i class="align-middle me-1" data-feather="maximize-2"></i>
+                                        </a>    
                                     </td>
                                     <td style="vertical-align: top;" class="table-action text-left poppins-regular15 last-cell">
                                         <a href="{{ route('questionarios.destroy', $questionario->questionario_id) }}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="trash"></i></a>

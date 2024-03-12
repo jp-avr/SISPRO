@@ -48,8 +48,10 @@
                                 @forelse($processos as $processo)
                                 @include('processos.modal')
                                     <tr>
-                                        {{-- @dd($processo->cliente) --}}
-                                        <td> <strong> {{ $processo->cliente->cliente_nome }} </strong> </td>
+                                        <td>
+                                            {{ 'JOAO '}}
+                                            {{-- {{ $processo->cliente->cliente_nome}} --}}
+                                        </td>
                                         <td>
                                             {{ $processo->proc_numero_proc }}
                                         </td>

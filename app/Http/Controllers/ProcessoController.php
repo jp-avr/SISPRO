@@ -25,7 +25,8 @@ class ProcessoController extends Controller
 
     public function questionario($processo_id)
     {
-        $questionarios = Questionario::all();
+        $questionarios = Questionario::where('processo_id','=',$processo_id)->get();
+        // $processos = Processo::where('cliente_id','=',$cliente_id)->get();
         $processo = Processo::findOrFail($processo_id);
         return view('processos.info_processos', compact('processo','questionarios'));
     }
