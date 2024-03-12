@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('processos')->group(function (){
         Route::get('/index', 'ProcessoController@index')->name('processos.index');
+        Route::get('/informacoes/{processo}', 'ProcessoController@questionario')->name('processos.questionarios');
         Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
         Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
         Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{processo}/index', 'QuestionarioController@index')->name('questionarios.index');
         Route::get('/{processo}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
         Route::post('/{processo}/{pos}/store', 'QuestionarioController@store')->name('questionarios.store');
+        Route::get('/destroy/{questionario}', 'QuestionarioController@destroy')->name('questionarios.destroy');
     });
 
     Route::prefix('clientes')->group(function (){

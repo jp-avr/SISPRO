@@ -12,7 +12,7 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::paginate(10);
         $processos = Processo::all();
         return view('clientes.index',compact('clientes','processos'));
     }
@@ -20,8 +20,9 @@ class ClienteController extends Controller
     public function processos($cliente_id)
     {   
         $clientes = Cliente::all();
-        $processos = Processo::paginate(10);
         $cliente = Cliente::findOrFail($cliente_id);
+        $processos = $cliente->processos()->get();
+        @dd($processos);
         return view('clientes.info_processos', compact('cliente','processos','clientes'));
     }
 

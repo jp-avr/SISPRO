@@ -31,16 +31,16 @@
                 </div>
 
                 <div class="card shadow">
-                    <div class="table-responsive">
+                    <div class="table-responsive table-hover">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th style="width: 10rem;">Cliente</th>
-                                    <th style="width: 10rem;">CPF</th>
-                                    <th style="width: 10rem;">Número do Processo</th>
-                                    <th style="width: 10rem;">Tipo de Processo</th>
-                                    <th style="width: 10rem;"><i class="align-middle me-1" data-feather="calendar"></i> Data </th>
-                                    <th style="width:7%"></th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col">Número do Processo</th>
+                                    <th scope="col">Tipo de Processo</th>
+                                    <th scope="col"><i class="align-middle me-1" data-feather="calendar"></i>Data</th>
+                                    <th scope="col">Informações</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
 
@@ -50,14 +50,27 @@
                                     <tr>
                                         {{-- @dd($processo->cliente) --}}
                                         <td> <strong> {{ $processo->cliente->cliente_nome }} </strong> </td>
-                                        <td> {{ $processo->cliente->cliente_cpf }} </td>
-                                        <td> {{ $processo->proc_numero_proc }} </td>
-                                        <td> {{ $processo->tipo_processo_id }} </td>
+                                        <td>
+                                            {{ $processo->proc_numero_proc }}
+                                        </td>
+                                        <td>
+                                            @if($processo->tipo_processo_id === 1)
+                                                Administrativo
+                                            @endif
+                                            @if($processo->tipo_processo_id === 2)
+                                                Judiciário
+                                            @endif
+
+                                        </td>
                                         <td> {{date_format(date_create($processo->created_at), 'd/m/Y')}} </td>
                                         <td> 
-                                            <button type="button" style="border: 0; background: inherit;" class="align-middle me-1 text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $processo->getKey() }}">
-                                                <i class="align-middle me-1 text-primary" data-feather="maximize-2"></i>
-                                              </button>  
+                                            <a href="{{ route('processos.questionarios', $processo->processo_id)}}">
+                                                <i class="align-middle me-1" data-feather="maximize-2"></i>
+                                            </a> 
+                                        </td>
+                                        <td style="vertical-align: top;" class="table-action text-left poppins-regular15 last-cell">
+                                            <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" class="btn btn-sm btn-success"><i class="align-middle" data-feather="edit"></i></a>
+                                            <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty

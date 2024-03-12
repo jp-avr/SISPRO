@@ -23,38 +23,30 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-5">
-                                <?php
-                                $date = new DateTime($cliente->cliente_data_nascimento);
-                                $interval = $date->diff(new DateTime(date('Y-m-d')));
-                                $idade = $interval->format('%Y');
-                                ?>
                                 <h3 class="mb-0"><i class="align-middle me-1" data-feather="list" style="width:4%;height:4%">
                                     </i> Ficha:
                                 </h3>
-                                Cliente: <strong>{{ $cliente->cliente_nome}}</strong> ({{ $idade }} anos)
-                                <br>Ocupação: {{ $cliente->profissao->profissao_descricao }}<br>
-                                CBO: {{ $cliente->cbo }} <br>
-                                CPF: {{ $cliente->cliente_cpf }}<br>
+                                Número do Processo: <strong>{{ $processo->proc_numero_proc}}</strong><br>
+                                Data de início da doença: {{ $processo->proc_data_ini_doenca }}<br>
+                                Data de início da incapacidade: {{ $processo->proc_data_ini_incapacidade }} <br>
+                                Parte Atingida: {{ $processo->parte_atingida_id }}<br>
                             </div>
                             <div class="col-5">
-                                RG: {{ $cliente->cliente_rg }}
+                                Resultado: {{ $processo->proc_resultado }}
                                 <br>
-                                Data de Nascimento: {{ date_format(date_create($cliente->cliente_data_nascimento), 'd/m/Y') }}
+                                História: {{ $processo->proc_historia }}
                                 <br>
-                                Telefone: {{ $cliente->cliente_telefone }}
+                                Considerações: {{ $processo->proc_consideracoes }}
                                 <br>
-                                Sexo:
-                                @if($cliente->cliente_sexo == 0)
-                                    Ignorado
+                                Atividade:
+                                @if($processo->proc_ativo == 0)
+                                    Não ativo
                                 @endif
-                                @if($cliente->cliente_sexo == 1)
-                                    Masculino
-                                @endif
-                                @if($cliente->cliente_sexo == 2)
-                                    Feminino
+                                @if($processo->proc_ativo == 1)
+                                    Ativo
                                 @endif
                                 <br>
-                                Notificação feita em <strong>{{$cliente->created_at->format('d/m/Y')}}</strong> por Alguém
+                                Notificação feita em <strong>{{$processo->created_at->format('d/m/Y')}}</strong>
                             </div>
                             <div class="col-2 text-right">
                                 <a href="#" class="btn btn-sm btn-primary">Novo processo</a>
@@ -70,35 +62,35 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Número do Processo</th>
-                                    <th scope="col" style="width:10%"></th>
-                                    <th scope="col">Questionário</th>
-                                    <th scope="col">Tipo de Processo</th>
-                                    <th scope="col">Atividade</th>
-                                    <th scope="col">Resultado</th>
-                                    <th scope="col"><i class="align-middle me-1" data-feather="calendar"></i>Data de criação</th>
-                                    <th scope="col"></th>
-                                    <th scope="col" style="width:7%"></th>
+                                    <th scope="col">Número do questionário</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Informações</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($processos as $processo)
-                                @include('processos.modal_processo')
-                                @include('processos.modal_resposta')
+                                @forelse($questionarios as $questionario)
+                                {{-- @include('processos.modal_processo') --}}
                                 <tr>
                                     <td>
+                                        {{ $questionario->questionario_id }}
+                                    </td>
+                                    <td>
+                                        {{ $questionario->created_at }}
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td style="vertical-align: top;" class="table-action text-left poppins-regular15 last-cell">
+                                        <a href="{{ route('questionarios.destroy', $questionario->questionario_id) }}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="trash"></i></a>
+                                    </td>
+                                    {{-- <td>
                                         {{ $processo->proc_numero_proc }}
-                                    </td>
-                                    <td style="vertical-align: top;">
-                                        <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}">
-                                            <i class="align-middle text-primary" data-feather="eye"></i>
-                                        </button>     
-                                    </td>
-                                    <td style="vertical-align: top;">
-                                        <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $cliente->getKey() }}">
-                                            <i class="align-middle text-primary" data-feather="clipboard"></i>
-                                        </button>
-                                    </td>
+                                        <td style="vertical-align: top;">
+                                            <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}">
+                                                <i class="align-middle text-primary" data-feather="eye"></i>
+                                            </button>     
+                                        </td>
                                     <td>
                                         <span class="@switch ($processo->tipo_processo_id) @case('1') {{ 'badge bg-warning' }} @break @case('2') {{ 'badge bg-primary'}} @break @endswitch">
                                             @if($processo->tipo_processo_id == 1)
@@ -129,10 +121,10 @@
                                             <i class="align-middle me-1" data-feather="edit"></i>
                                         </a>
                                     </td>
-                                </tr>
+                                </tr> --}}
                                 @empty
                                 <tr>
-                                    <td conlspan="4">Nenhum processo encontrada</td>
+                                    <td conlspan="4">Nenhum questionário encontrada</td>
                                 </tr>
                                 @endforelse
                             </tbody>

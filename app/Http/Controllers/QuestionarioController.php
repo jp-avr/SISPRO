@@ -28,4 +28,14 @@ class QuestionarioController extends Controller
 
         return redirect()->route("processos.index")->with($processo_id);
     }
+
+    public function destroy($questionario_id)
+    {
+        $questionario = Questionario::findOrFail($questionario_id);
+
+        $questionario->delete();
+
+        return redirect()->route('processos.questionarios', $questionario->questionario_id);
+
+    }
 }
