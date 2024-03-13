@@ -14,6 +14,9 @@
                         </div>
                     @endif
 
+                    <!-- Código de incorporação do Power BI -->
+                    {{-- <iframe width="800" height="600" src="https://app.powerbi.com/view?r=xxxxxxxxxx" frameborder="0" allowFullScreen="true"></iframe> --}}
+
                     {{ __('You are logged in!') }}
                 </div>
             </div>
