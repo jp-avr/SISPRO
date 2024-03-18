@@ -49,10 +49,15 @@
                                 Notificação feita em <strong>{{$processo->created_at->format('d/m/Y')}}</strong>
                             </div>
                             <div class="col-2 text-right">
-                                <a href="#" class="btn btn-sm btn-primary">Novo processo</a>
+                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $processo->cliente->getKey() }}" class="btn btn-sm btn-primary">Novo Formulario</button>
                             </div>
                         </div>
                     </div>
+
+                    {{-- MODAL --}}
+                    
+                    @include('processos.modal_resposta_info_processos')
+
 
                     <div class="col-12">
 

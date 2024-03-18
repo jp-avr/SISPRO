@@ -90,9 +90,9 @@
                                         {{ $processo->proc_numero_proc }}
                                     </td>
                                     <td style="vertical-align: top;">
-                                        <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}">
+                                        <a type="button" href="{{route("processos.questionarios", $processo->processo_id)}}">
                                             <i class="align-middle text-primary" data-feather="eye"></i>
-                                        </button>     
+                                        </a>     
                                     </td>
                                     <td style="vertical-align: top;">
                                         <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $cliente->getKey() }}">
