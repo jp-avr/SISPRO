@@ -132,9 +132,114 @@
         </main>
         <!-- fim da seção main -->
 
-        <!-- começo da seção main -->
+        <!-- COMEÇO DO LADO DIREITO -->
         <div class="direito">
-            <h1>Direito</h1>
+            <!-- COMEÇO DA CLASSE TOPO -->
+            <div class="topo">
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Dev</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                    </div>
+                    <div class="foto">
+                        <img src="/img/foto.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DA CLASSE TOPO -->
+
+            <!-- COMEÇO DE UPDATES RECENTES -->
+            <div class="updates_recentes">
+                <h2 class="dashboardh1">Updates Recentes</h2>
+                <div class="updates">
+                <div class="update">
+                    <div class="foto">
+                        <img src="/img/foto.webp" alt="">
+                    </div>
+                    <div class="mensagem">
+                        <p><b>João</b> Recebeu seu pedido</p>
+                    </div>
+                </div>
+                <div class="update">
+                    <div class="foto">
+                        <img src="/img/foto.webp" alt="">
+                    </div>
+                    <div class="mensagem">
+                        <p><b>João</b> Recebeu seu pedido</p>
+                    </div>
+                </div>
+                <div class="update">
+                    <div class="foto">
+                        <img src="/img/foto.webp" alt="">
+                    </div>
+                    <div class="mensagem">
+                        <p><b>João</b> Recebeu seu pedido</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- FIM DE UPDATES RECENTES -->
+            <!-- COMEÇO DE ANÁLISE -->
+            <div class="analise">
+                <h2 class="dashboardh1">Análise</h2>
+                <div class="item online">
+                    <div class="icone">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                    </div>
+                    <div class="lado_direito">
+                        <div class="info">
+                            <h3 class="dashboardh1">Online orders</h3>
+                            <small class="text-muted">Visto por último a 2h</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3 class="dashboardh1">3849</h3>
+                    </div>
+                </div>
+
+                <div class="item online">
+                    <div class="icone">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                    </div>
+                    <div class="lado_direito">
+                        <div class="info">
+                            <h3 class="dashboardh1">Online orders</h3>
+                            <small class="text-muted">Visto por último a 2h</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3 class="dashboardh1">3849</h3>
+                    </div>
+                </div>
+
+                <div class="item online">
+                    <div class="icone">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                    </div>
+                    <div class="lado_direito">
+                        <div class="info">
+                            <h3 class="dashboardh1">Online orders</h3>
+                            <small class="text-muted">Visto por último a 2h</small>
+                        </div>
+                        <h5 class="danger">-17%</h5>
+                        <h3 class="dashboardh1">3849</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIM DE ANÁLISE -->
+            <div class="item add_processo">
+                <div>
+                    <span class="material-symbols-outlined">add</span>
+                </div>
+            </div>
         </div>
         <!-- fim da seção direita -->
     </div>
