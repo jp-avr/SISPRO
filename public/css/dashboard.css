@@ -1,0 +1,257 @@
+:root {
+    --clr-primary: #7380ec;
+    --clr-danger: #ff7782;
+    --clr-success: #41f1b6;
+    --clr-white: #fff;
+    --clr-warning: #ff4edc;
+    --clr-light: rgba(132, 139, 200, 0.18);
+    --clr-info-dark: #7d8da1;
+    --clr-primary-variant: #111e88;
+    --clr-info-light: #dce1eb;
+    --clr-dark-variant: #677483;
+    --clr-color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 0;
+    list-style: none;
+    appearance: none;
+}
+
+.cont {
+    display: grid;
+    width: 96%;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 14rem;
+    margin: 0 auto;
+}
+a {
+    color: var(--clr-dark);
+}
+h1.dashboardh1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+h2.dashboardh1{
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+h3.dashboardh1{
+    font-weight: 800;
+    font-size: 0.87rem;
+}
+h4.dashboardh1{
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+h5.dashboardh1{
+    font-weight: 800;
+    font-size: 0.77rem;
+}
+
+small.dashboardh1 {
+    font-weight: 800;
+    font-size: 0.75rem;
+}
+
+.primary{
+    color: var(--clr-primary);
+}
+.success{
+    color: var(--clr-success);
+}
+.danger{
+    color: var(--clr-danger);
+}
+.warning{
+    color: var(--clr-warning);
+}
+
+main.dashboard {
+    margin-top: 1.4rem;
+    width: auto;
+}
+
+main input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--clr-dark);
+}
+
+main .datar {
+    display: inline-block;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+}
+
+main .insight {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.6rem;
+}
+
+main .insight>div {
+    background-color: var(--clr-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+}
+
+main .insight > div:hover {
+    box-shadow: none;
+}
+
+main .insight > div span{
+    background:coral ;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--clr-white);
+    font-size: 2rem;
+}
+
+main .insight > div.custos span{
+    background: var(--clr-danger);
+}
+main .insight > div.recebido span{
+    background: var(--clr-success);
+}
+
+main .insight > div .meio{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .insight > div .meio h1{
+    font-size: 1.6rem;
+}
+
+main h1{
+    color: var(--clr-dark);
+}
+
+main .insight h1 {
+    color: var(--clr-dark);
+}
+
+main .insight h3{
+    color: var(--clr-dark);
+}
+
+main .insight p{
+    color: var(--clr-dark);
+}
+
+main .insight .progresso{
+    position: relative;
+    height: 68px;
+    width: 68px;
+    border-radius: 50px;
+}
+
+main .insight svg{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+}
+
+main .insight svg circle{
+    fill: none;
+    stroke: var(--clr-primary);
+    transform: rotate(270, 80, 80);
+    stroke-width: 5;
+}
+
+main .insight .vendas svg circle {
+    stroke-dashoffset: 10;
+    stroke-dasharray: 150;
+}
+
+main .insight .custos svg circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150;
+}
+
+main .insight .recebido svg circle {
+    stroke: var(--clr-success);
+}
+
+main .insight .progresso .numero {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .pedidos_recentes{
+    margin-top: 2rem;
+}
+
+main .pedidos_recentes h2{
+    color: var(--clr-dark);
+}
+
+main .pedidos_recentes table{
+    background-color: var(--clr-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    color: var(--clr-dark);
+}
+
+main .pedidos_recentes table:hover{
+    box-sizing: none;
+}
+
+main .pedidos_recentes tbody tr{
+    height: 3.8rem;
+    border-bottom: 1px solid var(--clr-dark);
+}
+main .pedidos_recentes thead tr{
+    height: 3.8rem;
+    border-bottom: 1px solid var(--clr-dark);
+    color: var(--clr-dark-variant);
+}
+
+main table tbody td{
+    height: 3.8rem;
+    border-bottom: 1px solid var(--clr-dark);
+}
+
+main table tbody tr:last-child td{
+    border:none;
+}
+
+main .pedidos_recentes a{
+    text-align: center;
+    display: block;
+    margin: 1rem;
+}
