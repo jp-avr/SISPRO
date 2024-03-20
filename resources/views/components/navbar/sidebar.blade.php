@@ -2,7 +2,7 @@
 	<aside id="sidebar">
 		<div class="h-100">
 			<div class="sidebar-logo">
-				<span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span>
+				<a href="{{ route('home') }}"><span style="font-family: 'Poppins'; font-weight: 600; font-size: 28px;" class="text-primary">SISPRO</span></a>
 			</div>
 			<!-- NAVEGAÇÃO DA SIDEBAR -->
 			<ul class="sidebar-nav">
