@@ -34,10 +34,10 @@ class ProcessoController extends Controller
     public function inserir_administrativo()
     {
         $cids = Cid::all();
-        $estados_civis = EstadoCivil::all();
         $clientes = Cliente::all();
         $profissoes = Profissao::all();
-        return view('processos.administrativo.inserir', compact('estados_civis','cids','clientes','profissoes'));
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.administrativo.inserir', compact('partes_atingidas','cids','clientes','profissoes'));
     }
 
     public function inserir_judiciario()

@@ -24,12 +24,16 @@
 }
 
 .dark-theme-variables {
-    --clr-color-background: #181a1e;
+    --clr-color-background: #181a1e; 
     --clr-white: #202528;
     --clr-light: rgba(0, 0, 0, 0.4);
     --clr-dark: #edeffd;
     --clr-dark-variant: #677483;
     --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+
+body .main {
+    background-color: var(--clr-color-background);
 }
 
 *{
@@ -51,9 +55,9 @@
 
 .cont {
     display: grid;
-    width: 96%;
+    width: 100%;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 14rem;
+    grid-template-columns: 3fr 1fr;
     margin: 0 auto;
 }
 a {
@@ -214,6 +218,7 @@ main .insight .recebido svg circle {
 }
 
 main .insight .progresso .numero {
+    color: var(--clr-dark);
     position: absolute;
     top: 5%;
     left: 5%;
@@ -243,6 +248,10 @@ main .pedidos_recentes table{
     color: var(--clr-dark);
 }
 
+main .pedidos_recentes table td{
+    color: var(--clr-dark);
+}
+
 main .pedidos_recentes table:hover{
     box-sizing: none;
 }
@@ -254,7 +263,7 @@ main .pedidos_recentes tbody tr{
 main .pedidos_recentes thead tr{
     height: 3.8rem;
     border-bottom: 1px solid var(--clr-dark);
-    color: var(--clr-dark-variant);
+    color: var(--clr-dark);
 }
 
 main table tbody td{
@@ -321,6 +330,14 @@ main .pedidos_recentes a{
     text-align: center;
 }
 
+.direito .topo .profile b{
+    color: var(--clr-dark);
+}
+
+.direito .topo .profile p{
+    color: var(--clr-dark);
+}
+
 .direito .info h3{
     color: var(--clr-dark); 
 }
@@ -352,7 +369,10 @@ main .pedidos_recentes a{
     grid-template-columns: 2.6rem auto;
     gap: 1rem;
     margin-bottom: 1rem;
+}
 
+.direito .updates_recentes .update .mensagem{
+    color: var(--clr-dark);
 }
 
 /* ESTILOS DE ANALISE */

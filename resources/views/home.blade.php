@@ -3,7 +3,7 @@
 @section('content')
     <div class="cont">
         <!-- começo do aside -->
-        <aside>
+        {{-- <aside> --}}
             {{-- <div class="topo">
                 <div class="logo">
                     <h2>C<span class="danger">BABA</span></h2>
@@ -12,7 +12,7 @@
                     <span><i data-feather="x"></i></span>
                 </div>
             </div> --}}
-        </aside>
+        {{-- </aside> --}}
         <!-- fim do aside -->
 
         <!-- seção main -->
@@ -29,15 +29,15 @@
                     <span class="material-symbols-outlined">trending_up</span>
                     <div class="meio">
                         <div class="esquerda">
-                            <h3 class="dashboardh1">Vendas Totais</h3>
-                            <h1 class="dashboardh1">$25.0</h1>
+                            <h3 class="dashboardh1">Processos Administrativos</h3>
+                            <h1 class="dashboardh1">12</h1>
                         </div>
-                        <div class="progresso">
+                        {{-- <div class="progresso">
                             <svg>
                                 <circle r="30" cy="40" cx="40"></circle>
                             </svg>
-                            <div class="numero">80%</div>
-                        </div>
+                            <div class="numero">32%</div>
+                        </div> --}}
                     </div>
                     <small class="dashboardh1">últimas 24h</small>
                 </div>
@@ -48,15 +48,15 @@
                     <span class="material-symbols-outlined">shopping_bag</span>
                     <div class="meio">
                         <div class="esquerda">
-                            <h3 class="dashboardh1">Despesas</h3>
-                            <h1 class="dashboardh1">$25.0</h1>
+                            <h3 class="dashboardh1">Processos Judiciários</h3>
+                            <h1 class="dashboardh1">25</h1>
                         </div>
-                        <div class="progresso">
+                        {{-- <div class="progresso">
                             <svg class="teste">
                                 <circle r="30" cy="40" cx="40"></circle>
                             </svg>
-                            <div class="numero">80%</div>
-                        </div>
+                            <div class="numero">68%</div>
+                        </div> --}}
                     </div>
                     <small class="dashboardh1">últimas 24h</small>
                 </div>
@@ -67,15 +67,15 @@
                     <span class="material-symbols-outlined">stacked_line_chart</span>
                     <div class="meio">
                         <div class="esquerda">
-                            <h3 class="dashboardh1">Recebido</h3>
-                            <h1 class="dashboardh1">$25.0</h1>
+                            <h3 class="dashboardh1">Total de Processos</h3>
+                            <h1 class="dashboardh1">37</h1>
                         </div>
-                        <div class="progresso">
+                        {{-- <div class="progresso">
                             <svg>
                                 <circle r="30" cy="40" cx="40"></circle>
                             </svg>
                             <div class="numero">100%</div>
-                        </div>
+                        </div> --}}
                     </div>
                     <small class="dashboardh1">últimas 24h</small>
                 </div>
@@ -166,7 +166,7 @@
                         <img src="/img/foto.webp" alt="">
                     </div>
                     <div class="mensagem">
-                        <p><b>João</b> Recebeu seu pedido</p>
+                        <p><b>João</b> Adicionou um processo</p>
                     </div>
                 </div>
                 <div class="update">
@@ -174,7 +174,7 @@
                         <img src="/img/foto.webp" alt="">
                     </div>
                     <div class="mensagem">
-                        <p><b>João</b> Recebeu seu pedido</p>
+                        <p><b>João</b> Adicionou um processo</p>
                     </div>
                 </div>
                 <div class="update">
@@ -182,7 +182,7 @@
                         <img src="/img/foto.webp" alt="">
                     </div>
                     <div class="mensagem">
-                        <p><b>João</b> Recebeu seu pedido</p>
+                        <p><b>João</b> Adicionou um processo</p>
                     </div>
                 </div>
             </div>

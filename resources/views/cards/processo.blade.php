@@ -8,7 +8,7 @@
 </div>
 @endif --}}
 
-<div class="col-12 col-lg-6">
+<div class="col-12 col-lg-8 mx-auto">
     <div class="card" style="border-top:2px solid #3a9dd5;">
         <div class="card-header">
             <h5 class="card-title mb-0">Informações do Processo</h5>

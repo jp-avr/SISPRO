@@ -12,8 +12,10 @@
                     @include('cards.processo')
                 </div>
                     
-                <div>
-                    <button type="submit" class="btn btn-success mt-4">{{ __('Salvar') }}</button>
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-8 mx-auto">
+                        <button type="submit" class="btn btn-success mt-4">{{ __('Salvar') }}</button>
+                    </div>
                 </div>
             </form>
         </div>
