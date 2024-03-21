@@ -197,10 +197,10 @@
                     </div>
                     <div class="lado_direito">
                         <div class="info">
-                            <h3 class="dashboardh1">Online orders</h3>
+                            <h3 class="dashboardh1">Processo</h3>
                             <small class="text-muted">Visto por último a 2h</small>
                         </div>
-                        <h5 class="danger">-17%</h5>
+                        {{-- <h5 class="danger">-17%</h5> --}}
                         <h3 class="dashboardh1">3849</h3>
                     </div>
                 </div>
@@ -211,10 +211,10 @@
                     </div>
                     <div class="lado_direito">
                         <div class="info">
-                            <h3 class="dashboardh1">Online orders</h3>
+                            <h3 class="dashboardh1">Processo</h3>
                             <small class="text-muted">Visto por último a 2h</small>
                         </div>
-                        <h5 class="danger">-17%</h5>
+                        {{-- <h5 class="danger">-17%</h5> --}}
                         <h3 class="dashboardh1">3849</h3>
                     </div>
                 </div>
