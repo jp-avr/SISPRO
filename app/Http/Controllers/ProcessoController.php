@@ -60,11 +60,29 @@ class ProcessoController extends Controller
         return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
     }
 
+    public function novo_processo_administrativo(ProcessoInserirRequest $request, $cliente_id)
+    {  
+        Processo::criarAdministrativo($request, $cliente_id);
+
+        // dd($request->all());
+
+        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+    }
+
     public function store_judiciario(ProcessoInserirRequest $request)
     {  
         $cliente = Cliente::criar($request);
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
+
+        // dd($request->all());
+
+        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+    }
+
+    public function novo_processo_judiciario(ProcessoInserirRequest $request, $cliente_id)
+    {  
+        Processo::criarJudiciario($request, $cliente_id);
 
         // dd($request->all());
 

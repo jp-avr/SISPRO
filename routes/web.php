@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('clientes')->group(function (){
         Route::get('/index', 'ClienteController@index')->name('clientes.index');
         Route::get('/processos/{cliente}', 'ClienteController@processos')->name('clientes.processos');
+        Route::get('/{cliente}/Novo Processo/', 'ProcessoController@store_novo_processo_administrativo')->name('cliente.novo.processo.Adm'); ///ROTA PARA STORE DO PROCESSO, DIRECIONADA PARA O CONTROLLER DE PROCESSOS
+        Route::get('/{cliente}/Novo Processo/', 'ProcessoController@store_novo_processo_judiciario')->name('cliente.novo.processo.Jdc'); ///ROTA PARA STORE DO PROCESSO, DIRECIONADA PARA O CONTROLLER DE PROCESSOS
         Route::get('/show/{cliente}', 'ClienteController@show')->name('cliente.show');
         Route::get('/inserir', 'ClienteController@inserir')->name('cliente.inserir');
         Route::post('/store', 'ClienteController@store')->name('cliente.store');
