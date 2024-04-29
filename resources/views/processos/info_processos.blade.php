@@ -29,7 +29,7 @@
                                 Número do Processo: <strong>{{ $processo->proc_numero_proc}}</strong><br>
                                 Data de início da doença: {{ $processo->proc_data_ini_doenca }}<br>
                                 Data de início da incapacidade: {{ $processo->proc_data_ini_incapacidade }} <br>
-                                Parte Atingida: {{ $processo->parte_atingida_id }}<br>
+                                Parte Atingida: {{ $processo->parte_atingida->parte_atingida_descricao }}<br>
                             </div>
                             <div class="col-5">
                                 Resultado: {{ $processo->proc_resultado }}

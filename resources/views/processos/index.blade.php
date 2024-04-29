@@ -49,7 +49,7 @@
                                 @include('processos.modal')
                                     <tr>
                                         <td>
-                                            {{ 'JOAO '}}
+                                            {{ $processo->cliente->cliente_nome }}
                                             {{-- {{ $processo->cliente->cliente_nome}} --}}
                                         </td>
                                         <td>

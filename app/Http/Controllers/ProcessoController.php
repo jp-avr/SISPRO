@@ -16,7 +16,7 @@ class ProcessoController extends Controller
 {
     public function index()
     {
-        $processos = Processo::all();
+        $processos = Processo::paginate(15)->sortDesc();
         $clientes = Cliente::all();
         $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
