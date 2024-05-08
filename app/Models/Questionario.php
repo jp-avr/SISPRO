@@ -19,18 +19,20 @@ class Questionario extends Model
         "questionario_porcentagem",
     ];
 
-    public static function criar($request, $processo_id, $pos_operatorio){
-
+    public static function questionarioPorcentagem($request) : int {
+        //Soma dos valores selecionados no questionario para gerar a porcentagem utilizada para analisar o resultado
         $soma = $request->secao_1 + $request->secao_2 + $request->secao_3 + $request->secao_4 + $request->secao_5 + $request->secao_6 + $request->secao_7 + $request->secao_8 + $request->secao_9 + $request->secao_10; /// Soma das seleções
         
         $base = $request->secao_8 == null ? 40 : 50; //base para divisão
 
-        $porcentagem = $soma/$base * 100; /// resultado em porcentagem
+        $porcentagem = $soma/$base * 100;
 
-        /// resultados baseados na porcentagem
-
+        return $porcentagem;
+    }
+    
+    public static function resultadoQuestionario($porcentagem,$pos_operatorio){
         switch ($pos_operatorio) {
-            case 0:
+            case 0://Resultados possiveis para clientes que não estão em pós operatorio
                 if($porcentagem <= 20){
                     $resultado = "Pouca ou nenhuma incapacidade funcional.";
                 }else if($porcentagem > 20 && $porcentagem <= 40){
@@ -45,7 +47,7 @@ class Questionario extends Model
                     throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
                 }
                 break;
-            case 1:
+            case 1://Resultados possiveis para clientes que estão em pós operatorio
                 if($porcentagem <= 20){
                     $resultado = "Incrível melhora após o procedimento médico";
                 }else if($porcentagem > 20 && $porcentagem <= 40){
@@ -61,6 +63,15 @@ class Questionario extends Model
             default:
                 throw ValidationException::withMessages(['erro!' => 'Resultado inválido']);
         }
+
+        return $resultado;
+    }
+
+    public static function criar($request, $processo_id, $pos_operatorio){
+
+        // Chamando as funções que calculam o resultado do questionario
+        $porcentagem = self::questionarioPorcentagem($request);
+        $resultado = self::resultadoQuestionario($porcentagem, $pos_operatorio);
         
         // dd($resultado);
         $questionario = self::create([
@@ -70,19 +81,7 @@ class Questionario extends Model
             "questionario_porcentagem" => $porcentagem,
         ]);
 
-        RespostasQuestionario::create([
-            "questionario_id" => $questionario->questionario_id,
-            'secao_1' => $request->secao_1,
-            'secao_2' => $request->secao_2,
-            'secao_3' => $request->secao_3,
-            'secao_4' => $request->secao_4,
-            'secao_5' => $request->secao_5,
-            'secao_6' => $request->secao_6,
-            'secao_7' => $request->secao_7,
-            'secao_8' => $request->secao_8,
-            'secao_9' => $request->secao_9,
-            'secao_10' => $request->secao_10,
-        ]);
+        return $questionario;
     }
 
     public function processo(){

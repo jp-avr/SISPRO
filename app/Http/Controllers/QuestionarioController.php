@@ -6,6 +6,7 @@ use App\Http\Requests\FormularioRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
 use App\Models\Questionario;
+use App\Models\RespostasQuestionario;
 use Illuminate\Http\Request;
 
 class QuestionarioController extends Controller
@@ -24,7 +25,8 @@ class QuestionarioController extends Controller
     }
 
     public function store(FormularioRequest $request,$processo_id,$pos_operatorio){
-        Questionario::criar($request, $processo_id, $pos_operatorio);
+        $questionario = Questionario::criar($request, $processo_id, $pos_operatorio);
+        RespostasQuestionario::criar($questionario->questionario_id, $request);
 
         return redirect()->route("processos.index")->with($processo_id);
     }
