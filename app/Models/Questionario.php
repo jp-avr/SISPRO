@@ -21,9 +21,9 @@ class Questionario extends Model
 
     public static function questionarioPorcentagem($request) : int {
         //Soma dos valores selecionados no questionario para gerar a porcentagem utilizada para analisar o resultado
-        $soma = $request->secao_1 + $request->secao_2 + $request->secao_3 + $request->secao_4 + $request->secao_5 + $request->secao_6 + $request->secao_7 + $request->secao_8 + $request->secao_9 + $request->secao_10; /// Soma das seleções
+        $soma = $request['secao_1'] + $request['secao_2'] + $request['secao_3'] + $request['secao_4'] + $request['secao_5'] + $request['secao_6'] + $request['secao_7'] + $request['secao_8'] + $request['secao_9'] + $request['secao_10']; /// Soma das seleções
         
-        $base = $request->secao_8 == null ? 40 : 50; //base para divisão
+        $base = $request['secao_8'] == null ? 40 : 50; //base para divisão
 
         $porcentagem = $soma/$base * 100;
 

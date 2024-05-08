@@ -40,7 +40,7 @@ class RespostasQuestionario extends Model
             'secao_10' => $request->secao_10,
         ]);
 
-        dd($respostas);
+        
 
         return $respostas;
     }
