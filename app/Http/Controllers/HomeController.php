@@ -36,6 +36,6 @@ class HomeController extends Controller
         $processos_finalizados = Processo::where('proc_finalizado','=',1);
         $total_processos_finalizados = $processos_finalizados->count();
 
-        return view('home', compact('total_processos','total_processos_administrativos','total_processos_judiciarios','total_processos_finalizados'));
+        return view('home', compact('total_processos','total_processos_administrativos','total_processos_judiciarios','total_processos_finalizados','processos'));
     }
 }

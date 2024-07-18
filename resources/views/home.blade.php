@@ -57,27 +57,16 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            {{-- @include('home.audiencias_serem_realizadas') --}}
+            @include('home.audiencias_serem_realizadas')
         </div>
 
         <div class="col-md-6">
-            <div class="row">
-                <div class="col-xs-12">
-                    {{-- @include('home.include_processos_hoje') --}}
-                </div>
-                <div class="col-xs-12">
-                    {{-- @include('home.processos_prazo_decisao_vencer') --}}
-                </div>
-                <div class="col-xs-12">
-                    {{-- @include('home.documentos_prazo_decisao_vencer') --}}
-                </div>
-            </div>
-
+            @include('home.processos_prazo_decisao_vencer')
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{-- @include('home.tramitacoes_sem_retorno') --}}
+            @include('home.tramitacoes_sem_retorno')
         </div>
     </div>
 @stop
