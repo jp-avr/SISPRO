@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Processos')])
+@extends('adminlte::page')
 
 @section('content')
 <main class="content">
@@ -55,12 +55,12 @@
                                     </td>
                                     <td style="vertical-align: top;">
                                         <a href="{{ route('clientes.processos', $cliente->cliente_id) }}">
-                                            <i class="align-middle me-1" data-feather="maximize-2"></i>
+                                            <i class="fas fa-fw fa-clipboard"></i>
                                         </a>    
                                     </td>
                                     <td style="vertical-align: top;" class="table-action text-left poppins-regular15 last-cell">
-                                        <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" class="btn btn-sm btn-success"><i class="align-middle" data-feather="edit"></i></a>
-                                        <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="trash"></i></a>
+                                        <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" class="btn btn-sm btn-success"><i class="align-middle fas fa-fw fa-pen" data-feather="edit"></i></a>
+                                        <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" class="btn btn-sm btn-danger"><i class="align-middle fas fa-fw fa-trash" data-feather="trash"></i></a>
                                     </td>
                                 </tr>
                             @empty

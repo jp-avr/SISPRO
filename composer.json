@@ -12,9 +12,11 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "jeroennoten/laravel-adminlte": "^3.12",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.5",
+        "mauro-pinheiro/laravel-adminlte": "dev-master",
         "twbs/bootstrap": "^5.3"
     },
     "require-dev": {

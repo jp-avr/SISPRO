@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('SISCOP')])
+@extends('adminlte::page')
 
 @section('content')
     @if ($errors->any())

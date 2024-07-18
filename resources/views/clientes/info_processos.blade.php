@@ -1,5 +1,4 @@
-@extends('layouts.app', ['title' => __('Processos')])
-
+@extends('adminlte::page')
 @section('content')
 <main class="content">
     <div class="container-fluid p-0">
@@ -91,12 +90,12 @@
                                     </td>
                                     <td style="vertical-align: top;">
                                         <a type="button" href="{{route("processos.questionarios", $processo->processo_id)}}">
-                                            <i class="align-middle text-primary" data-feather="eye"></i>
+                                            <i class="align-middle text-primary fas fa-fw fa-eye"></i>
                                         </a>     
                                     </td>
                                     <td style="vertical-align: top;">
                                         <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $cliente->getKey() }}">
-                                            <i class="align-middle text-primary" data-feather="clipboard"></i>
+                                            <i class="align-middle text-primary fas fa-fw fa-clipboard" data-feather="clipboard"></i>
                                         </button>
                                     </td>
                                     <td>
@@ -126,7 +125,7 @@
                                     <td class="text-right"></td>
                                     <td class="table-action">
                                         <a href="#" title="Editar monitoramento">
-                                            <i class="align-middle me-1" data-feather="edit"></i>
+                                            <i class="align-middle me-1 fas fa-fw fa-pen"></i>
                                         </a>
                                     </td>
                                 </tr>

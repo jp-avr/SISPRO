@@ -32,6 +32,7 @@ class CreateProcessosTable extends Migration
             // $table->string('proc_exame_fisico'); //Cliente pediu a remoção, não irá salvar laudos no sistema
             $table->string('proc_consideracoes')->nullable();
             $table->boolean('proc_ativo')->default(1);
+            $table->boolean('proc_finalizado')->default(0);
             // $table->string('proc_parte_atingida'); //Virou chave estrangeira        
             $table->timestamps();
         });

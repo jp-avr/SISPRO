@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Solicitações')])
+@extends('adminlte::page')
 
 @section('content')
     <div class="content min-vh-100">

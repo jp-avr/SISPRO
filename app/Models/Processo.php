@@ -29,6 +29,7 @@ class Processo extends Model
         // 'proc_parte_atingida',
         'proc_consideracoes',
         'proc_ativo',
+        'proc_finalizado',
         'created_at',
         'updated_at'
     ];

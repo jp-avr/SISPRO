@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Processos')])
+@extends('adminlte::page')
 
 @section('content')
 <main class="content">
