@@ -87,4 +87,8 @@ class Questionario extends Model
     public function processo(){
         return $this->belongsTo(Processo::class, "processo_id", "processo_id");
     }
+
+    public function respostas() {
+        return $this->belongsTo(RespostasQuestionario::class, 'questionario_id', 'questionario_id');
+    }
 }

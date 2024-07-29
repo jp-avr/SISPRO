@@ -1,150 +1,144 @@
 @extends('adminlte::page')
 
+@section('title', 'Resultado do Questionário')
+
 @section('content')
-<main class="content">
-    <div class="container-fluid p-0">
-        @if (session('sucesso'))
-        <div class="alert alert-success">
-            <p>{{ session('sucesso') }}</p>
-        </div>
-        @endif
-
-        <h1 class="h3 mb-3"><i class="align-middle me-1" data-feather="clipboard" style="width:2%;height:2%"></i> <strong>Informações</strong> de Processos</h1>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-3"></div>
+    <main class="content">
+        <div class="container-fluid p-0">
+            @if (session('sucesso'))
+                <div class="alert alert-success">
+                    <p>{{ session('sucesso') }}</p>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col-5">
-                                <h3 class="mb-0"><i class="align-middle me-1" data-feather="list" style="width:4%;height:4%">
-                                    </i> Ficha:
-                                </h3>
-                                Número do Processo: <strong>{{ $processo->proc_numero_proc}}</strong><br>
-                                Data de início da doença: {{ $processo->proc_data_ini_doenca }}<br>
-                                Data de início da incapacidade: {{ $processo->proc_data_ini_incapacidade }} <br>
-                                Parte Atingida: {{ $processo->parte_atingida->parte_atingida_descricao }}<br>
+            @endif
+
+            <h1 class="h3 mb-3"><i class="align-middle me-1" data-feather="clipboard" style="width:2%;height:2%"></i> <strong>Informações</strong> do Processo</h1>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-header bg-dark text-white">
+                                    <h3 class="mb-0"><i class="align-middle me-1" data-feather="list"></i> Ficha:</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Número do Processo:</strong> {{ $processo->proc_numero_proc }}</p>
+                                    <p><strong>Data de início da doença:</strong> {{ $processo->proc_data_ini_doenca }}</p>
+                                    <p><strong>Data de início da incapacidade:</strong> {{ $processo->proc_data_ini_incapacidade }}</p>
+                                    <p><strong>Parte Atingida:</strong> {{ $processo->parte_atingida->parte_atingida_descricao }}</p>
+                                </div>
                             </div>
-                            <div class="col-5">
-                                Resultado: {{ $processo->proc_resultado }}
-                                <br>
-                                História: {{ $processo->proc_historia }}
-                                <br>
-                                Considerações: {{ $processo->proc_consideracoes }}
-                                <br>
-                                Atividade:
-                                @if($processo->proc_ativo == 0)
-                                    Não ativo
-                                @endif
-                                @if($processo->proc_ativo == 1)
-                                    Ativo
-                                @endif
-                                <br>
-                                Notificação feita em <strong>{{$processo->created_at->format('d/m/Y')}}</strong>
-                            </div>
-                            <div class="col-2 text-right">
-                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $processo->cliente->getKey() }}" class="btn btn-sm btn-primary">Novo Formulario</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <p><strong>Resultado:</strong> {{ $processo->proc_resultado }}</p>
+                                    <p><strong>História:</strong> {{ $processo->proc_historia }}</p>
+                                    <p><strong>Considerações:</strong> {{ $processo->proc_consideracoes }}</p>
+                                    <p><strong>Atividade:</strong>
+                                        @if($processo->proc_ativo == 0)
+                                            Não ativo
+                                        @else
+                                            Ativo
+                                        @endif
+                                    </p>
+                                    <p><strong>Notificação feita em:</strong> {{ $processo->created_at->format('d/m/Y') }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    {{-- MODAL --}}
-                    
-                    @include('processos.modal_resposta_info_processos')
-
-
-                    <div class="col-12">
-
-                    </div>
-
-                    <div class="table-responsive table-hover">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Número do questionário</th>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Informações</th>
-                                    <th scope="col">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($questionarios as $questionario)
-                                {{-- @include('processos.modal_processo') --}}
-                                <tr>
-                                    <td>
-                                        {{ $questionario->questionario_id }}
-                                    </td>
-                                    <td>
-                                        {{ date_format(date_create($questionario->created_at),'d/m/Y') }}
-                                    </td>
-                                    <td style="vertical-align: top;">
-                                        <a href="#">
-                                            <i class="align-middle me-1" data-feather="maximize-2"></i>
-                                        </a>    
-                                    </td>
-                                    <td style="vertical-align: top;" class="table-action text-left poppins-regular15 last-cell">
-                                        <a href="{{ route('questionarios.destroy', $questionario->questionario_id) }}" class="btn btn-sm btn-danger"><i class="align-middle" data-feather="trash"></i></a>
-                                    </td>
-                                    {{-- <td>
-                                        {{ $processo->proc_numero_proc }}
-                                        <td style="vertical-align: top;">
-                                            <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}">
-                                                <i class="align-middle text-primary" data-feather="eye"></i>
-                                            </button>     
-                                        </td>
-                                    <td>
-                                        <span class="@switch ($processo->tipo_processo_id) @case('1') {{ 'badge bg-warning' }} @break @case('2') {{ 'badge bg-primary'}} @break @endswitch">
-                                            @if($processo->tipo_processo_id == 1)
-                                                Administrativo
-                                            @endif
-                                            @if($processo->tipo_processo_id == 2)
-                                                Judiciário
-                                            @endif
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span class="@switch ($processo->proc_ativo) @case('0') {{ 'badge bg-secondary' }} @break @case('1') {{ 'badge bg-success' }} @break @endswitch">
-                                            @if($processo->proc_ativo == 0)
-                                                Não ativo
-                                            @endif
-                                            @if($processo->proc_ativo == 1)
-                                                Ativo
-                                            @endif
-                                        </span>
-                                    </td>
-                                    <td>
-                                        {{ $processo->proc_resultado }}
-                                    </td>
-                                    <td>{{ $processo->created_at->format('d/m/Y') }}</td>
-                                    <td class="text-right"></td>
-                                    <td class="table-action">
-                                        <a href="#" title="Editar monitoramento">
-                                            <i class="align-middle me-1" data-feather="edit"></i>
-                                        </a>
-                                    </td>
-                                </tr> --}}
-                                @empty
-                                <tr>
-                                    <td conlspan="4">Nenhum questionário encontrada</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            {{-- {{ $processos->links() }} --}}
-                        </nav>
+            <h2 class="h4 mb-3 mt-4">Questionários</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Número do questionário</th>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Informações</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($questionarios as $questionario)
+                                        <tr>
+                                            <td>{{ $questionario->questionario_id }}</td>
+                                            <td>{{ date_format(date_create($questionario->created_at), 'd/m/Y') }}</td>
+                                            <td>
+                                                <a href="{{ route('questionario.resultado', $questionario->questionario_id) }}">
+                                                    <i class="align-middle me-1 fas fa-expand"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('questionarios.destroy', $questionario->questionario_id) }}" class="btn btn-sm btn-danger">
+                                                    <i class="align-middle" data-feather="trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4">Nenhum questionário encontrado</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer py-4">
+                            <nav class="d-flex justify-content-end" aria-label="...">
+                                {{-- {{ $processos->links() }} --}}
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
+    @include('processos.modal_resposta_info_processos')
+
+@endsection
+
+@section('css')
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #343a40;
+            color: white;
+            font-weight: bold;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .card-body p {
+            margin-bottom: 0.5rem;
+        }
+        .card-body h3 {
+            color: #6c757d;
+        }
+        .card-footer {
+            background-color: #e9ecef;
+        }
+        .mt-4 {
+            margin-top: 1.5rem;
+        }
+    </style>
+@endsection
+
+@section('js')
+    <script>
+        console.log('Dashboard loaded');
+    </script>
 @endsection

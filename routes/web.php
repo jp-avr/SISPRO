@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::prefix('questionarios')->group(function (){
-        Route::get('/{processo}/index', 'QuestionarioController@index')->name('questionarios.index');
+        Route::get('/{questionario}/resultado', 'QuestionarioController@resultado')->name('questionario.resultado');
         Route::get('/{processo}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
         Route::post('/{processo}/{pos}/store', 'QuestionarioController@store')->name('questionarios.store');
         Route::get('/destroy/{questionario}', 'QuestionarioController@destroy')->name('questionarios.destroy');

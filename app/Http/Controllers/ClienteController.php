@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\EstadoCivil;
-use App\Models\Ocupacao;
 use App\Models\Processo;
 use Illuminate\Http\Request;
 

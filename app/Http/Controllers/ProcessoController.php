@@ -57,7 +57,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     public function novo_processo_administrativo(ProcessoInserirRequest $request, $cliente_id)
@@ -66,7 +66,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     public function store_judiciario(ProcessoInserirRequest $request)
@@ -77,7 +77,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     public function novo_processo_judiciario(ProcessoInserirRequest $request, $cliente_id)
@@ -86,7 +86,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'solicitacao inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     // EDITANDO DADOS EM TABELA

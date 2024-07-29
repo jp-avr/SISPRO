@@ -1,16 +1,6 @@
-{{-- @if ($errors->any())
-<div class="alert alert-danger">Erro! :(
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif --}}
-
-<div class="col-12 col-lg-8 mx-auto">
-    <div class="card" style="border-top:2px solid #3a9dd5;">
-        <div class="card-header">
+<div class="col-12 col-lg-8 mx-auto mb-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white">
             <h5 class="card-title mb-0">Informações do Processo</h5>
         </div>
 
@@ -105,6 +95,10 @@
                         </div>
                     @enderror
                 </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
             </div>
         </div>
     </div>
