@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="card shadow">
                                 <div class="card-header bg-dark text-white">
-                                    <h3 class="mb-0"><i class="align-middle me-1" data-feather="list"></i> Ficha:</h3>
+                                    <h3 class="mb-0"><i class="align-middle me-1" data-feather="list"></i> Ficha</h3>
                                 </div>
                                 <div class="card-body">
                                     <p><strong>Número do Processo:</strong> {{ $processo->proc_numero_proc }}</p>
@@ -76,7 +76,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('questionarios.destroy', $questionario->questionario_id) }}" class="btn btn-sm btn-danger">
-                                                    <i class="align-middle" data-feather="trash"></i>
+                                                    <i class="fas fa-trash"></i> Excluir
                                                 </a>
                                             </td>
                                         </tr>
