@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{questionario}/resultado', 'QuestionarioController@resultado')->name('questionario.resultado');
         Route::get('/{processo}/inserir', 'QuestionarioController@inserir')->name('questionarios.inserir');
         Route::post('/{processo}/{pos}/store', 'QuestionarioController@store')->name('questionarios.store');
+        Route::post('/{questionario}/edit', 'QuestionarioController@edit')->name('questionarios.edit');
+        route::post('/{questionario}/update', 'QuestionarioController@update')->name('questionarios.update');
         Route::get('/destroy/{questionario}', 'QuestionarioController@destroy')->name('questionarios.destroy');
     });
 
