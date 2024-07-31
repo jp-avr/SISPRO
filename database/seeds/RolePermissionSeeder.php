@@ -31,7 +31,7 @@ class RolePermissionSeeder extends Seeder
         }
 
         //Leitor
-        $permissions = [1,5,6,12,13,18];
+        $permissions = [1,5,6,12,13,19];
         foreach ($permissions as $permission) {
             RolesPermission::create([
                 'role_id' => 3,
