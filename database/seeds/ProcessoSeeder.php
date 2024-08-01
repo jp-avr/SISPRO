@@ -12,7 +12,7 @@ class ProcessoSeeder extends Seeder
      */
     public function run()
     {
-        Processo::create([
+        /* Processo::create([
             'cliente_id' => 1,
             'tipo_processo_id' => 1,
             'parte_atingida_id' => 1,
@@ -40,6 +40,6 @@ class ProcessoSeeder extends Seeder
             // 'proc_parte_atingida' => 'Perna',
             'proc_consideracoes' => 'O requerente encontra-se impossibilitado de continuar o trabalho',
             // 'proc_ativo',
-        ]);
+        ]); */
     }
 }
