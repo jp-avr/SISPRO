@@ -27,17 +27,17 @@
 </style>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop-resposta-{{ $processo->getKey() }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop-processo-{{ $cliente->getKey() }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
       <div class="modal-content modal-custom">
           <div class="modal-header modal-header-custom">
-              <h3 class="modal-title" id="staticBackdropLabel">O cliente está em pós-operatório?</h3>
+              <h3 class="modal-title" id="staticBackdropLabel">Qual será o tipo de processo?</h3>
               <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
                   <i class="fas fa-times"></i>
               </button>
           </div>
           <div class="modal-body modal-body-custom">
-              @include('modais.modal_info_resposta_info_processos')
+              @include('modais.modal_tipo_processo')
           </div>
       </div>
   </div>

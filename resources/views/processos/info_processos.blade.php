@@ -44,6 +44,9 @@
                                     </p>
                                     <p><strong>Notificação feita em:</strong> {{ $processo->created_at->format('d/m/Y') }}</p>
                                 </div>
+                                <div class="card-footer text-right">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $processo->getKey() }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Novo questionário</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -97,6 +100,7 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/adminkit.js')}}"></script>
     </main>
 
     @include('processos.modal_resposta_info_processos')

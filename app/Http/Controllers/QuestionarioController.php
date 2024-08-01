@@ -57,19 +57,19 @@ class QuestionarioController extends Controller
     }
 
 
-    public function inserir($cliente_id, Request $request)
+    public function inserir($processo_id, Request $request)
     {
-        $cliente = Cliente::findOrFail($cliente_id);
+        $processo = Processo::findOrFail($processo_id);
         $cids = Cid::all();
         $pos_operatorio = $request->input('pos_operatorio');
-        return view('clientes.formulario', compact('cids', 'cliente','pos_operatorio'));
+        return view('clientes.formulario', compact('cids', 'processo','pos_operatorio'));
     }
 
     public function store(FormularioRequest $request,$processo_id,$pos_operatorio){
         $questionario = Questionario::criar($request, $processo_id, $pos_operatorio);
         RespostasQuestionario::criar($questionario->questionario_id, $request);
 
-        return redirect()->route("processos.index")->with($processo_id);
+        return redirect()->route("processos.questionarios", $processo_id);
     }
 
     public function destroy($questionario_id)
