@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Permission;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
@@ -14,100 +14,90 @@ class PermissionSeeder extends Seeder
     {
         //Permissão de Processo
         Permission::create([
-            'permission_nome' => 'Formulario de processo',
-            'permission' => 'processo.inserir'
+            'name' => 'ver-formulario-de-processo',
         ]);
 
         Permission::create([
-            'permission_nome' => 'Criar processo',
-            'permission' => 'processo.store'
+            'name' => 'criar-processo',
+
         ]);
 
         Permission::create([
-            'permission_nome' => 'Update processo',
-            'permission' => 'processo.update'
+            'name' => 'update-processo',
+    
         ]);
 
         Permission::create([
-            'permission_nome' => 'Excluir processo',
-            'permission' => 'processo.destroy'
+            'name' => 'excluir-processo',
+        
         ]);
 
         Permission::create([
-            'permission_nome' => 'Ver lista de processos',
-            'permission' => 'processo.index'
+            'name' => 'ver-lista-de-processos',
+
         ]);
 
         Permission::create([
-            'permission_nome' => 'ver processo',
-            'permission' => 'processo.questionarios'
+            'name' => 'ver-processo',
         ]);
 
         //Permissão de Cliente
         Permission::create([
-            'permission_nome' => 'Criar cliente',
-            'permission' => 'cliente.store'
+            'name' => 'criar-cliente',
         ]);
 
         Permission::create([
-            'permission_nome' => 'Formulario de cliente',
-            'permission' => 'cliente.inserir'
+            'name' => 'formulario-de-cliente',
+    
         ]);
 
         Permission::create([
-            'permission_nome' => 'Editar cliente',
-            'permission' => 'cliente.edit'
+            'name' => 'editar-cliente'
         ]);
 
         Permission::create([
-            'permission_nome' => 'Update cliente',
-            'permission' => 'cliente.update'
+            'name' => 'update-cliente',
+
         ]);
 
         Permission::create([
-            'permission_nome' => 'Excluir cliente',
-            'permission' => 'cliente.destroy'
+            'name' => 'excluir-cliente',
+    
         ]);
 
         Permission::create([
-            'permission_nome' => 'Ver lista de clientes',
-            'permission' => 'cliente.index'
+            'name' => 'ver-lista-de-clientes',
         ]);
 
         Permission::create([
-            'permission_nome' => 'ver cliente',
-            'permission' => 'cliente.processos'
+            'name' => 'ver-cliente',
+            
         ]);
 
         //Permissão de Questionario
         Permission::create([
-            'permission_nome' => 'Criar questionario',
-            'permission' => 'questionario.store'
+            'name' => 'criar-questionario',
         ]);
 
         Permission::create([
-            'permission_nome' => 'Formulario de questionario',
-            'permission' => 'questionario.inserir'
+            'name' => 'formulario-de-questionario',
         ]);
 
         Permission::create([
-            'permission_nome' => 'Editar questionario',
-            'permission' => 'questionario.edit'
+            'name' => 'editar-questionario',
+            
         ]);
 
         Permission::create([
-            'permission_nome' => 'Update questionario',
-            'permission' => 'questionario.update'
+            'name' => 'update-questionario',
         ]);
 
         Permission::create([
-            'permission_nome' => 'Excluir questionario',
-            'permission' => 'questionario.destroy'
+            'name' => 'excluir-questionario',
         ]);
 
         Permission::create([
-            'permission_nome' => 'ver questionario',
-            'permission' => 'questionario.resultado'
+            'name' => 'ver-questionario',
         ]);
     }
 }

@@ -51,9 +51,11 @@
                                             <a href="{{ route('cliente.edit', $cliente->cliente_id) }}" class="btn btn-success btn-sm">
                                                 <i class="fas fa-pen"></i> Editar
                                             </a>
+                                            @can("excluir-cliente")
                                             <a href="{{ route('cliente.destroy', $cliente->cliente_id) }}" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Excluir
-                                            </a>
+                                            </a>   
+                                            @endcan
                                         </td>
                                     </tr>
                                 @empty

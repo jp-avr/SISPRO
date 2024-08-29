@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -12,19 +12,66 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
-            'role_name' => 'Administrator',
-            'role' => 'admin',
+        $adm = Role::create([
+            'name' => 'Admin',
         ]);
 
-        Role::create([
-            'role_name' => 'User',
-            'role' => 'user',
+        $user = Role::create([
+            'name' => 'User',
         ]);
 
-        Role::create([
-            'role_name' => 'Leitor',
-            'role' => 'leitor',
+        $reader = Role::create([
+            'name' => 'Leitor',
+        ]);
+
+        $adm->givePermissionTo([
+            'ver-formulario-de-processo',
+            'criar-processo',
+            'update-processo',
+            'excluir-processo',
+            'ver-lista-de-processos',
+            'ver-processo',
+            'criar-cliente',
+            'formulario-de-cliente',
+            'editar-cliente',
+            'update-cliente',
+            'excluir-cliente',
+            'ver-lista-de-clientes',
+            'ver-cliente',
+            'criar-questionario',
+            'formulario-de-questionario',
+            'editar-questionario',
+            'update-questionario',
+            'excluir-questionario',
+            'ver-questionario'
+        ]);
+
+        $user->givePermissionTo([
+            'ver-formulario-de-processo',
+            'criar-processo',
+            'update-processo',
+            'ver-lista-de-processos',
+            'ver-processo',
+            'criar-cliente',
+            'formulario-de-cliente',
+            'editar-cliente',
+            'update-cliente',
+            'ver-lista-de-clientes',
+            'ver-cliente',
+            'criar-questionario',
+            'formulario-de-questionario',
+            'editar-questionario',
+            'update-questionario',
+            'ver-questionario'
+        ]);
+
+        $reader->givePermissionTo([
+            'ver-formulario-de-processo',
+            'ver-lista-de-processos',
+            'ver-processo',
+            'ver-lista-de-clientes',
+            'ver-cliente',
+            'ver-questionario'
         ]);
     }
 }

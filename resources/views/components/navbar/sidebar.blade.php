@@ -15,6 +15,7 @@
 						<i class="align-middle" data-feather="chevron-right"></i> <span class="align-middle">Listar</span>
 					</a>
 				</li>
+				
 				{{-- PROCESSOS ADMINISTRATIVOS--}}
 				<li class="sidebar-item">
 					<a href="{{ route('processo_administrativo.inserir') }}" class="sidebar-link">
@@ -22,14 +23,15 @@
 						Administrativo
 					</a>
 				</li>
-				
+	
 				{{-- PROCESSOS JUDICIARIOS--}}
 				<li class="sidebar-item">
 					<a href="{{ route('processo_judiciario.inserir') }}" class="sidebar-link">
 						<i data-feather="chevron-right"></i>
 						Judiciário
 					</a>
-				</li>
+				</li>	
+				
 
 				{{-- <a href="{{ route('processo.inserir') }}" class="sidebar-link">
 					<i data-feather="chevron-right"></i>
