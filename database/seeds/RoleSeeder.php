@@ -43,7 +43,8 @@ class RoleSeeder extends Seeder
             'editar-questionario',
             'update-questionario',
             'excluir-questionario',
-            'ver-questionario'
+            'ver-questionario',
+            'criar-usuario'
         ]);
 
         $user->givePermissionTo([

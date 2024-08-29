@@ -99,5 +99,9 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'ver-questionario',
         ]);
+
+        Permission::create([
+            'name' => 'criar-usuario',
+        ]);
     }
 }
