@@ -50,11 +50,12 @@
                             <p><strong>Notificação feita em:</strong> {{ $cliente->created_at->format('d/m/Y') }} por Alguém</p>
                         </div>
                         <div class="card-footer text-right">
-                            <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Novo processo</a>
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}"class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Novo processo</a>
                         </div>
                     </div>
                 </div>
             </div>
+            @include('processos.modal_resposta_tipo_processo')
 
             <h2 class="h4 mb-3 mt-4">Processos</h2>
             <div class="row">
@@ -77,47 +78,48 @@
                                 </thead>
                                 <tbody>
                                     @forelse($processos as $processo)
-                                        <tr>
-                                            <td>{{ $processo->proc_numero_proc }}</td>
-                                            <td>
-                                                <a href="{{ route('processos.questionarios', $processo->processo_id) }}">
-                                                    <i class="fas fa-eye text-primary"></i>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $cliente->getKey() }}">
-                                                    <i class="fas fa-clipboard text-primary"></i>
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <span class="@switch($processo->tipo_processo_id) @case(1) badge bg-warning @break @case(2) badge bg-primary @break @endswitch">
-                                                    @if($processo->tipo_processo_id == 1)
-                                                        Administrativo
-                                                    @else
-                                                        Judiciário
-                                                    @endif
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span class="@switch($processo->proc_ativo) @case(0) badge bg-secondary @break @case(1) badge bg-success @break @endswitch">
-                                                    @if($processo->proc_ativo == 0)
-                                                        Não ativo
-                                                    @else
-                                                        Ativo
-                                                    @endif
-                                                </span>
-                                            </td>
-                                            <td>{{ $processo->proc_resultado }}</td>
-                                            <td>{{ $processo->created_at->format('d/m/Y') }}</td>
-                                            <td class="text-right">
-                                                <a href="#" title="Editar monitoramento">
-                                                    <i class="fas fa-pen"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $processo->proc_numero_proc }}</td>
+                                        <td>
+                                            <a href="{{ route('processos.questionarios', $processo->processo_id) }}">
+                                                <i class="fas fa-eye text-primary"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $processo->getKey() }}">
+                                                <i class="fas fa-clipboard text-primary"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <span class="@switch($processo->tipo_processo_id) @case(1) badge bg-warning @break @case(2) badge bg-primary @break @endswitch">
+                                                @if($processo->tipo_processo_id == 1)
+                                                Administrativo
+                                                @else
+                                                Judiciário
+                                                @endif
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="@switch($processo->proc_ativo) @case(0) badge bg-secondary @break @case(1) badge bg-success @break @endswitch">
+                                                @if($processo->proc_ativo == 0)
+                                                Não ativo
+                                                @else
+                                                Ativo
+                                                @endif
+                                            </span>
+                                        </td>
+                                        <td>{{ $processo->proc_resultado }}</td>
+                                        <td>{{ $processo->created_at->format('d/m/Y') }}</td>
+                                        <td class="text-right">
+                                            <a href="#" title="Editar monitoramento">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @include('processos.modal_resposta_info_processos')
                                     @empty
-                                        <tr>
-                                            <td colspan="8">Nenhum processo encontrado</td>
+                                    <tr>
+                                        <td colspan="8">Nenhum processo encontrado</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -132,9 +134,10 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/adminkit.js')}}"></script>
     </main>
 
-    @include('processos.modal_resposta_info_processos')
+
 
 @endsection
 

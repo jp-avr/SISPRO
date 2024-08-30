@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.5",
         "mauro-pinheiro/laravel-adminlte": "dev-master",
+        "spatie/laravel-permission": "^5.11",
         "twbs/bootstrap": "^5.3"
     },
     "require-dev": {

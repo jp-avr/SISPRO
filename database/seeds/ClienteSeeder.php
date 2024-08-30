@@ -12,7 +12,7 @@ class ClienteSeeder extends Seeder
      */
     public function run()
     {
-        Cliente::create([
+      /*   Cliente::create([
             // 'ocupacao_id' => 1,
             // 'estado_civil_id' => 1,
             'profissao_id' => 1,
@@ -40,6 +40,6 @@ class ClienteSeeder extends Seeder
             'cliente_email' => 'jv@email.com',
             'cliente_sexo' => 1,
             'cliente_ativo' => 1,
-        ]);
+        ]); */
     }
 }
