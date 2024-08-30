@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'SISPRO',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -310,17 +310,19 @@ return [
         [
             'text' => 'Listar',
             'url' => 'processos/index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-file-alt',
         ],
         [
             'text' => 'Administrativo',
             'url' => 'processos/inserir/administrativo',
             'icon' => 'fas fa-fw fa-balance-scale-left',
+            'can' => 'ver-sidebar'
         ],
         [
             'text' => 'Judiciario',
             'url' => 'processos/inserir/judiciario',
             'icon' => 'fas fa-fw fa-balance-scale-right',
+            'can' => 'ver-sidebar'
         ],
         ['header' => 'Clientes'],
         [
@@ -331,10 +333,10 @@ return [
                     'text' => 'Listar Clientes',
                     'url' => 'clientes/index',
                 ],
-                [
+                /* [
                     'text' => 'Cadastrar Clientes',
                     'url' => '#',
-                ],
+                ], */
             ],
         ],
     ],

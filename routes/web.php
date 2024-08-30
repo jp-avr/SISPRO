@@ -45,16 +45,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::prefix('processos')->group(function (){
-        Route::get('/index', 'ProcessoController@index')->name('processos.index');
-        Route::get('/informacoes/{processo}', 'ProcessoController@questionario')->name('processos.questionarios');
-        Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
-        Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
-        Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
-        Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
-        Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
-        Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
-        Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
-        Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
+        Route::group(['middleware' => ['can:ver-lista-de-clientes']], function(){
+            Route::get('/index', 'ProcessoController@index')->name('processos.index');
+        });
+
+        Route::group(['middleware' => ['can:editar-cliente']], function(){
+            Route::get('/informacoes/{processo}', 'ProcessoController@questionario')->name('processos.questionarios');
+            Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
+            Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
+            Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
+            Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
+            Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
+            Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
+            Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
+            Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
+        });
     });
 
     Route::prefix('questionarios')->group(function (){
@@ -73,7 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/show/{cliente}', 'ClienteController@show')->name('cliente.show');
         });
 
-        Route::group(['middleware' => ['can:ver-formulario-de-processo']], function(){
+        Route::group(['middleware' => ['can:editar-cliente']], function(){
             Route::get('/{cliente}/Novo Processo/', 'ProcessoController@store_novo_processo_administrativo')->name('cliente.novo.processo.Adm'); ///ROTA PARA STORE DO PROCESSO, DIRECIONADA PARA O CONTROLLER DE PROCESSOS
             Route::get('/{cliente}/Novo Processo/', 'ProcessoController@store_novo_processo_judiciario')->name('cliente.novo.processo.Jdc'); ///ROTA PARA STORE DO PROCESSO, DIRECIONADA PARA O CONTROLLER DE PROCESSOS
             Route::get('/inserir', 'ClienteController@inserir')->name('cliente.inserir');

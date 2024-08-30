@@ -45,7 +45,9 @@
                                     <p><strong>Notificação feita em:</strong> {{ $processo->created_at->format('d/m/Y') }}</p>
                                 </div>
                                 <div class="card-footer text-right">
+                                    @can('excluir-cliente')
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop-resposta-{{ $processo->getKey() }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Novo questionário</a>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
