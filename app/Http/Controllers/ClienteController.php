@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\EstadoCivil;
 use App\Models\Processo;
+use App\Models\Profissao;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -46,8 +47,9 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::findOrFail($cliente_id);
         $estados_civis = EstadoCivil::all();
+        $profissoes = Profissao::all();
         // @dd($cliente);
-        return view('clientes.edit', compact('cliente','estados_civis'));
+        return view('clientes.edit', compact('cliente','estados_civis','profissoes'));
     }
 
 

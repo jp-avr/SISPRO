@@ -83,7 +83,6 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['middleware' => ['can:excluir-cliente']], function(){
-            Route::get('/index', 'ClienteController@index')->name('clientes.index');
             Route::get('/processos/{cliente}', 'ClienteController@processos')->name('clientes.processos');
             Route::get('/destroy/{cliente}', 'ClienteController@destroy')->name('cliente.destroy');
         });
