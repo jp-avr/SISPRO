@@ -44,7 +44,8 @@ class RoleSeeder extends Seeder
             'update-questionario',
             'excluir-questionario',
             'ver-questionario',
-            'criar-usuario'
+            'criar-usuario',
+            'ver-sidebar'
         ]);
 
         $user->givePermissionTo([
@@ -63,7 +64,8 @@ class RoleSeeder extends Seeder
             'formulario-de-questionario',
             'editar-questionario',
             'update-questionario',
-            'ver-questionario'
+            'ver-questionario',
+            'ver-sidebar'
         ]);
 
         $reader->givePermissionTo([

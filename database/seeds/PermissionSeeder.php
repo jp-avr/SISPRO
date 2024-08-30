@@ -103,5 +103,9 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'criar-usuario',
         ]);
+
+        Permission::create([
+            'name' => 'ver-sidebar',
+        ]);
     }
 }
