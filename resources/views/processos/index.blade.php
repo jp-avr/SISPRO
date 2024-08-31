@@ -57,12 +57,17 @@
                                             </a>
                                         </td>
                                         <td class="text-center">
+                                            @can('update-cliente')
                                             <a href="{{ route('cliente.edit', $processo->cliente->cliente_id) }}" class="btn btn-success btn-sm">
                                                 <i class="fas fa-pen"></i> Editar
                                             </a>
+                                            @endcan
+
+                                            @can('excluir-cliente')
                                             <a href="{{ route('cliente.destroy', $processo->cliente->cliente_id) }}" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Excluir
                                             </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @empty

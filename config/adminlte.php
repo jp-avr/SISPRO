@@ -321,6 +321,7 @@ return [
             'text' => 'Judiciario',
             'url' => 'processos/inserir/judiciario',
             'icon' => 'fas fa-fw fa-balance-scale-right',
+            'can' => 'ver-sidebar'
         ],
         ['header' => 'Clientes'],
         [
@@ -331,10 +332,10 @@ return [
                     'text' => 'Listar Clientes',
                     'url' => 'clientes/index',
                 ],
-                [
+                /* [
                     'text' => 'Cadastrar Clientes',
                     'url' => '#',
-                ],
+                ], */
             ],
         ],
     ],
