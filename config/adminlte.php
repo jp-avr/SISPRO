@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'SISPRO',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -316,6 +316,7 @@ return [
             'text' => 'Administrativo',
             'url' => 'processos/inserir/administrativo',
             'icon' => 'fas fa-fw fa-balance-scale-left',
+            'can' => 'ver-sidebar'
         ],
         [
             'text' => 'Judiciario',

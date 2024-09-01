@@ -52,8 +52,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['middleware' => ['can:editar-cliente']], function(){
             Route::get('/informacoes/{processo}', 'ProcessoController@questionario')->name('processos.questionarios');
             Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
-            Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
             Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
+            Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
             Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
             Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
             Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
