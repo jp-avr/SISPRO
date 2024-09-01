@@ -24,12 +24,12 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'name' => 'update-processo',
-    
+
         ]);
 
         Permission::create([
             'name' => 'excluir-processo',
-        
+
         ]);
 
         Permission::create([
@@ -48,7 +48,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'name' => 'formulario-de-cliente',
-    
+
         ]);
 
         Permission::create([
@@ -62,7 +62,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'name' => 'excluir-cliente',
-    
+
         ]);
 
         Permission::create([
@@ -71,7 +71,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'name' => 'ver-cliente',
-            
+
         ]);
 
         //Permissão de Questionario
@@ -85,7 +85,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create([
             'name' => 'editar-questionario',
-            
+
         ]);
 
         Permission::create([

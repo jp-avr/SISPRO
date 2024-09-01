@@ -310,7 +310,7 @@ return [
         [
             'text' => 'Listar',
             'url' => 'processos/index',
-            'icon' => 'fas fa-fw fa-file-alt',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Administrativo',

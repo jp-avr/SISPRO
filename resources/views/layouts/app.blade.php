@@ -33,12 +33,12 @@
 </head>
 <body>
     @auth
-        @include('components.navbar.sidebar')
+        {{-- @include('components.navbar.sidebar') --}}
     @endauth
 
     <div class="main">
         @auth
-            @include('components.navbar.navbar')
+            {{-- @include('components.navbar.navbar') --}}
         @endauth
         
         <main class="content px-3 py-2 .dark-theme-variables">

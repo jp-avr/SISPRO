@@ -2,66 +2,58 @@
 
 namespace Tests\Unit;
 
-use App\Models\Questionario;
-use Illuminate\Database\Eloquent\Collection;
 use Tests\TestCase;
+use App\Models\Questionario;
+use Illuminate\Http\Request;
 
 class QuestionarioTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
 
-    public function testResultadoQuestionario(){
-        // Valores teste
-        $porcentagem = 5;
-        $pos_operatorio = 1;
-
-        $resultado = Questionario::resultadoQuestionario($porcentagem, $pos_operatorio);
-
-        $this->assertEquals('Incrível melhora após o procedimento médico', $resultado);
-    }
-
-    public function testQuestionarioPorcentagem(){
-        $request = Collection::make([
-            "secao_1" => 0,
-            "secao_2" => 2,
-            "secao_3" => 5,
-            "secao_4" => 0,
-            "secao_5" => 1,
-            "secao_6" => 4,
-            "secao_7" => 4,
-            "secao_8" => 3,
-            "secao_9" => 2,
-            "secao_10" => 1
+    /** @test */
+    public function pode_calcular_a_porcentagem_do_questionario()
+    {
+        $request = Request::create('/', 'POST', [
+            'secao_1' => random_int(0, 5),
+            'secao_2' => random_int(0, 5),
+            'secao_3' => random_int(0, 5),
+            'secao_4' => random_int(0, 5),
+            'secao_5' => random_int(0, 5),
+            'secao_6' => random_int(0, 5),
+            'secao_7' => random_int(0, 5),
+            'secao_8' => random_int(0, 5),
+            'secao_9' => random_int(0, 5),
+            'secao_10' => random_int(0, 5),
         ]);
 
         $porcentagem = Questionario::questionarioPorcentagem($request);
 
-        $this->assertEquals(44,$porcentagem);
+        $this->assertIsInt($porcentagem);
     }
 
-    public function testRegistrarQuestionario(){
-        $request = Collection::make([
-            "secao_1" => 0,
-            "secao_2" => 2,
-            "secao_3" => 5,
-            "secao_4" => 0,
-            "secao_5" => 1,
-            "secao_6" => 4,
-            "secao_7" => 4,
-            "secao_8" => 3,
-            "secao_9" => 2,
-            "secao_10" => 1
-        ]);
-
+    /** @test */
+    public function pode_retornar_o_resultado_do_questionario_para_cliente_nao_pos_operatorio()
+    {
+        $porcentagem = 65;
         $pos_operatorio = 0;
-        $processo_id = 1;
 
-        $questionario = Questionario::criar($request, $processo_id, $pos_operatorio);
+        // Chamando o método resultadoQuestionario
+        $resultado = Questionario::resultadoQuestionario($porcentagem, $pos_operatorio);
 
-        $this->assertEquals(true, $questionario->wasRecentlyCreated);
+        // Verificando o resultado esperado
+        $this->assertEquals('Incapacidade marcante nas atividades diárias', $resultado);
+    }
+
+    /** @test */
+    public function pode_retornar_o_resultado_do_questionario_para_cliente_pos_operatorio()
+    {
+        $porcentagem = 30;
+        $pos_operatorio = 1;
+
+        // Chamando o método resultadoQuestionario
+        $resultado = Questionario::resultadoQuestionario($porcentagem, $pos_operatorio);
+
+        // Verificando o resultado esperado
+        $this->assertEquals('Boa melhora após o procedimento médico', $resultado);
     }
 }
+

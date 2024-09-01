@@ -70,7 +70,7 @@
                         </div>
                     @enderror
                 </div>
-            </div> 
+            </div>
 
             <div class="row">
                 <div class="mb-3 col-md-6">

@@ -18,7 +18,7 @@ class ClienteController extends Controller
     }
 
     public function processos($cliente_id)
-    {   
+    {
         $clientes = Cliente::all();
         $cliente = Cliente::findOrFail($cliente_id);
         $processos = Processo::where('cliente_id','=',$cliente_id)->get();
