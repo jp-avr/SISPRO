@@ -39,6 +39,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/Helpers/supportMethods.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
