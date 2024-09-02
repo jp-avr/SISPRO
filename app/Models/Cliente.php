@@ -48,6 +48,8 @@ class Cliente extends Model
     public function atualizar($request)
     {
         return self::update([
+            'profissao_id' => $request->profissao_id,
+            'cbo' => $request->cbo,
             'cliente_nome' => $request->cliente_nome,
             'cliente_cpf' => $request->cliente_cpf,
             'cliente_rg' => $request->cliente_rg,
@@ -62,11 +64,6 @@ class Cliente extends Model
     public function processos()
     {
         return $this->hasMany(Processo::class, 'processo_id');
-    }
-
-    public function estadoCivil()
-    {
-        return $this->belongsTo(EstadoCivil::class, 'estado_civil_id', 'estado_civil_id');
     }
 
     public function profissao()

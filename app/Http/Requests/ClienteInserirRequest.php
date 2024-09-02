@@ -32,8 +32,7 @@ class ClienteInserirRequest extends MessagesRequest
             'cliente_rg' => ['required','string'],
             'cliente_cpf' => ['required','string'],
             'cliente_email' => ['required','email'],
-            'cliente_telefone' => ['required','string'],
-            'cliente_estado_civil' => ['required','string']                  
+            'cliente_telefone' => ['required','string'],                
         ];
     }
 

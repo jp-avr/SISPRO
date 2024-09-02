@@ -54,8 +54,6 @@ class MessagesRequest extends FormRequest
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
-            'cliente_estado_civil.integer' => 'O campo Estado Civil é inválido',
-            'cliente_estado_civil.required' => 'O campo Estado Civil é obrigatório',
             'cliente_telefone.string' => 'O campo Telefone é inválido',
             'cliente_telefone.required' => 'O campo Telefone é obrigatório',
 
