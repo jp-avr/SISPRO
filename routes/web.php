@@ -97,6 +97,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('auth')->group(function(){
             Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
             Route::post('/register', 'Auth\RegisterController@register');
+            Route::get('update', 'Auth\RegisterController@showEditForm')->name('update');
+            Route::post('update', 'Auth\RegisterController@updating');
         });
     });
 });
