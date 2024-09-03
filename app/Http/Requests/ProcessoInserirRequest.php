@@ -25,7 +25,6 @@ class ProcessoInserirRequest extends FormRequest
     {
         return [
             'cid_id' => ['required','integer'],
-            // 'estado_civil_id' => ['required','integer'],
             'cliente_nome' => ['required','string'],
             'profissao_id' => ['required', 'integer'],
             'cliente_data_nascimento' => ['required','date'],
@@ -35,8 +34,6 @@ class ProcessoInserirRequest extends FormRequest
             'cliente_email' => ['required','email'],
             'cliente_telefone' => ['required','string'],
             'proc_numero_proc' => ['required','string'],
-            // 'proc_nome_perito' => ['required','string'],
-
             'proc_data_ini_doenca' => ['required','date'],
             'proc_data_ini_incapacidade' => [ 'required','date'],
             'parte_atingida_id' => ['required','string'],
@@ -71,9 +68,6 @@ class ProcessoInserirRequest extends FormRequest
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
-
-            'estado_civil_id.integer' => 'O campo Estado Civil é inválido',
-            'estado_civil_id.required' => 'O campo Estado Civil é obrigatório',
             
             'cliente_telefone.string' => 'O campo Telefone é inválido',
             'cliente_telefone.required' => 'O campo Telefone é obrigatório',

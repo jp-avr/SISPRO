@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use App\Models\EstadoCivil;
 use App\Models\Processo;
 use App\Models\Profissao;
 use Illuminate\Http\Request;
@@ -46,10 +45,8 @@ class ClienteController extends Controller
     public function edit($cliente_id)
     {
         $cliente = Cliente::findOrFail($cliente_id);
-        $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
-        // @dd($cliente);
-        return view('clientes.edit', compact('cliente','estados_civis','profissoes'));
+        return view('clientes.edit', compact('cliente','profissoes'));
     }
 
 

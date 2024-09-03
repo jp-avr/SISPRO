@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProcessoInserirRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
-use App\Models\EstadoCivil;
 use App\Models\ParteAtingida;
 use App\Models\Processo;
 use App\Models\Profissao;
@@ -18,9 +17,8 @@ class ProcessoController extends Controller
     {
         $processos = Processo::paginate(15)->sortDesc();
         $clientes = Cliente::all();
-        $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
-        return view('processos.index',compact('processos', 'clientes', 'estados_civis','profissoes'));
+        return view('processos.index',compact('processos', 'clientes','profissoes'));
     }
 
     public function questionario($processo_id)
@@ -43,10 +41,9 @@ class ProcessoController extends Controller
     public function inserir_judiciario()
     {
         $cids = Cid::all();
-        $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
-        return view('processos.judiciario.inserir', compact('estados_civis','cids','profissoes','partes_atingidas'));
+        return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)
