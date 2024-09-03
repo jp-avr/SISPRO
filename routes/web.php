@@ -52,10 +52,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['middleware' => ['can:editar-cliente']], function(){
             Route::get('/informacoes/{processo}', 'ProcessoController@questionario')->name('processos.questionarios');
             Route::get('/show/{processo}', 'ProcessoController@show')->name('processo.show');
-            Route::get('{cliente}/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
-            Route::get('{cliente}/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
-            Route::post('{cliente}/store/administrativo', 'ProcessoController@novo_processo_administrativo')->name('processo_administrativo.store');
-            Route::post('{cliente}/store/judiciario', 'ProcessoController@novo_processo_judiciario')->name('processo_judiciario.store');
+            Route::get('/inserir/judiciario', 'ProcessoController@inserir_judiciario')->name('processo_judiciario.inserir');
+            Route::get('/inserir/administrativo', 'ProcessoController@inserir_administrativo')->name('processo_administrativo.inserir');
+            Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
+            Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
             Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
             Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
             Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
