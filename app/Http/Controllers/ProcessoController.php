@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NovoProcessoInserirRequest;
 use App\Http\Requests\ProcessoInserirRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
@@ -38,12 +39,30 @@ class ProcessoController extends Controller
         return view('processos.administrativo.inserir', compact('partes_atingidas','cids','clientes','profissoes'));
     }
 
+    public function inserir_novo_processo_administrativo($cliente_id)
+    {
+        $cliente = Cliente::findOrFail($cliente_id);
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.administrativo.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
+    }
+
     public function inserir_judiciario()
     {
         $cids = Cid::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
         return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas'));
+    }
+
+    public function inserir_novo_processo_judiciario($cliente_id)
+    {
+        $cliente = Cliente::findOrFail($cliente_id);
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.judiciario.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)
@@ -57,7 +76,7 @@ class ProcessoController extends Controller
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_administrativo(ProcessoInserirRequest $request, $cliente_id)
+    public function novo_processo_administrativo(NovoProcessoInserirRequest $request, $cliente_id)
     {  
         Processo::criarAdministrativo($request, $cliente_id);
 
@@ -72,16 +91,12 @@ class ProcessoController extends Controller
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
 
-        // dd($request->all());
-
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_judiciario(ProcessoInserirRequest $request, $cliente_id)
+    public function novo_processo_judiciario(NovoProcessoInserirRequest $request, $cliente_id)
     {  
         Processo::criarJudiciario($request, $cliente_id);
-
-        // dd($request->all());
 
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }

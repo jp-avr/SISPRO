@@ -51,6 +51,7 @@ class MessagesRequest extends FormRequest
 
             'cliente_cpf.string' => 'O campo CPF é inválido',
             'cliente_cpf.required' => 'O campo CPF é obrigatório',
+            'cliente_cpf.cpf' => 'Insira um CPF válido',
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
