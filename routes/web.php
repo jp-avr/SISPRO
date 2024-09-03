@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
             Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
             Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
-            Route::get('/destroy/{processo}', 'ProcessoController@destroy')->name('processo.destroy');
+            Route::get('/destroy/{processo}','ProcessoController@destroy')->name('processo.destroy');
         });
     });
 
@@ -99,8 +99,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['can:criar-usuario']], function(){
         Route::prefix('auth')->group(function(){
+            Route::get('/listar', 'ConfiguracoesController@index')->name('listar');
             Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
             Route::post('/register', 'Auth\RegisterController@register');
+            Route::get('/edit/{usuario}', 'Auth\RegisterController@showEditForm')->name('edit');
+            Route::post('update', 'Auth\RegisterController@updating')->name('update');
+            Route::get('/destroy/{usuario}', 'ConfiguracoesController@destroy')->name('destroy');   
             Route::get('update', 'Auth\RegisterController@showEditForm')->name('update');
             Route::post('update', 'Auth\RegisterController@updating');
         });

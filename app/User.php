@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use App\Models\UserRole;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,5 +47,18 @@ class User extends Authenticatable
     public function role()
     {
         $this->belongsTo(Role::class, 'role_id', 'role_ids');
+    }
+
+    public static function destroyUser($user_id) {
+
+        $usuario = self::find($user_id);
+
+        if($usuario) {
+            $usuario->delete();
+
+            return $usuario;
+        }
+
+        return null;
     }
 }

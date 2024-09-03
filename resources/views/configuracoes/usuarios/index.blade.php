@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Seleção de Processos')
+@section('title', 'Listagem de Clientes')
 
 @section('content')
-<main class="content min-vh-100">
+<main class="content">
     <div class="container-fluid p-0">
         @if (session('sucesso'))
             <div class="alert alert-success">
@@ -11,11 +11,11 @@
             </div>
         @endif
 
-        <h1 class="h3 mb-3 text-secondary"><i class="fas fa-file-alt"></i> <strong>Selecione o Processo</strong> para Visualizar</h1>
+        <h1 class="h3 mb-3 text-secondary"><i class="fas fa-user"></i> <strong>Listagem de Usuários</strong></h1>
 
         <div class="row mb-3">
             <div class="col-12">
-                <input type="text" id="search" class="form-control" placeholder="Filtrar Processos...">
+                <input type="text" id="search" class="form-control" placeholder="Filtrar Usuario...">
             </div>
         </div>
 
@@ -23,56 +23,43 @@
             <div class="col-12">
                 <div class="card shadow-lg mb-4">
                     <div class="card-header bg-dark text-white">
-                        <h3 class="mb-0"><i class="fas fa-clipboard-list"></i> Processos</h3>
+                        <h3 class="mb-0"><i class="fas fa-users"></i> Usuários</h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="processos-table">
+                        <table class="table table-bordered table-hover" id="clientes-table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col">Número do Processo</th>
-                                    <th scope="col">Tipo de Processo</th>
-                                    <th scope="col"><i class="fas fa-calendar-alt"></i> Data</th>
-                                    <th scope="col">Informações</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Função</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($processos as $processo)
-                                    {{-- @include('processos.modal') --}}
+                                @forelse($usuarios as $usuario)
                                     <tr>
-                                        <td class="text-left text-muted">{{ $processo->cliente->cliente_nome }}</td>
-                                        <td class="text-left">{{ $processo->proc_numero_proc }}</td>
-                                        <td>
-                                            @if($processo->tipo_processo_id === 1)
-                                                Administrativo
-                                            @elseif($processo->tipo_processo_id === 2)
-                                                Judiciário
+                                        <td class="text-left text-muted">{{ $usuario->name }}</td>
+                                        <td class="text-left text-muted">{{ $usuario->email }}</td>
+                                        <td class="text-left text-muted">
+                                            @if($usuario->roles->isNotEmpty())
+                                                {{ $usuario->roles->first()->name }}
+                                            @else
+                                                {{ 'Nenhuma função '}}
                                             @endif
                                         </td>
-                                        <td>{{ date('d/m/Y', strtotime($processo->created_at)) }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('processos.questionarios', $processo->processo_id) }}" class="btn btn-info btn-sm">
-                                                <i class="fas fa-clipboard"></i> Ver Informações
-                                            </a>
-                                        </td>
-                                        <td class="text-center">
-                                            @can('update-cliente')
-                                            <a href="{{ route('processo.edit', $processo->cliente->cliente_id) }}" class="btn btn-success btn-sm">
+                                            <a href="{{ route('edit', $usuario->user_id) }}" class="btn btn-success btn-sm">
                                                 <i class="fas fa-pen"></i> Editar
                                             </a>
-                                            @endcan
 
-                                            @can('excluir-cliente')
-                                            <a href="{{ route('processo.destroy', $processo->processo_id) }}" class="btn btn-danger btn-sm">
+                                            <a href="{{ route('destroy', $usuario->user_id) }}" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Excluir
                                             </a>
-                                            @endcan
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center text-muted">Nenhuma solicitação encontrada</td>
+                                        <td colspan="4" class="text-center text-muted">Nenhum usuário encontrado</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -80,9 +67,7 @@
                     </div>
                     <div class="card-footer py-3 bg-light">
                         <nav class="d-flex justify-content-end" aria-label="Paginação">
-                            {{-- @if ($solicitacoes != null)
-                                {{ $solicitacoes->appends($_GET)->links() }}
-                            @endif --}}
+                            {{-- {{ $usuarios->links() }} --}}
                         </nav>
                     </div>
                 </div>
@@ -139,12 +124,10 @@
 
 @section('js')
     <script>
-        console.log('Processos loaded');
-
+        console.log('Clientes loaded');
         document.getElementById('search').addEventListener('keyup', function() {
             var value = this.value.toLowerCase();
-            var rows = document.querySelectorAll('#processos-table tbody tr');
-
+            var rows = document.querySelectorAll('#clientes-table tbody tr');
             rows.forEach(function(row) {
                 var showRow = false;
                 row.querySelectorAll('td').forEach(function(cell) {

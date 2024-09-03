@@ -10,6 +10,7 @@ use App\Models\ParteAtingida;
 use App\Models\Processo;
 use App\Models\Profissao;
 use App\Models\Questionario;
+use App\Models\TipoProcesso;
 use Illuminate\Http\Request;
 
 class ProcessoController extends Controller
@@ -102,13 +103,29 @@ class ProcessoController extends Controller
     }
 
     // EDITANDO DADOS EM TABELA
-    public function edit($solicitacao)
-    {        
-        //return view('solicitacoes.cateterismo.edit', compact('solicitacao'));
+    public function edit($processo_id)
+    {
+        $processo = Processo::findOrfail($processo_id);
+        $tipo_processo = TipoProcesso::all();
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+
+        return view('processo.edit', compact('processo','tipo_processo','cids','profissoes','partes_atingidas'));
     }
 
-    public function update($solicitacao, Request $request)
+    public function update($processo, Request $request)
     {
-        //return redirect()->route('solicitacoes.cateterismo.index')->with('sucesso', 'solicitacao alterado com sucesso!');
+        $processo = Processo::findOrFail($processo);
+
+        $processo->update($request->all());
+        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'solicitacao alterado com sucesso!');
+    }
+
+    public function destroy($processo_id){
+        $processo = Processo::findOrFail($processo_id);
+        $processo->delete();
+
+        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'processo apagado com sucesso!');
     }
 }
