@@ -31,20 +31,6 @@ class MessagesRequest extends FormRequest
     public function messages()
     {
         return [
-            //MENSAGENS DE REGISTRO
-
-            'name.required' => 'O campo Nome é obrigatório',
-            'name.string' => 'O campo Nome é inválido',
-
-            'email.required' => 'O campo E-mail é obrigatório',
-            'email.string' => 'O campo E-mail é inválido',
-
-            'password.required' => 'O campo Senha é obrigatório',
-            'password.string' => 'O campo Senha é inválido',
-            'password.confirmed' => 'As senhas digitadas não coincidem',
-
-            'role.required' => 'O campo Função é obrigatório',
-            'role.integer' => 'O campo Função é inválido',
 
             //MENSAGENS DE CLIENTES
 
