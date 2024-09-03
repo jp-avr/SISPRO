@@ -333,10 +333,26 @@ return [
                     'text' => 'Listar Clientes',
                     'url' => 'clientes/index',
                 ],
-                /* [
-                    'text' => 'Cadastrar Clientes',
-                    'url' => '#',
-                ], */
+            ],
+        ],
+        [
+            'header' => 'Configurações',
+            'can' => 'criar-usuario'
+        ],
+        [
+            'text' => 'Configurações',
+            'icon' => 'fas fa-fw fa-cog',
+            'can' => 'criar-usuario',
+            
+            'submenu' => [
+                [
+                    'text' => 'Listar usuários',
+                    'url' => 'auth/listar',
+                ],
+                [
+                    'text' => 'Criar usuário',
+                    'url' => 'auth/register',
+                ],
             ],
         ],
     ],
