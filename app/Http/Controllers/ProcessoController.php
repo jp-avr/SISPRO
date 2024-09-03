@@ -9,6 +9,7 @@ use App\Models\ParteAtingida;
 use App\Models\Processo;
 use App\Models\Profissao;
 use App\Models\Questionario;
+use App\Models\TipoProcesso;
 use Illuminate\Http\Request;
 
 class ProcessoController extends Controller
@@ -29,25 +30,26 @@ class ProcessoController extends Controller
         return view('processos.info_processos', compact('processo','questionarios'));
     }
     // INSERINDO DADOS EM TABELA
-    public function inserir_administrativo()
+    public function inserir_administrativo($cliente_id)
     {
+        $cliente = Cliente::findOrFail($cliente_id);
         $cids = Cid::all();
-        $clientes = Cliente::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
-        return view('processos.administrativo.inserir', compact('partes_atingidas','cids','clientes','profissoes'));
+        return view('processos.administrativo.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
     }
 
-    public function inserir_judiciario()
+    public function inserir_judiciario($cliente_id)
     {
+        $cliente = Cliente::findOrFail($cliente_id);
         $cids = Cid::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
-        return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas'));
+        return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas','cliente'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)
-    {  
+    {
         $cliente = Cliente::criar($request);
 
         Processo::criarAdministrativo($request, $cliente->cliente_id);
@@ -57,17 +59,17 @@ class ProcessoController extends Controller
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_administrativo(ProcessoInserirRequest $request, $cliente_id)
-    {  
+    public function novo_processo_administrativo($cliente_id, Request $request)
+    {
         Processo::criarAdministrativo($request, $cliente_id);
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('cliente.processos', $cliente_id)->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     public function store_judiciario(ProcessoInserirRequest $request)
-    {  
+    {
         $cliente = Cliente::criar($request);
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
@@ -77,23 +79,32 @@ class ProcessoController extends Controller
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_judiciario(ProcessoInserirRequest $request, $cliente_id)
-    {  
+    public function novo_processo_judiciario($cliente_id, Request $request)
+    {
         Processo::criarJudiciario($request, $cliente_id);
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('cliente.processos', $cliente_id)->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     // EDITANDO DADOS EM TABELA
-    public function edit($solicitacao)
-    {        
-        //return view('solicitacoes.cateterismo.edit', compact('solicitacao'));
+    public function edit($processo_id)
+    {
+        $processo = Processo::findOrfail($processo_id);
+        $tipo_processo = TipoProcesso::all();
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+
+        return view('processo.edit', compact('processo','tipo_processo','cids','profissoes','partes_atingidas'));
     }
 
-    public function update($solicitacao, Request $request)
+    public function update($processo, Request $request)
     {
-        //return redirect()->route('solicitacoes.cateterismo.index')->with('sucesso', 'solicitacao alterado com sucesso!');
+        $processo = Processo::findOrFail($processo);
+
+        $processo->update($request->all());
+        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'solicitacao alterado com sucesso!');
     }
 }
