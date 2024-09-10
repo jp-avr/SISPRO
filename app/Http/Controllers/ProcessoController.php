@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NovoProcessoInserirRequest;
 use App\Http\Requests\ProcessoInserirRequest;
 use App\Models\Cid;
 use App\Models\Cliente;
-use App\Models\EstadoCivil;
 use App\Models\ParteAtingida;
 use App\Models\Processo;
 use App\Models\Profissao;
 use App\Models\Questionario;
+use App\Models\TipoProcesso;
 use Illuminate\Http\Request;
 
 class ProcessoController extends Controller
@@ -18,9 +19,8 @@ class ProcessoController extends Controller
     {
         $processos = Processo::paginate(15)->sortDesc();
         $clientes = Cliente::all();
-        $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
-        return view('processos.index',compact('processos', 'clientes', 'estados_civis','profissoes'));
+        return view('processos.index',compact('processos', 'clientes','profissoes'));
     }
 
     public function questionario($processo_id)
@@ -40,13 +40,30 @@ class ProcessoController extends Controller
         return view('processos.administrativo.inserir', compact('partes_atingidas','cids','clientes','profissoes'));
     }
 
+    public function inserir_novo_processo_administrativo($cliente_id)
+    {
+        $cliente = Cliente::findOrFail($cliente_id);
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.administrativo.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
+    }
+
     public function inserir_judiciario()
     {
         $cids = Cid::all();
-        $estados_civis = EstadoCivil::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
-        return view('processos.judiciario.inserir', compact('estados_civis','cids','profissoes','partes_atingidas'));
+        return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas'));
+    }
+
+    public function inserir_novo_processo_judiciario($cliente_id)
+    {
+        $cliente = Cliente::findOrFail($cliente_id);
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+        return view('processos.judiciario.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)
@@ -60,7 +77,7 @@ class ProcessoController extends Controller
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_administrativo(ProcessoInserirRequest $request, $cliente_id)
+    public function novo_processo_administrativo(NovoProcessoInserirRequest $request, $cliente_id)
     {  
         Processo::criarAdministrativo($request, $cliente_id);
 
@@ -75,28 +92,40 @@ class ProcessoController extends Controller
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
 
-        // dd($request->all());
-
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
-    public function novo_processo_judiciario(ProcessoInserirRequest $request, $cliente_id)
+    public function novo_processo_judiciario(NovoProcessoInserirRequest $request, $cliente_id)
     {  
         Processo::criarJudiciario($request, $cliente_id);
-
-        // dd($request->all());
 
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
     }
 
     // EDITANDO DADOS EM TABELA
-    public function edit($solicitacao)
-    {        
-        //return view('solicitacoes.cateterismo.edit', compact('solicitacao'));
+    public function edit($processo_id)
+    {
+        $processo = Processo::findOrfail($processo_id);
+        $tipo_processo = TipoProcesso::all();
+        $cids = Cid::all();
+        $profissoes = Profissao::all();
+        $partes_atingidas = ParteAtingida::all();
+
+        return view('processo.edit', compact('processo','tipo_processo','cids','profissoes','partes_atingidas'));
     }
 
-    public function update($solicitacao, Request $request)
+    public function update($processo, Request $request)
     {
-        //return redirect()->route('solicitacoes.cateterismo.index')->with('sucesso', 'solicitacao alterado com sucesso!');
+        $processo = Processo::findOrFail($processo);
+
+        $processo->update($request->all());
+        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'solicitacao alterado com sucesso!');
+    }
+
+    public function destroy($processo_id){
+        $processo = Processo::findOrFail($processo_id);
+        $processo->delete();
+
+        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'processo apagado com sucesso!');
     }
 }

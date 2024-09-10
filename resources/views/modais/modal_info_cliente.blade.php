@@ -12,5 +12,4 @@ CBO: {{ $cliente->cbo}}<br>
 CPF: {{$cliente->cliente_cpf}} <br>
 RG: {{$cliente->cliente_rg}} <br>
 Email: {{$cliente->cliente_email}} <br>
-{{-- Estado Civil: {{$cliente->cliente_estado_civil}} <br> --}}
 Telefone: {{$cliente->cliente_telefone}} <br>

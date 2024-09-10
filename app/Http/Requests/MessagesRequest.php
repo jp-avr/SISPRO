@@ -32,6 +32,21 @@ class MessagesRequest extends FormRequest
     {
         return [
 
+            //MENSAGENS DE REGISTRO
+
+            'name.required' => 'O campo Nome é obrigatório',
+            'name.string' => 'O campo Nome é inválido',
+
+            'email.required' => 'O campo E-mail é obrigatório',
+            'email.string' => 'O campo E-mail é inválido',
+
+            'password.required' => 'O campo Senha é obrigatório',
+            'password.string' => 'O campo Senha é inválido',
+            'password.confirmed' => 'As senhas digitadas não coincidem',
+
+            'role.required' => 'O campo Função é obrigatório',
+            'role.integer' => 'O campo Função é inválido',
+
             //MENSAGENS DE CLIENTES
 
             'cliente_nome.string' => 'O campo Requerente é inválido',
@@ -51,11 +66,10 @@ class MessagesRequest extends FormRequest
 
             'cliente_cpf.string' => 'O campo CPF é inválido',
             'cliente_cpf.required' => 'O campo CPF é obrigatório',
+            'cliente_cpf.cpf' => 'Insira um CPF válido',
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
-            'cliente_estado_civil.integer' => 'O campo Estado Civil é inválido',
-            'cliente_estado_civil.required' => 'O campo Estado Civil é obrigatório',
             'cliente_telefone.string' => 'O campo Telefone é inválido',
             'cliente_telefone.required' => 'O campo Telefone é obrigatório',
 

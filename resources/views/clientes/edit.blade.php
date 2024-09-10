@@ -6,12 +6,11 @@
             <form name="inserir" id="inserir" method="post" action="{{ route('cliente.update', $cliente->cliente_id) }}" autocomplete="off">
                 @csrf
                 <div class="row">
-                    @include('cards.cliente')   
-                           
+                    @include('cards.cliente')        
                 </div>
                     
-                <div>
-                    <button type="submit" class="btn btn-success mt-4">{{ __('Salvar') }}</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Salvar') }}</button>
                 </div>
             </form>
         </div>
