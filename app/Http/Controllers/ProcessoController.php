@@ -33,7 +33,7 @@ class ProcessoController extends Controller
     // INSERINDO DADOS EM TABELA
     public function inserir_administrativo()
     {
-        $cids = Cid::all();
+        $cids = Cid::select('*')->orderBy('cid_descricao','asc')->get();
         $clientes = Cliente::all();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
@@ -43,7 +43,7 @@ class ProcessoController extends Controller
     public function inserir_novo_processo_administrativo($cliente_id)
     {
         $cliente = Cliente::findOrFail($cliente_id);
-        $cids = Cid::all();
+        $cids = Cid::select('*')->orderBy('cid_descricao','asc')->get();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
         return view('processos.administrativo.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
@@ -51,7 +51,7 @@ class ProcessoController extends Controller
 
     public function inserir_judiciario()
     {
-        $cids = Cid::all();
+        $cids = Cid::select('*')->orderBy('cid_descricao','asc')->get();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
         return view('processos.judiciario.inserir', compact('cids','profissoes','partes_atingidas'));
@@ -60,14 +60,14 @@ class ProcessoController extends Controller
     public function inserir_novo_processo_judiciario($cliente_id)
     {
         $cliente = Cliente::findOrFail($cliente_id);
-        $cids = Cid::all();
+        $cids = Cid::select('*')->orderBy('cid_descricao','asc')->get();
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
         return view('processos.judiciario.inserir', compact('partes_atingidas','cids','profissoes','cliente'));
     }
 
     public function store_administrativo(ProcessoInserirRequest $request)
-    {  
+    {
         $cliente = Cliente::criar($request);
 
         Processo::criarAdministrativo($request, $cliente->cliente_id);
@@ -78,7 +78,7 @@ class ProcessoController extends Controller
     }
 
     public function novo_processo_administrativo(NovoProcessoInserirRequest $request, $cliente_id)
-    {  
+    {
         Processo::criarAdministrativo($request, $cliente_id);
 
         // dd($request->all());
@@ -87,7 +87,7 @@ class ProcessoController extends Controller
     }
 
     public function store_judiciario(ProcessoInserirRequest $request)
-    {  
+    {
         $cliente = Cliente::criar($request);
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
@@ -96,7 +96,7 @@ class ProcessoController extends Controller
     }
 
     public function novo_processo_judiciario(NovoProcessoInserirRequest $request, $cliente_id)
-    {  
+    {
         Processo::criarJudiciario($request, $cliente_id);
 
         return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
