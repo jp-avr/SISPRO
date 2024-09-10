@@ -361,6 +361,7 @@ class CidSeeder extends Seeder
             'Agressões' => 'X85-Y09',
             'Todas as outras causas externas' => 'W20-W64, W75-W99, X10-X39, X50-X59, Y10-Y89',
             'Fatores que exercem influência sobre o estado de saúde e o contato com serviços de saúde' => 'Z00-Z99',
+            'Visão Monocular' => 'H54-5',
         ];
 
         foreach ($cids as $key => $cid){
