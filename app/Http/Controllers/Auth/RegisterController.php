@@ -8,6 +8,7 @@ use App\Http\Requests\RegistroInserirRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -97,11 +98,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validatorForUpdate(array $data)
+    protected function validatorForUpdate(array $data, $user_id)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user_id,'user_id')],
         ]);
     }
 
@@ -131,8 +132,9 @@ class RegisterController extends Controller
      * @param User $user
      * @return User
      */
-    protected function update(array $data, User $user): User
+    protected function update(array $data, $user_id): User
     {
+        $user = User::findOrFail($user_id);
         $user->update([
             'name' => $data['name'],
             'email' => $data['email'],

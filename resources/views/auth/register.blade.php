@@ -13,7 +13,7 @@
                 <div class="card-header">{{ isset($usuario) ? __('Editar usuário') : __('Criar Usuário') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ isset($usuario) ? route('update', $usuario->user_id) : route('register') }}">
+                    <form method="POST" action="{{ isset($usuario) ? route('update') : route('register') }}">
                         @csrf
 
                         @if(isset($usuario))
@@ -55,9 +55,9 @@
                                 <select class="form-control @error('role') is-invalid @enderror" name="role">
                                     <option value="" selected disabled>Selecione a função</option>
                                     @foreach ($roles as $role)
-                                    <option value="{{ $role->id }}" 
-                                        @if (old('role', isset($usuario) ? $usuario->roles->first()->id ?? '' : '') == $role->id) 
-                                            selected 
+                                    <option value="{{ $role->id }}"
+                                        @if (old('role', isset($usuario) ? $usuario->roles->first()->id ?? '' : '') == $role->id)
+                                            selected
                                         @endif
                                     >
                                         {{ $role->name }}
@@ -71,6 +71,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            <input type="hidden" name="user_id" value="{{$usuario->user_id}}">
                         </div>
 
                         <div class="form-group row">

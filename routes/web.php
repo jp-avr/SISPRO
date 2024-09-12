@@ -103,8 +103,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
             Route::post('/register', 'Auth\RegisterController@register');
             Route::get('/edit/{usuario}', 'Auth\RegisterController@showEditForm')->name('edit');
-            Route::post('update', 'Auth\RegisterController@updating')->name('update');
-            Route::get('/destroy/{usuario}', 'ConfiguracoesController@destroy')->name('destroy');   
+            Route::put('update', 'Auth\RegisterController@updating')->name('update');
+            Route::get('/destroy/{usuario}', 'ConfiguracoesController@destroy')->name('destroy');
             Route::get('update', 'Auth\RegisterController@showEditForm')->name('update');
             Route::post('update', 'Auth\RegisterController@updating');
         });
