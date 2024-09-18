@@ -26,13 +26,16 @@
                                     <p><strong>Data de início da doença:</strong> {{ $processo->proc_data_ini_doenca }}</p>
                                     <p><strong>Data de início da incapacidade:</strong> {{ $processo->proc_data_ini_incapacidade }}</p>
                                     <p><strong>Parte Atingida:</strong> {{ $processo->parte_atingida->parte_atingida_descricao }}</p>
+                                    @foreach($processo->cids as $cid)
+                                        <p><strong>CID-10:</strong> {{ $cid->cid_descricao.' - '.$cid->cid_codigo }}</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <p><strong>Resultado:</strong> {{ $processo->proc_resultado }}</p>
+                                    <p><strong>Resultado:</strong> {{ $processo->proc_resultado == "" ? "Sem resultado" : $processo->proc_resultado }}</p>
                                     <p><strong>História:</strong> {{ $processo->proc_historia }}</p>
                                     <p><strong>Considerações:</strong> {{ $processo->proc_consideracoes }}</p>
                                     <p><strong>Atividade:</strong>

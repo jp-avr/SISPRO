@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="mb-3 col-md-12">
                     <label class="form-label">Número do Processo</label>
-                    <input type="text" class="form-control @error('proc_numero_proc') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('proc_numero_proc') }}" name="proc_numero_proc">
+                    <input type="text" class="form-control @error('proc_numero_proc') is-invalid @enderror" placeholder="Número do Processo" value="{{ old('proc_numero_proc', $processo->proc_numero_proc ?? '') }}" name="proc_numero_proc">
                     @error('proc_numero_proc')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -20,14 +20,16 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">CID 10</label>
-                    <select type="text" class="form-control @error('cid_id') is-invalid @enderror" value="{{ old('cid_id') }}" name="cid_id">
+                    @foreach($processo->cids as $cid_processo)
+                    <select type="text" class="form-control @error('cid_id') is-invalid @enderror" name="cid_id">
                         <option value="">Selecione o CID</option>
                         @foreach ($cids as $cid)
-                        <option value="{{ $cid->cid_id }}" @if (old('cid_id')==$cid->cid_id) {{ 'selected' }} @endif>
+                        <option value="{{ $cid->cid_id }}" @if (old('cid_id', $cid_processo->cid_id ?? '') == $cid->cid_id) {{ 'selected' }} @endif>
                             {{ $cid->cid_descricao.' - '.$cid->cid_codigo }}
                         </option>
                         @endforeach
                     </select>
+                    @endforeach
                     @error('cid_id')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -37,19 +39,19 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Data inicial dos sintomas</label>
-                    <input type="date" class="form-control @error('proc_data_ini_doenca') is-invalid @enderror" value="{{ old('proc_data_ini_doenca') }}" name="proc_data_ini_doenca">
+                    <input type="date" class="form-control @error('proc_data_ini_doenca') is-invalid @enderror" value="{{ old('proc_data_ini_doenca', $processo->proc_data_ini_doenca ?? '') }}" name="proc_data_ini_doenca">
                     @error('proc_data_ini_doenca')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
-            </div> 
-            
+            </div>
+
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Data de início das incapacidades</label>
-                    <input type="date" class="form-control @error('proc_data_ini_incapacidade') is-invalid @enderror" value="{{ old('proc_data_ini_incapacidade') }}" name="proc_data_ini_incapacidade">
+                    <input type="date" class="form-control @error('proc_data_ini_incapacidade') is-invalid @enderror" value="{{ old('proc_data_ini_incapacidade', $processo->proc_data_ini_incapacidade ?? '') }}" name="proc_data_ini_incapacidade">
                     @error('proc_data_ini_incapacidade')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -62,7 +64,7 @@
                     <select class="form-control @error('parte_atingida_id') is-invalid @enderror" name="parte_atingida_id">
                         <option value="" selected disabled>Selecione a parte atingida</option>
                         @foreach ($partes_atingidas as $parte_atingida)
-                        <option value="{{ $parte_atingida->parte_atingida_id }}">
+                        <option value="{{ $parte_atingida->parte_atingida_id }}" @if (old('parte_atingida_id', $processo->parte_atingida_id ?? '') == $parte_atingida->parte_atingida_id) selected @endif>
                             {{ $parte_atingida->parte_atingida_descricao }}
                         </option>
                         @endforeach
@@ -78,7 +80,7 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">História</label>
-                    <textarea class="form-control @error('proc_historia') is-invalid @enderror" placeholder="História do Cliente" name="proc_historia" rows="3">{{ old('proc_historia') }}</textarea>
+                    <textarea class="form-control @error('proc_historia') is-invalid @enderror" placeholder="História do Cliente" name="proc_historia" rows="3">{{ old('proc_historia', $processo->proc_historia ?? '') }}</textarea>
                     @error('proc_historia')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -88,17 +90,13 @@
 
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Considerações</label>
-                    <textarea class="form-control @error('proc_consideracoes') is-invalid @enderror" placeholder="Digite suas considerações" name="proc_consideracoes" rows="3">{{ old('proc_consideracoes') }}</textarea>
+                    <textarea class="form-control @error('proc_consideracoes') is-invalid @enderror" placeholder="Digite suas considerações" name="proc_consideracoes" rows="3">{{ old('proc_consideracoes', $processo->proc_consideracoes ?? '') }}</textarea>
                     @error('proc_consideracoes')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
             </div>
         </div>
     </div>

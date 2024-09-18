@@ -45,9 +45,9 @@
                                         <td class="text-left">{{ $processo->proc_numero_proc }}</td>
                                         <td>
                                             @if($processo->tipo_processo_id === 1)
-                                                Administrativo
+                                                <span class="badge badge-success">Administrativo</span>
                                             @elseif($processo->tipo_processo_id === 2)
-                                                Judiciário
+                                                <span class="badge badge-primary">Judiciário</span>
                                             @endif
                                         </td>
                                         <td>{{ date('d/m/Y', strtotime($processo->created_at)) }}</td>
@@ -57,8 +57,8 @@
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                            @can('update-cliente')
-                                            <a href="{{ route('processo.edit', $processo->cliente->cliente_id) }}" class="btn btn-success btn-sm">
+                                            @can('update-processo')
+                                            <a href="{{ route('processo.edit', $processo->processo_id) }}" class="btn btn-success btn-sm">
                                                 <i class="fas fa-pen"></i> Editar
                                             </a>
                                             @endcan
@@ -72,19 +72,21 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center text-muted">Nenhuma solicitação encontrada</td>
+                                        <td colspan="6" class="text-center text-muted">Nenhum processo encontrado</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @if($processos != null)
                     <div class="card-footer py-3 bg-light">
                         <nav class="d-flex justify-content-end" aria-label="Paginação">
-                            {{-- @if ($solicitacoes != null)
-                                {{ $solicitacoes->appends($_GET)->links() }}
-                            @endif --}}
+                             @if ($processos != null)
+                                {{ $processos->links() }}
+                            @endif
                         </nav>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -134,6 +136,16 @@
             background-color: #dc3545;
             border-color: #dc3545;
         }
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .badge-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
     </style>
 @endsection
 

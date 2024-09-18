@@ -30,6 +30,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Cliente</th>
+                                    <th scope="col">Cpf</th>
                                     <th scope="col">Data de Nascimento</th>
                                     <th scope="col">Informações</th>
                                     <th scope="col">Ações</th>
@@ -41,6 +42,7 @@
                                     @include('processos.modal_resposta')
                                     <tr>
                                         <td class="text-left text-muted">{{ $cliente->cliente_nome }}</td>
+                                        <td class="text-left text-muted">{{ $cliente->cliente_cpf }}</td>
                                         <td class="text-left">{{ date('d/m/Y', strtotime($cliente->cliente_data_nascimento)) }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('clientes.processos', $cliente->cliente_id) }}" class="btn btn-info btn-sm">
@@ -63,7 +65,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="4" class="text-center text-muted">Nenhuma solicitação encontrada</td>
+                                        <td colspan="4" class="text-center text-muted">Nenhum cliente encontrado</td>
                                     </tr>
                                 @endforelse
                             </tbody>

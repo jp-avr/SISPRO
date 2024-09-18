@@ -47,7 +47,7 @@
                                     Feminino
                                 @endif
                             </p>
-                            <p><strong>Notificação feita em:</strong> {{ $cliente->created_at->format('d/m/Y') }} por Alguém</p>
+                            <p><strong>Notificação feita em:</strong> {{ $cliente->created_at->format('d/m/Y') }}</p>
                         </div>
                         <div class="card-footer text-right">
                             <a data-bs-toggle="modal" data-bs-target="#staticBackdrop-processo-{{ $cliente->getKey() }}"class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Novo processo</a>
@@ -111,9 +111,16 @@
                                         <td>{{ $processo->proc_resultado }}</td>
                                         <td>{{ $processo->created_at->format('d/m/Y') }}</td>
                                         <td class="text-right">
-                                            <a href="#" title="Editar monitoramento">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
+                                            @can('update-processo')
+                                                <a href="{{ route('processo.edit', $processo->processo_id) }}" class="btn btn-success btn-sm">
+                                                    <i class="fas fa-pen"></i> Editar
+                                                </a>
+                                            @endcan
+                                            @can('excluir-cliente')
+                                                <a href="{{ route('processo.destroy', $processo->processo_id) }}" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i> Excluir
+                                                </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                     @include('processos.modal_resposta_info_processos')

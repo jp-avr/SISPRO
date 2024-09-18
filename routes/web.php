@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/store/administrativo', 'ProcessoController@store_administrativo')->name('processo_administrativo.store');
             Route::post('/store/judiciario', 'ProcessoController@store_judiciario')->name('processo_judiciario.store');
             Route::get('/edit/{processo}', 'ProcessoController@edit')->name('processo.edit');
-            Route::get('/update/{processo}', 'ProcessoController@update')->name('processo.update');
+            Route::post('/update/{processo}', 'ProcessoController@update')->name('processo.update');
             Route::get('/destroy/{processo}','ProcessoController@destroy')->name('processo.destroy');
         });
     });
@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('clientes')->group(function (){
         Route::group(['middleware' => ['can:ver-lista-de-clientes']], function(){
             Route::get('/index', 'ClienteController@index')->name('clientes.index');
-            Route::get('/processos/{cliente}', 'ClienteController@processos')->name('clientes.processos');
+            Route::get('/processos/{cliente}', 'ClienteController@processos')->name('cliente.processos');
             Route::get('/show/{cliente}', 'ClienteController@show')->name('cliente.show');
         });
 

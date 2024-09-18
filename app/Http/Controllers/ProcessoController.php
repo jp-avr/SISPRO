@@ -17,7 +17,7 @@ class ProcessoController extends Controller
 {
     public function index()
     {
-        $processos = Processo::paginate(15)->sortDesc();
+        $processos = Processo::orderBy('created_at', 'desc')->paginate(15);
         $clientes = Cliente::all();
         $profissoes = Profissao::all();
         return view('processos.index',compact('processos', 'clientes','profissoes'));
@@ -74,7 +74,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Processo inserido com sucesso!');
     }
 
     public function novo_processo_administrativo(NovoProcessoInserirRequest $request, $cliente_id)
@@ -83,7 +83,7 @@ class ProcessoController extends Controller
 
         // dd($request->all());
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Processo inserido com sucesso!');
     }
 
     public function store_judiciario(ProcessoInserirRequest $request)
@@ -92,14 +92,14 @@ class ProcessoController extends Controller
 
         Processo::criarJudiciario($request, $cliente->cliente_id);
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Processo inserido com sucesso!');
     }
 
     public function novo_processo_judiciario(NovoProcessoInserirRequest $request, $cliente_id)
     {
         Processo::criarJudiciario($request, $cliente_id);
 
-        return redirect()->route('processos.index')->with('sucesso', 'Solicitação inserido com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'Processo inserido com sucesso!');
     }
 
     // EDITANDO DADOS EM TABELA
@@ -111,21 +111,22 @@ class ProcessoController extends Controller
         $profissoes = Profissao::all();
         $partes_atingidas = ParteAtingida::all();
 
-        return view('processo.edit', compact('processo','tipo_processo','cids','profissoes','partes_atingidas'));
+        return view('processos.edit', compact('processo','tipo_processo','cids','profissoes','partes_atingidas'));
     }
 
     public function update($processo, Request $request)
     {
         $processo = Processo::findOrFail($processo);
-
+        $cliente_id = $processo->cliente->cliente_id;
         $processo->update($request->all());
-        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'solicitacao alterado com sucesso!');
+        return redirect()->route('processos.index')->with('sucesso', 'processo alterado com sucesso!');
     }
 
     public function destroy($processo_id){
         $processo = Processo::findOrFail($processo_id);
+        $cliente_id = $processo->cliente->cliente_id;
         $processo->delete();
 
-        return redirect()->route('cliente.processos', $processo->cliente->cliente_id)->with('sucesso', 'processo apagado com sucesso!');
+        return redirect()->back()->with('sucesso', 'processo apagado com sucesso!');
     }
 }

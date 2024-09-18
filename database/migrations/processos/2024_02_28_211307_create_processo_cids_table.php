@@ -15,7 +15,7 @@ class CreateProcessoCidsTable extends Migration
     {
         Schema::create('processo_cids', function (Blueprint $table) {
             $table->id('processo_cid_id');
-            $table->foreignId('processo_id')->references('processo_id')->on('processos');
+            $table->foreignId('processo_id')->references('processo_id')->on('processos')->onDelete('cascade');
             $table->foreignId('cid_id')->references('cid_id')->on('cids');
             $table->timestamps();
         });

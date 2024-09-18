@@ -11,7 +11,7 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $clientes = Cliente::paginate(10);
+        $clientes = Cliente::paginate(15);
         $processos = Processo::all();
         return view('clientes.index',compact('clientes','processos'));
     }
@@ -54,7 +54,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::findOrFail($cliente_id);
         $cliente->atualizar($request);
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with(['sucesso'=>'Cliente editado com sucesso']);
     }
 
     public function destroy($cliente_id)
@@ -62,6 +62,6 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($cliente_id);
         $cliente->delete();
 
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with(['sucesso'=>'Cliente excluido com sucesso']);
     }
 }

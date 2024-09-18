@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">                                
+                <div class="card">
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -55,9 +55,9 @@
                             <div class="col-md-5">
                                 <label class="form-label">Parte do corpo atingida</label>
                                 <select class="form-control @error('parte_atingida_id') is-invalid @enderror" name="parte_atingida_id">
-                                    <option value="" selected disabled>Selecione a parte atingida</option>
+                                    <option value="{{}}" selected disabled>Selecione a parte atingida</option>
                                     @foreach ($partes_atingidas as $parte_atingida)
-                                    <option value="{{ $parte_atingida->parte_atingida_id }}">
+                                    <option value="{{ $parte_atingida->parte_atingida_id }}" @if (old('$parte_atingida', $cliente->parte_atingida_id ?? '') == $parte_atingida->parte_atingida_id) selected @endif>
                                         {{ $parte_atingida->parte_atingida_descricao }}
                                     </option>
                                     @endforeach
@@ -87,7 +87,7 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div> 
+                            </div>
 
                             <div class="col-md-6">
                                 <input class="mt-2 @error('encaminhar') is-invalid @enderror" name="encaminhar" type="file" id="" accept=".jpeg, .jpg, .png, .pdf">
@@ -96,8 +96,8 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>                                                  
-                        </div>                       
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
