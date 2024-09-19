@@ -20,6 +20,7 @@
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <label class="form-label">CID 10</label>
+                    @if(isset($processo))
                     @foreach($processo->cids as $cid_processo)
                     <select type="text" class="form-control @error('cid_id') is-invalid @enderror" name="cid_id">
                         <option value="">Selecione o CID</option>
@@ -30,6 +31,16 @@
                         @endforeach
                     </select>
                     @endforeach
+                    @else
+                        <select type="text" class="form-control @error('cid_id') is-invalid @enderror" name="cid_id">
+                            <option value="">Selecione o CID</option>
+                            @foreach ($cids as $cid)
+                                <option value="{{ $cid->cid_id }}" @if (old('cid_id') == $cid->cid_id) {{ 'selected' }} @endif>
+                                    {{ $cid->cid_descricao.' - '.$cid->cid_codigo }}
+                                </option>
+                            @endforeach
+                        </select>
+                    @endif
                     @error('cid_id')
                         <div class="invalid-feedback">
                             {{ $message }}

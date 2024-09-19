@@ -25,7 +25,7 @@ class CreateProcessosTable extends Migration
             $table->string('proc_resultado')->nullable();
             $table->text('proc_historia');
             $table->text('proc_consideracoes')->nullable();
-            $table->boolean('proc_ativo')->default(1);
+            $table->boolean('proc_ativo')->default(0);
             $table->boolean('proc_finalizado')->default(0);
             $table->timestamps();
         });

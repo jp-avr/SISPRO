@@ -11,12 +11,15 @@
                     </div>
                 @else
                     <div class="row">
-                        @include('cards.cliente')          
+                        @include('cards.cliente')
                     </div>
                     <div class="row">
                         @include('cards.processo')
                     </div>
                 @endif
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Salvar') }}</button>
+                </div>
             </form>
         </div>
     </main>

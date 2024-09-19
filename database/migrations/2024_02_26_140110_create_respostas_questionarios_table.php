@@ -15,7 +15,7 @@ class CreateRespostasQuestionariosTable extends Migration
     {
         Schema::create('respostas_questionarios', function (Blueprint $table) {
             $table->id('respostas_id');
-            $table->foreignId('questionario_id')->references('questionario_id')->on('questionarios');
+            $table->foreignId('questionario_id')->references('questionario_id')->on('questionarios')->onDelete('cascade');
             $table->string('secao_1');
             $table->string('secao_2');
             $table->string('secao_3');

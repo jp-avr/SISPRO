@@ -27,6 +27,7 @@ class ProcessoInserirRequest extends FormRequest
             'cid_id' => ['required','integer'],
             'cliente_nome' => ['required','string'],
             'profissao_id' => ['required', 'integer'],
+            'cbo' => ['required', 'integer'],
             'cliente_data_nascimento' => ['required','date','before_or_equal:' . now()->format('d-m-Y')],
             'cliente_sexo' => ['required','string'],
             'cliente_rg' => ['required','string', 'unique:clientes,cliente_rg'],
@@ -37,8 +38,8 @@ class ProcessoInserirRequest extends FormRequest
             'proc_data_ini_doenca' => ['required','date'],
             'proc_data_ini_incapacidade' => [ 'required','date','after_or_equal:proc_data_ini_doenca'],
             'parte_atingida_id' => ['required','string'],
-            'proc_historia' => [ 'required','string'],     
-            'proc_consideracoes' => ['string', 'nullable']      
+            'proc_historia' => [ 'required','string'],
+            'proc_consideracoes' => ['string', 'nullable']
         ];
     }
 
@@ -51,6 +52,9 @@ class ProcessoInserirRequest extends FormRequest
 
             'profissao_id.required' => 'O campo Profissão é obrigatório',
             'profissao_id.integer' => 'O campo Profissão é inválido',
+
+            'cbo.required' => 'O campo CBO é obrigatório',
+            'cbo.integer' => 'O campo CBO é inválido',
 
             'cliente_data_nascimento.date' => 'O campo Nascimento é inválido',
             'cliente_data_nascimento.required' => 'O campo Nascimento é obrigatório',
@@ -71,7 +75,7 @@ class ProcessoInserirRequest extends FormRequest
 
             'cliente_email.string' => 'O campo Email é inválido',
             'cliente_email.required' => 'O campo Email é obrigatório',
-            
+
             'cliente_telefone.string' => 'O campo Telefone é inválido',
             'cliente_telefone.required' => 'O campo Telefone é obrigatório',
 
@@ -88,21 +92,21 @@ class ProcessoInserirRequest extends FormRequest
             'cid_id.integer' => 'O campo CID10 é inválido',
             'cid_id.required' => 'O campo CID10 é obrigatório',
 
-            'proc_data_ini_doenca.date' => 'O campo Data Inicial dos Sintomas é inválido', 
+            'proc_data_ini_doenca.date' => 'O campo Data Inicial dos Sintomas é inválido',
             'proc_data_ini_doenca.required' => 'O campo Data Inicial dos Sintomas é obrigatório',
 
             'proc_data_ini_incapacidade.date' => 'O campo Data Inicial dos Sintomas é inválido',
             'proc_data_ini_incapacidade.required' => 'O campo Data Inicial dos Sintomas é obrigatório',
             'proc_data_ini_incapacidade.after_or_equal' => 'A data do inicio da incapacidade não pode ser menor que o inicio da doença',
 
-            'parte_atingida_id.string' => 'O campo Parte do corpo atingida é inválido',   
+            'parte_atingida_id.string' => 'O campo Parte do corpo atingida é inválido',
             'parte_atingida_id.required' => 'O campo Parte do corpo atingida é obrigatório',
 
             'proc_historia.string' => 'O campo História é inválido',
             'proc_historia.required' => 'O campo História é obrigatório',
 
             'proc_consideracoes.string' => 'O campo Considerações é inválido',
-            'proc_consideracoes.required' => 'O campo Considerações é obrigatório',  
+            'proc_consideracoes.required' => 'O campo Considerações é obrigatório',
         ];
     }
 }
